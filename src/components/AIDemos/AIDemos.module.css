@@ -1,0 +1,260 @@
+.demoContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #c0c0c0;
+  padding: 8px;
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+}
+
+.layout {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Panel Base */
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 10px;
+}
+
+.panelTitle {
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #000080;
+  border-bottom: 1px solid #808080;
+  padding-bottom: 4px;
+}
+
+/* Input Panel */
+.inputPanel {
+  flex: 1;
+  max-width: 300px;
+}
+
+.scenarioTitle {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.inputArea {
+  flex: 1;
+  background: #fff;
+  border-left: 2px solid #808080;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 11px;
+  resize: none;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.runBtn {
+  background: #c0c0c0;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 6px 12px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px #000;
+  width: 100%;
+}
+
+.runBtn:active {
+  border-left: 2px solid #808080;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 7px 11px 5px 13px;
+}
+
+/* System State Panel */
+.statePanel {
+  width: 140px;
+  background: #000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 9px;
+  padding: 8px;
+  border: 2px inset #ffffff;
+  overflow: hidden;
+}
+
+.logLine {
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.cursor {
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Output Panel */
+.outputPanel {
+  flex: 2;
+  min-width: 0;
+}
+
+.personaTabs {
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.tab {
+  padding: 4px 10px;
+  background: #c0c0c0;
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  margin-right: -1px;
+  cursor: pointer;
+  font-size: 9px;
+  z-index: 1;
+}
+
+.tabActive {
+  background: #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  font-weight: bold;
+  margin-bottom: -1px;
+  padding-bottom: 5px;
+  z-index: 2;
+}
+
+.outputArea {
+  flex: 1;
+  background: #fff;
+  border-left: 2px solid #808080;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 12px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.outputLabel {
+  font-size: 9px;
+  color: #808080;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.reasoning {
+  margin-top: 12px;
+  border-top: 1px dotted #808080;
+  padding-top: 12px;
+}
+
+.reasoningTitle {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.reasoningContent {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #404040;
+}
+
+/* Credibility Section */
+.credibilitySection {
+  margin-top: 16px;
+  padding: 10px;
+  background: #c0c0c0;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.productItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border: 1px dotted #808080;
+}
+
+.productItem strong {
+  font-size: 10px;
+  color: #000;
+}
+
+.productItem span {
+  font-size: 9px;
+  color: #404040;
+}
+
+.footerNote {
+  margin-top: 12px;
+  font-size: 9px;
+  color: #808080;
+  font-style: italic;
+  text-align: right;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
+    overflow-y: visible; /* Let the container handle scroll */
+  }
+  
+  .demoContainer {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .inputPanel, .statePanel, .outputPanel {
+    max-width: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .statePanel {
+    height: 100px;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+}

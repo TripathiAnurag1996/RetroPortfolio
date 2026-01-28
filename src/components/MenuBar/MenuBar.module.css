@@ -1,0 +1,147 @@
+.menuBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--menubar-height);
+  background: var(--color-menubar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-sm);
+  overflow: visible;
+  z-index: var(--z-menubar);
+  border-bottom: 1px solid var(--border-dark);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.appName {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 4px;
+}
+
+.appIcon {
+  font-size: 14px;
+}
+
+.menuItems {
+  display: flex;
+  gap: 2px;
+  height: 100%;
+}
+
+.menuItemWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menuItem {
+  padding: 6px 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+  color: var(--color-menubar-text);
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.menuItem:hover, .menuItem.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.menuItem:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: var(--color-menubar-bg);
+  border: 1px solid var(--border-dark);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  z-index: 1000;
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-menubar-text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownItem:hover:not(.disabled) {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.dropdownItem.disabled {
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.comingSoon {
+  font-size: 8px;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  overflow: visible;
+}
+
+.clock {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  text-transform: uppercase;
+  color: var(--color-menubar-text);
+}
+
+@media (max-width: 767px) {
+  .menuItems {
+    display: none;
+  }
+  
+  .menuBar {
+    justify-content: space-between;
+    padding: 0 var(--space-md);
+  }
+}

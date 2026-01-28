@@ -1,0 +1,151 @@
+.settings {
+  padding: var(--space-md);
+  font-family: var(--font-retro);
+}
+
+.section {
+  margin-bottom: var(--space-lg);
+}
+
+.sectionTitle {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+/* Appearance Toggle */
+.toggleGroup {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.toggleBtn {
+  padding: 8px 24px;
+  font-family: var(--font-retro);
+  font-size: 16px;
+  border: none;
+  background: var(--color-window-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+}
+
+.toggleBtn:first-child {
+  border-right: 1px solid var(--border-dark);
+}
+
+.toggleBtn:hover {
+  background: var(--border-mid);
+}
+
+.toggleBtn.active {
+  background: var(--color-accent);
+  color: white;
+}
+
+.toggleBtn.active::before {
+  content: '✓';
+  font-size: 12px;
+}
+
+.toggleIcon {
+  font-size: 14px;
+}
+
+/* Background Grid */
+.backgroundGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-xs);
+}
+
+.backgroundOption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  background: var(--color-window-frame);
+  padding: var(--space-xs);
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.backgroundOption:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.backgroundOption.selected {
+  border-color: var(--color-accent);
+  background: #eef2f2;
+  box-shadow: 
+    inset 0 0 0 2px var(--color-accent),
+    0 4px 12px rgba(0, 128, 128, 0.1);
+}
+
+.backgroundOption.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--color-accent);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgPreview {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+/* Background previews using high-quality assets */
+.bgPreview[data-bg="clouds"] { background-image: url('/wallpapers/clouds.png'); }
+.bgPreview[data-bg="street"] { background-image: url('/wallpapers/street.png'); }
+.bgPreview[data-bg="beach"] { background-image: url('/wallpapers/beach.png'); }
+.bgPreview[data-bg="meadow"] { background-image: url('/wallpapers/meadow.png'); }
+.bgPreview[data-bg="night"] { background-image: url('/wallpapers/night.png'); }
+.bgPreview[data-bg="retro-room"] { background-image: url('/wallpapers/retro-room.png'); }
+.bgPreview[data-bg="pixel-sky"] { background-image: url('/wallpapers/pixel-sky.png'); }
+.bgPreview[data-bg="vaporwave"] { background-image: url('/wallpapers/vaporwave.png'); }
+.bgPreview[data-bg="crt-noise"] { background-image: url('/wallpapers/crt-noise.png'); }
+.bgPreview[data-bg="minimal"] { background-image: url('/wallpapers/minimal.png'); }
+.bgPreview[data-bg="warm-neutral"] { background-image: url('/wallpapers/warm-neutral.png'); }
+.bgPreview[data-bg="cool-gray"] { background-image: url('/wallpapers/cool-gray.png'); }
+.bgPreview[data-bg="lavender"] { background-image: url('/wallpapers/lavender.png'); }
+.bgPreview[data-bg="forest"] { background-image: url('/wallpapers/forest.png'); }
+
+.bgLabel {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  text-align: center;
+  color: var(--color-text);
+  padding: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

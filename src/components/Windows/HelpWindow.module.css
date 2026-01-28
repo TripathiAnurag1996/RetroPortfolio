@@ -1,0 +1,121 @@
+.helpContainer {
+  padding: 24px;
+  background: #fff;
+  height: 100%;
+  overflow-y: auto;
+  font-family: var(--font-retro);
+  font-size: 16px;
+  color: #000;
+}
+
+.helpContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.helpContainer::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-left: 1px solid var(--border-light);
+}
+
+.helpContainer::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: #000;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+  padding-left: 0;
+}
+
+.listItem::before {
+  content: "■";
+  font-size: 8px;
+  margin-right: 8px;
+  color: var(--border-dark);
+}
+
+.emailWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f0f0f0;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.emailIcon {
+  font-size: 14px;
+}
+
+.emailLink {
+  font-size: 14px;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+.socialLabel {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #666;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.socialItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.socialPlatform {
+  font-weight: bold;
+  color: #000;
+  min-width: 24px;
+  padding-top: 1px;
+}
+
+.socialLink {
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  word-break: break-all;
+  line-height: 1.8;
+}
+
+.socialLink:hover {
+  color: var(--color-accent);
+}

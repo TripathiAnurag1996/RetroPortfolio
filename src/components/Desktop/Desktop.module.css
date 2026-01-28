@@ -1,0 +1,85 @@
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Layer */
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-desktop);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Solid color backgrounds and Wallpapers */
+.background[data-bg="warm-neutral"] { background-image: url('/wallpapers/warm-neutral.png'); }
+.background[data-bg="cool-gray"] { background-image: url('/wallpapers/cool-gray.png'); }
+.background[data-bg="lavender"] { background-image: url('/wallpapers/lavender.png'); }
+.background[data-bg="forest"] { background-image: url('/wallpapers/forest.png'); }
+.background[data-bg="sunset"] { 
+  background: linear-gradient(135deg, #FFD4D4 0%, #FFB8C0 100%);
+}
+.background[data-bg="clouds"] { background-image: url('/wallpapers/clouds.png'); }
+.background[data-bg="street"] { background-image: url('/wallpapers/street.png'); }
+.background[data-bg="beach"] { background-image: url('/wallpapers/beach.png'); }
+.background[data-bg="meadow"] { background-image: url('/wallpapers/meadow.png'); }
+.background[data-bg="night"] { background-image: url('/wallpapers/night.png'); }
+.background[data-bg="retro-room"] { background-image: url('/wallpapers/retro-room.png'); }
+.background[data-bg="pixel-sky"] { background-image: url('/wallpapers/pixel-sky.png'); }
+.background[data-bg="vaporwave"] { background-image: url('/wallpapers/vaporwave.png'); }
+.background[data-bg="crt-noise"] { background-image: url('/wallpapers/crt-noise.png'); }
+.background[data-bg="minimal"] { background-image: url('/wallpapers/minimal.png'); }
+
+/* Desktop Content Area */
+.desktopContent {
+  flex: 1;
+  display: flex;
+  position: relative;
+  z-index: var(--z-icons);
+  padding-top: var(--menubar-height);
+  padding-bottom: var(--taskbar-height);
+}
+
+/* Icons Area */
+.iconsArea {
+  padding: var(--space-md);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-rows: repeat(auto-fill, 90px);
+  gap: var(--space-xs);
+  align-content: start;
+  width: 320px;
+  height: 100%;
+}
+
+/* Windows Container */
+.windowsContainer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-windows);
+  pointer-events: none;
+}
+
+.windowsContainer > * {
+  pointer-events: auto;
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .iconsArea {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
+  
+  .desktopContent {
+    padding-bottom: 70px;
+  }
+}
