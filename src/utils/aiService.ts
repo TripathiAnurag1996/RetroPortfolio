@@ -1,58 +1,58 @@
-import { anuragContext } from './knowledgeBase';
-import { personaPrompts, PersonaType } from './personaConfig';
+import { anuragContext } from "./knowledgeBase";
+import { personaPrompts, PersonaType } from "./personaConfig";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 /**
  * Intent Types
  */
 type Intent =
-  | 'professional'
-  | 'playful_redirect'
-  | 'easter_eggs'
-  | 'off_limits';
+  | "professional"
+  | "playful_redirect"
+  | "easter_eggs"
+  | "off_limits";
 
 /**
  * Weighted intent keywords (more robust than naive includes)
  */
 const intentWeights: Record<Intent, string[]> = {
   professional: [
-    'experience',
-    'work',
-    'role',
-    'product',
-    'projects',
-    'skills',
-    'strategy',
-    'building',
-    'current role'
+    "experience",
+    "work",
+    "role",
+    "product",
+    "projects",
+    "skills",
+    "strategy",
+    "building",
+    "current role",
   ],
   playful_redirect: [
-    'salary',
-    'ctc',
-    'compensation',
-    'married',
-    'single',
-    'girlfriend',
-    'relationship'
+    "salary",
+    "ctc",
+    "compensation",
+    "married",
+    "single",
+    "girlfriend",
+    "relationship",
   ],
   easter_eggs: [
-    'joke',
-    'sing',
-    'dance',
-    'are you real',
-    'turing test',
-    'meaning of life'
+    "joke",
+    "sing",
+    "dance",
+    "are you real",
+    "turing test",
+    "meaning of life",
   ],
   off_limits: [
-    'politics',
-    'political',
-    'religion',
-    'sexuality',
-    'controversial'
-  ]
+    "politics",
+    "political",
+    "religion",
+    "sexuality",
+    "controversial",
+  ],
 };
 
 /**
@@ -65,7 +65,7 @@ const classifyIntent = (query: string): Intent => {
     professional: 0,
     playful_redirect: 0,
     easter_eggs: 0,
-    off_limits: 0
+    off_limits: 0,
   };
 
   for (const intent in intentWeights) {
@@ -74,10 +74,10 @@ const classifyIntent = (query: string): Intent => {
     }
   }
 
-  if (scores.off_limits > 0) return 'off_limits';
+  if (scores.off_limits > 0) return "off_limits";
 
   const bestMatch = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
-  return bestMatch[1] > 0 ? (bestMatch[0] as Intent) : 'professional';
+  return bestMatch[1] > 0 ? (bestMatch[0] as Intent) : "professional";
 };
 
 /**
@@ -111,7 +111,7 @@ const intentConstraints: Record<Intent, string> = {
 - No humor.
 - Calm, polite deflection.
 - Redirect strictly to professional work.
-`
+`,
 };
 
 /**
@@ -150,7 +150,7 @@ RESPONSE RULES
 const buildSystemPrompt = (
   userQuery: string,
   persona: PersonaType,
-  intent: Intent
+  intent: Intent,
 ) => `
 ${baseIdentity}
 
@@ -191,55 +191,68 @@ USER QUESTION
  */
 export const getAIResponse = async (
   userQuery: string,
-  persona: PersonaType
+  persona: PersonaType,
 ) => {
   if (!API_KEY) {
-    throw new Error('Gemini API key missing');
+    throw new Error(
+      "Gemini API key is missing. Please check your environment variables.",
+    );
   }
 
   const intent = classifyIntent(userQuery);
   const systemPrompt = buildSystemPrompt(userQuery, persona, intent);
 
-  const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      system_instruction: {
-        parts: [{ text: systemPrompt }]
+  // Combine system prompt and user query to fit the strict {contents: [{parts: [{text: "..."}]}]} schema
+  const combinedPrompt = `${systemPrompt}\n\nUSER INPUT: ${userQuery}`;
+
+  try {
+    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      contents: [
-        {
-          parts: [{ text: userQuery }]
-        }
-      ],
-      generationConfig: {
-        maxOutputTokens: 500,
-        temperature:
-          persona === 'browsing'
-            ? 0.6
-            : intent === 'professional'
-            ? 0.35
-            : 0.55,
-        topP: 0.9
-      }
-    })
-  });
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text: combinedPrompt }],
+          },
+        ],
+        generationConfig: {
+          maxOutputTokens: 500,
+          temperature:
+            persona === "browsing"
+              ? 0.6
+              : intent === "professional"
+                ? 0.35
+                : 0.55,
+          topP: 0.9,
+        },
+      }),
+    });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.error?.message || 'Failed to fetch Gemini response'
-    );
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Gemini API error:", errorData);
+      throw new Error(
+        errorData.error?.message ||
+          `Gemini API request failed with status ${response.status}`,
+      );
+    }
+
+    const data = await response.json();
+
+    const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!responseText) {
+      console.error("Empty response from Gemini API:", data);
+      throw new Error("AI returned an empty response. Please try again.");
+    }
+
+    return responseText;
+  } catch (error: any) {
+    console.error("Gemini API error:", error);
+    throw new Error(error?.message || "AI request failed");
   }
-
-  const data = await response.json();
-
-  return (
-    data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-    'Something slipped internally. You can try rephrasing that.'
-  );
 };
 
 /**
@@ -250,7 +263,7 @@ export const getProductAnalysis = async (
   persona: PersonaType = 'browsing'
 ) => {
   if (!API_KEY) {
-    throw new Error('Gemini API key missing');
+    throw new Error('Gemini API key is missing. Please check your environment variables.');
   }
 
   const systemPrompt = `
@@ -301,39 +314,49 @@ USER SCENARIO
 "${query}"
 `;
 
-  const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      system_instruction: {
-        parts: [{ text: systemPrompt }]
+  // Combine system prompt and user query to fit the strict {contents: [{parts: [{text: "..."}]}]} schema
+  const combinedPrompt = `${systemPrompt}\n\nUSER INPUT: ${query}`;
+
+  try {
+    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      contents: [
-        {
-          parts: [{ text: query }]
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text: combinedPrompt }]
+          }
+        ],
+        generationConfig: {
+          maxOutputTokens: 600,
+          temperature: 0.4,
+          topP: 0.9
         }
-      ],
-      generationConfig: {
-        maxOutputTokens: 600,
-        temperature: 0.4,
-        topP: 0.9
-      }
-    })
-  });
+      })
+    });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.error?.message || 'Failed to fetch Gemini response'
-    );
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Gemini API error:', errorData);
+      throw new Error(
+        errorData.error?.message || `Gemini API request failed with status ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!responseText) {
+      console.error('Empty response from Gemini API:', data);
+      throw new Error('AI analysis unavailable. Please try again.');
+    }
+
+    return responseText;
+  } catch (error: any) {
+    console.error('Gemini API error:', error);
+    throw new Error(error?.message || 'AI analysis request failed');
   }
-
-  const data = await response.json();
-
-  return (
-    data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-    'Analysis unavailable. System state is unstable.'
-  );
 };

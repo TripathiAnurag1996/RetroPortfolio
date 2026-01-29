@@ -19,9 +19,12 @@ const SnakeGameWindow: React.FC = () => {
   const [direction, setDirection] = useState<Direction>('RIGHT');
   const [food, setFood] = useState<Position>({ x: 15, y: 15 });
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(
-    parseInt(localStorage.getItem('snakeHighScore') || '0')
-  );
+  const [highScore, setHighScore] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return parseInt(localStorage.getItem('snakeHighScore') || '0');
+    }
+    return 0;
+  });
   const [gameOver, setGameOver] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
@@ -126,7 +129,9 @@ const SnakeGameWindow: React.FC = () => {
             const newScore = prev + 1;
             if (newScore > highScore) {
               setHighScore(newScore);
-              localStorage.setItem('snakeHighScore', newScore.toString());
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('snakeHighScore', newScore.toString());
+              }
             }
             // Speed up every 5 points
             if (newScore % 5 === 0) {

@@ -8,7 +8,10 @@ import { playClickSound, playMessageSound } from '../../utils/audio';
 
 const AIAssistant: React.FC = () => {
   const [persona, setPersona] = useState<PersonaType | null>(() => {
-    return localStorage.getItem('visitorPersona') as PersonaType | null;
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('visitorPersona') as PersonaType | null;
+    }
+    return null;
   });
   const [isSelectingPersona, setIsSelectingPersona] = useState(false);
   const [query, setQuery] = useState('');
@@ -29,6 +32,8 @@ const AIAssistant: React.FC = () => {
 
   // Handle queries passed from the SearchBar
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handleCustomEvent = (e: any) => {
       const q = e.detail;
       if (q && persona) {
@@ -73,12 +78,9 @@ const AIAssistant: React.FC = () => {
       setHistory(prev => [{q, a: aiResponse}, ...prev].slice(0, 5));
       playMessageSound();
     } catch (err: any) {
-      console.error(err);
-      if (err.message.includes('rate limit')) {
-        setError('⚠️ Too many questions! Even AI needs a break. Try again in a moment.');
-      } else {
-        setError('❌ Connection lost to the AI mainframe. Check your internet and try again.');
-      }
+      console.error('Gemini API error:', err);
+      // Display the actual error message or a fallback
+      setError(err?.message || 'AI request failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -87,15 +89,17 @@ const AIAssistant: React.FC = () => {
   const handlePersonaSelect = (p: PersonaType) => {
     setPersona(p);
     setIsSelectingPersona(false);
-    localStorage.setItem('visitorPersona', p);
-    playClickSound();
-    
-    // Check if there was a pending query
-    const pendingQuery = sessionStorage.getItem('ai_query');
-    if (pendingQuery) {
-      sessionStorage.removeItem('ai_query');
-      handleQuery(pendingQuery);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('visitorPersona', p);
+      
+      // Check if there was a pending query
+      const pendingQuery = sessionStorage.getItem('ai_query');
+      if (pendingQuery) {
+        sessionStorage.removeItem('ai_query');
+        handleQuery(pendingQuery);
+      }
     }
+    playClickSound();
   };
 
   if (!persona || isSelectingPersona) {

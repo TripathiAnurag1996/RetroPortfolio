@@ -6,6 +6,8 @@
 let audioContext: AudioContext | null = null;
 
 export const playClickSound = async () => {
+  if (typeof window === 'undefined') return;
+
   try {
     // Attempt to play from file first
     const audio = new Audio('/sounds/click.mp3');
@@ -22,6 +24,8 @@ export const playClickSound = async () => {
 };
 
 const playSynthesizedClick = () => {
+  if (typeof window === 'undefined') return;
+
   if (!audioContext) {
     audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
   }
@@ -48,6 +52,8 @@ const playSynthesizedClick = () => {
 };
 
 export const playMessageSound = async () => {
+  if (typeof window === 'undefined') return;
+
   try {
     const audio = new Audio('/sounds/message.mp3');
     audio.volume = 0.4;
@@ -63,6 +69,8 @@ export const playMessageSound = async () => {
 };
 
 const playSynthesizedBeep = (freq: number, duration: number) => {
+  if (typeof window === 'undefined') return;
+
   if (!audioContext) {
     audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
   }
