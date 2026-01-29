@@ -13,6 +13,8 @@
   gap: 12px;
   flex: 1;
   min-height: 0;
+  width: 100%;
+  overflow: hidden; /* Prevent panels from breaking the main desktop layout */
 }
 
 /* Panel Base */
@@ -88,14 +90,16 @@
 
 /* System State Panel */
 .statePanel {
-  width: 140px;
+  flex: 0 0 160px; /* Strong fixed width */
+  min-width: 160px;
   background: #000;
   color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
   font-size: 9px;
   padding: 8px;
   border: 2px inset #ffffff;
-  overflow: hidden;
+  overflow-y: auto; /* Enable self-scrolling */
+  overflow-x: hidden;
 }
 
 .logLine {
@@ -118,8 +122,10 @@
 
 /* Output Panel */
 .outputPanel {
-  flex: 2;
+  flex: 1;
   min-width: 0;
+  max-width: 100%;
+  overflow: hidden; /* Contain children like outputArea */
 }
 
 .personaTabs {
@@ -158,6 +164,8 @@
   padding: 12px;
   overflow-y: auto;
   line-height: 1.5;
+  word-wrap: break-word; /* Ensure long words wrap */
+  overflow-wrap: break-word;
 }
 
 .outputLabel {

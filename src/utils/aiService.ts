@@ -111,7 +111,7 @@ const intentConstraints: Record<Intent, string> = {
 - No humor.
 - Calm, polite deflection.
 - Redirect strictly to professional work.
-`,
+`
 };
 
 /**
@@ -129,81 +129,50 @@ TONE
 - Never sound like a chatbot or assistant
 `;
 
-const responseRules = `
-RESPONSE RULES
-1. Answer the question clearly and early.
-2. Choose the response shape intentionally:
-   - Factual → 1–2 sentences
-   - Summary → single paragraph (no bullets)
-   - Evaluative → judgment + 1–2 concrete examples
-   - Exploratory → brief answer + invite follow-up
-3. Use bullet points ONLY if the user explicitly asks.
-4. Avoid over-explaining or teaching.
-5. If information is missing:
-   - Be honest and brief
-   - Redirect naturally (no documentation tone)
-6. Never reveal private or sensitive details.
-7. Light retro-OS personality is welcome.
-8. Vary sentence structure to avoid repetition.
-`;
-
-const buildSystemPrompt = (
-  userQuery: string,
+const buildSystemInstructions = (
   persona: PersonaType,
-  intent: Intent,
-) => `
+  intent: Intent
+) => {
+  const personaContext = personaPrompts[persona] || '';
+  const intentContext = intentConstraints[intent] || '';
+  
+  return `
+[ROLE]
 ${baseIdentity}
 
-====================
-PERSONA CONTEXT
-====================
-${personaPrompts[persona]}
-Apply this persona naturally. Never overperform it.
+[PERSONALITY_LENS]
+${personaContext}
 
-====================
-SOURCE OF TRUTH
-====================
-Use ONLY the information below.
-Do NOT infer, guess, or invent.
+[DATA_SOURCE_FACTS]
+${JSON.stringify(anuragContext)}
 
-${JSON.stringify(anuragContext, null, 2)}
+[INTENT_RULES]
+${intentContext}
 
-====================
-INTENT CONTEXT
-====================
-Detected user intent: ${intent}
-
-${intentConstraints[intent]}
-
-====================
-RESPONSE DISCIPLINE
-====================
-${responseRules}
-
-====================
-USER QUESTION
-====================
-"${userQuery}"
+[CRITICAL_RESPONSE_RULES]
+1. Answer clearly, accurately, and COMPLETELY.
+2. If the user asks for a specific number of points (e.g., "3 things" or "5 factors"), you MUST provide exactly that many.
+3. NEVER end a response mid-sentence or mid-list.
+4. Stay grounded in the provided DATA_SOURCE_FACTS. If information is missing, admit it and redirect.
+5. Provide interview-grade, professional quality answers.
 `;
+};
 
 /**
  * Main conversational response
  */
 export const getAIResponse = async (
   userQuery: string,
-  persona: PersonaType,
+  persona: PersonaType
 ) => {
   if (!API_KEY) {
     throw new Error(
-      "Gemini API key is missing. Please check your environment variables.",
+      "Gemini API key is missing. Please check your environment variables."
     );
   }
 
   const intent = classifyIntent(userQuery);
-  const systemPrompt = buildSystemPrompt(userQuery, persona, intent);
-
-  // Combine system prompt and user query to fit the strict {contents: [{parts: [{text: "..."}]}]} schema
-  const combinedPrompt = `${systemPrompt}\n\nUSER INPUT: ${userQuery}`;
+  const instructions = buildSystemInstructions(persona, intent);
 
   try {
     const response = await fetch(`${API_URL}?key=${API_KEY}`, {
@@ -212,43 +181,81 @@ export const getAIResponse = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        system_instruction: {
+          parts: [{ text: instructions }]
+        },
         contents: [
           {
-            parts: [{ text: combinedPrompt }],
+            role: "user",
+            parts: [{ text: userQuery }],
           },
         ],
         generationConfig: {
-          maxOutputTokens: 500,
-          temperature:
-            persona === "browsing"
-              ? 0.6
-              : intent === "professional"
-                ? 0.35
-                : 0.55,
-          topP: 0.9,
+          maxOutputTokens: 2048,
+          temperature: persona === "browsing" ? 0.7 : 0.4,
+          topP: 0.95
         },
+        safetySettings: [
+          {
+            category: "HARM_CATEGORY_HARASSMENT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_HATE_SPEECH",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+        ],
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       console.error("Gemini API error:", errorData);
+      
+      // Handle the specific "model output must contain..." error with more context
+      const apiErrorMessage = errorData.error?.message || "";
+      if (apiErrorMessage.includes("must contain either output text or tool calls")) {
+        throw new Error("The AI model was unable to generate a response. This often happens if the query triggers a safety filter or is too complex for the current persona. Please try rephrasing.");
+      }
+
       throw new Error(
-        errorData.error?.message ||
-          `Gemini API request failed with status ${response.status}`,
+        apiErrorMessage || `Gemini API request failed with status ${response.status}`
       );
     }
 
     const data = await response.json();
+    const candidates = data?.candidates || [];
+    
+    if (candidates.length === 0 || !candidates[0].content?.parts) {
+      // If there's no content, check for a finish reason
+      const finishReason = candidates[0]?.finishReason;
+      if (finishReason === "SAFETY") {
+        throw new Error("I apologize, but I cannot answer that due to safety guidelines. Let's talk about my professional work or product strategy instead.");
+      }
+      
+      console.error("Empty Gemini response candidates:", data);
+      throw new Error("AI returned no results. Detailed logs in console.");
+    }
 
-    const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    // Join all parts (text and thinking/thought if present in future versions)
+    const fullText = candidates[0].content.parts
+      .map((part: any) => part.text || "")
+      .join("")
+      .trim();
 
-    if (!responseText) {
-      console.error("Empty response from Gemini API:", data);
+    if (!fullText) {
       throw new Error("AI returned an empty response. Please try again.");
     }
 
-    return responseText;
+    return fullText;
   } catch (error: any) {
     console.error("Gemini API error:", error);
     throw new Error(error?.message || "AI request failed");
@@ -267,55 +274,34 @@ export const getProductAnalysis = async (
   }
 
   const systemPrompt = `
-You are Anurag Kumar Tripathi’s AI Product Strategy Simulator.
-You demonstrate product judgment, structured thinking, and clarity.
+You are an experienced Product Manager and AI Product Analyst.
 
-====================
-CONTEXT
-====================
-This is a Product Insight demo.
-You simulate how I analyze a product problem.
+For every product or business scenario:
+1. Always clearly identify the core problem or signal.
+2. Always list 3–5 concrete hypotheses explaining *why* this might be happening.
+   - Hypotheses must be specific, testable, and grounded in real product behavior.
+3. Always propose clear next actions or experiments to validate or fix the issue.
+   - Actions should be practical (analytics, UX changes, experiments, instrumentation).
+4. When relevant, mention key metrics to monitor.
 
-Focus on:
-- User psychology
-- Product friction
-- Data-backed hypotheses
-- AI / GenAI trade-offs
+Response structure is mandatory:
+- Problem Insight
+- Key Hypotheses (bulleted or numbered)
+- Recommended Actions / Experiments
+- Metrics to Watch (optional but preferred)
 
-====================
-PERSONA LENS
-====================
-The analysis should reflect the perspective of: ${persona.toUpperCase()}
+Tone rules:
+- Be confident and structured.
+- Avoid vague language.
+- Do not stop mid-sentence.
+- Do not provide placeholder or partial answers.
+- Optimize for interview-grade and real-world product decision making.
 
-- Engineer → systems, constraints, feasibility
-- Recruiter → impact, signal, clarity
-- Founder → first principles, risk/reward
-- Browsing/Student → clarity and reasoning
-
-====================
-RESPONSE STRUCTURE
-====================
-1. The Analysis (1–2 paragraphs)
-2. One ASCII diagram (simple, text-only)
-3. 2–3 actionable product moves
-4. Trade-offs considered (short)
-
-====================
-STYLE RULES
-====================
-- Speak in first person ("I")
-- Calm, senior, insightful
-- No markdown tables or code blocks
-- MAX 350 words
-
-====================
-USER SCENARIO
-====================
-"${query}"
+Persona adaptation (Current Focus: ${persona.toUpperCase()}):
+- RECRUITER → focus on clarity, impact, and decision quality.
+- FOUNDER → focus on growth, revenue, and prioritization.
+- ENGINEER → focus on feasibility, systems, and implementation signals.
 `;
-
-  // Combine system prompt and user query to fit the strict {contents: [{parts: [{text: "..."}]}]} schema
-  const combinedPrompt = `${systemPrompt}\n\nUSER INPUT: ${query}`;
 
   try {
     const response = await fetch(`${API_URL}?key=${API_KEY}`, {
@@ -324,34 +310,75 @@ USER SCENARIO
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        system_instruction: {
+          parts: [{ text: systemPrompt }]
+        },
         contents: [
           {
-            parts: [{ text: combinedPrompt }]
+            role: "user",
+            parts: [{ text: query }]
           }
         ],
         generationConfig: {
-          maxOutputTokens: 600,
-          temperature: 0.4,
-          topP: 0.9
-        }
+          maxOutputTokens: 2048,
+          temperature: 0.45,
+          topP: 0.95
+        },
+        safetySettings: [
+          {
+            category: "HARM_CATEGORY_HARASSMENT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_HATE_SPEECH",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+          {
+            category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+            threshold: "BLOCK_ONLY_HIGH",
+          },
+        ],
       })
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       console.error('Gemini API error:', errorData);
+      
+      const apiErrorMessage = errorData.error?.message || "";
+      if (apiErrorMessage.includes("must contain either output text or tool calls")) {
+        throw new Error("The AI analyst was unable to generate a response. Please try a different product scenario.");
+      }
+
       throw new Error(
-        errorData.error?.message || `Gemini API request failed with status ${response.status}`
+        apiErrorMessage || `Gemini API request failed with status ${response.status}`
       );
     }
 
     const data = await response.json();
+    const candidates = data?.candidates || [];
+    
+    if (candidates.length === 0 || !candidates[0].content?.parts) {
+      const finishReason = candidates[0]?.finishReason;
+      if (finishReason === "SAFETY") {
+        throw new Error("I apologize, but this analysis was restricted by safety guidelines. Please try a more business-focused scenario.");
+      }
 
-    const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!responseText) {
       console.error('Empty response from Gemini API:', data);
       throw new Error('AI analysis unavailable. Please try again.');
+    }
+
+    // Join all parts
+    const responseText = candidates[0].content.parts
+      .map((p: any) => p.text || "")
+      .join("");
+
+    if (!responseText) {
+      throw new Error('AI returned an empty response. Please try again.');
     }
 
     return responseText;

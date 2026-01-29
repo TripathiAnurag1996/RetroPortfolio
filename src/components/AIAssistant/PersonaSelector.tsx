@@ -25,7 +25,7 @@ const PersonaSelector: React.FC<PersonaSelectorProps> = ({ onSelect, onCancel })
           <button className={styles.closeBtn} onClick={onCancel} title="Cancel">×</button>
         )}
       </div>
-      <p className={styles.searchLabel} style={{ marginBottom: '12px', fontSize: '9px', color: '#000080' }}>
+      <p className={styles.searchLabel} style={{ marginBottom: '16px', color: '#000080' }}>
         SELECT SOURCE IDENTITY FOR QUERY CONTEXT:
       </p>
       <div className={styles.personaList}>

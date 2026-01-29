@@ -54,20 +54,37 @@ function MenuBar() {
     return config?.title || 'ANURAG'
   }
 
+  // Menu content definitions (placeholder items for now as requested)
+  const MENU_CONTENT: Record<string, { label: string; shortcut?: string }[]> = {
+    FILE: [{ label: 'Close Window', shortcut: '⌘W' }],
+    EDIT: [
+      { label: 'Undo', shortcut: '⌘Z' },
+      { label: 'Redo', shortcut: '⇧⌘Z' },
+      { label: 'Cut', shortcut: '⌘X' },
+      { label: 'Copy', shortcut: '⌘C' },
+      { label: 'Paste', shortcut: '⌘V' },
+      { label: 'Select All', shortcut: '⌘A' },
+    ],
+    VIEW: [{ label: 'Enter Full Screen' }],
+    WINDOW: [
+      { label: 'Minimize' },
+      { label: 'Zoom' },
+      { label: 'Close', shortcut: '⌘W' },
+    ],
+  };
+
   const handleMenuClick = (label: string) => {
-    if (label === 'HELP') {
-      playClickSound()
-      setOpenDropdown(openDropdown === 'HELP' ? null : 'HELP')
-    }
-  }
+    playClickSound();
+    setOpenDropdown(openDropdown === label ? null : label);
+  };
 
   const handleHelpAction = (action: string) => {
     if (action === 'ANURAG HELP') {
-      playClickSound()
-      openWindow('help')
+      playClickSound();
+      openWindow('help');
     }
-    setOpenDropdown(null)
-  }
+    setOpenDropdown(null);
+  };
   
   return (
     <nav className={styles.menuBar} role="menubar" aria-label="Main menu">
@@ -89,19 +106,38 @@ function MenuBar() {
                 {item.label}
               </button>
               
+              {/* Dynamic Dropdown for standard menus */}
+              {openDropdown === item.label && item.label !== 'HELP' && MENU_CONTENT[item.label] && (
+                <div className={styles.dropdown}>
+                  {MENU_CONTENT[item.label].map((subItem, idx) => (
+                    <button 
+                      key={idx}
+                      className={`${styles.dropdownItem} ${styles.disabled}`}
+                      disabled
+                    >
+                      <span className={styles.itemLabel}>{subItem.label}</span>
+                      {subItem.shortcut && (
+                        <span className={styles.shortcut}>{subItem.shortcut}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Preserved HELP Menu Logic */}
               {item.label === 'HELP' && openDropdown === 'HELP' && (
                 <div className={styles.dropdown}>
                   <button 
                     className={`${styles.dropdownItem} ${styles.disabled}`}
                     disabled
                   >
-                    SEARCH
+                    <span className={styles.itemLabel}>SEARCH</span>
                   </button>
                   <button 
                     className={styles.dropdownItem}
                     onClick={() => handleHelpAction('ANURAG HELP')}
                   >
-                    ANURAG HELP
+                    <span className={styles.itemLabel}>ANURAG HELP</span>
                   </button>
                 </div>
               )}

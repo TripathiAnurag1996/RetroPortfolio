@@ -3,7 +3,6 @@ import { useWindows } from '../../context/WindowContext'
 import { TASKBAR_ICONS } from '../../config/windows'
 import { playClickSound } from '../../utils/audio'
 import Icon from '../Icons/Icon'
-import SearchBar from '../AIAssistant/SearchBar'
 import styles from './Taskbar.module.css'
 
 function Taskbar() {
@@ -45,10 +44,6 @@ function Taskbar() {
           </div>
         </div>
 
-        {/* Bottom-Right Assistant Button */}
-        <div className={styles.systemTray}>
-          <SearchBar />
-        </div>
       </nav>
     </>
   )

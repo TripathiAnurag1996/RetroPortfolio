@@ -7,6 +7,7 @@ import MenuBar from '../MenuBar/MenuBar'
 import Taskbar from '../Taskbar/Taskbar'
 import DesktopIcons from './DesktopIcons'
 import WindowManager from '../Window/WindowManager'
+import SearchBar from '../AIAssistant/SearchBar'
 import styles from './Desktop.module.css'
 
 function Desktop() {
@@ -37,6 +38,9 @@ function Desktop() {
       
       {/* Menu Bar */}
       <MenuBar />
+
+      {/* OS Assistant Trigger (Positioned top-right via CSS) */}
+      <SearchBar />
       
       {/* Desktop Content */}
       <div className={styles.desktopContent}>
