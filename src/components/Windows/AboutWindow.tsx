@@ -109,7 +109,7 @@ function AboutWindow() {
           
           <div className={styles.socialLinks}>
             <a 
-              href="https://www.linkedin.com/in/anurag-tripathi" 
+              href="https://www.linkedin.com/in/anuragtripathi-pm/" 
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"

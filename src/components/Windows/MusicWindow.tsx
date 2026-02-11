@@ -11,6 +11,19 @@ function formatTime(seconds: number): string {
   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
 }
 
+// Playlist data
+const PLAYLIST = [
+  { title: 'ABHI NA JAO', url: '/song.m4a' },
+  { title: 'END OF BEGINNING', url: '/End Of Beginning.m4a' },
+  { title: 'WAKE ME UP WHEN SEPTEMBER ENDS', url: '/Wake Me Up When September Ends.m4a' },
+  { title: 'SNEHITHANE SNEHITHANE', url: '/Snehithane Snehithane.m4a' },
+  { title: 'CAN\'T HELP FALLING IN LOVE', url: '/Can\'t Help Falling In Love.m4a' },
+  { title: 'BACK TO FRIENDS', url: '/Back To Friends.m4a' },
+  { title: 'LINE WITHOUT A HOOK', url: '/Line Without A Hook.m4a' },
+  { title: 'GIGI PEREZ - SAILOR', url: '/Gigi Perez-Sailor.m4a' },
+  { title: 'MAKE YOU MINE', url: '/Make You Mine.m4a' },
+]
+
 function MusicWindow() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const progressRef = useRef<HTMLDivElement>(null)
@@ -20,10 +33,19 @@ function MusicWindow() {
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(75)
   const [status, setStatus] = useState<'stopped' | 'playing' | 'paused'>('stopped')
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
 
-  // Initialize audio element
+  const currentTrack = PLAYLIST[currentTrackIndex]
+
+  // Initialize and update audio element
   useEffect(() => {
-    const audio = new Audio('/song.m4a')
+    // Clean up previous audio if any
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current = null
+    }
+
+    const audio = new Audio(currentTrack.url)
     audio.volume = volume / 100
     audioRef.current = audio
 
@@ -36,15 +58,16 @@ function MusicWindow() {
     }
 
     const handleEnded = () => {
-      setIsPlaying(false)
-      setStatus('stopped')
-      setCurrentTime(0)
-      audio.currentTime = 0
+      handleNext()
     }
 
     audio.addEventListener('timeupdate', handleTimeUpdate)
     audio.addEventListener('loadedmetadata', handleLoadedMetadata)
     audio.addEventListener('ended', handleEnded)
+
+    if (isPlaying) {
+      audio.play().catch(err => console.error("Playback failed:", err))
+    }
 
     return () => {
       audio.pause()
@@ -52,7 +75,7 @@ function MusicWindow() {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata)
       audio.removeEventListener('ended', handleEnded)
     }
-  }, [])
+  }, [currentTrackIndex])
 
   // Update volume when slider changes
   useEffect(() => {
@@ -68,7 +91,7 @@ function MusicWindow() {
         setIsPlaying(false)
         setStatus('paused')
       } else {
-        audioRef.current.play()
+        audioRef.current.play().catch(err => console.error("Playback failed:", err))
         setIsPlaying(true)
         setStatus('playing')
       }
@@ -83,6 +106,20 @@ function MusicWindow() {
       setCurrentTime(0)
       setStatus('stopped')
     }
+  }, [])
+
+  const handleNext = useCallback(() => {
+    setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length)
+    setCurrentTime(0)
+    setStatus('playing')
+    setIsPlaying(true)
+  }, [])
+
+  const handlePrev = useCallback(() => {
+    setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length)
+    setCurrentTime(0)
+    setStatus('playing')
+    setIsPlaying(true)
   }, [])
 
   const handleProgressClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -107,8 +144,8 @@ function MusicWindow() {
 
       {/* LCD Display */}
       <div className={styles.lcdDisplay}>
-        <div className={styles.nowPlaying}>NOW PLAYING</div>
-        <div className={styles.trackTitle}>ABHI NA JAO.M4A</div>
+        <div className={styles.nowPlaying}>NOW PLAYING [{currentTrackIndex + 1}/{PLAYLIST.length}]</div>
+        <div className={styles.trackTitle}>{currentTrack.title.toUpperCase()}.M4A</div>
         <div className={styles.timeDisplay}>
           <span className={styles.timeCurrent}>{formatTime(currentTime)}</span>
           <span className={styles.timeSeparator}>/</span>
@@ -136,7 +173,11 @@ function MusicWindow() {
 
       {/* Playback Controls */}
       <div className={styles.controls}>
-        <button className={styles.controlBtn} disabled title="Previous (Single Track)">
+        <button 
+          className={styles.controlBtn} 
+          onClick={handlePrev}
+          title="Previous Track"
+        >
           ⏮
         </button>
         <button 
@@ -153,7 +194,11 @@ function MusicWindow() {
         >
           ⏹
         </button>
-        <button className={styles.controlBtn} disabled title="Next (Single Track)">
+        <button 
+          className={styles.controlBtn} 
+          onClick={handleNext}
+          title="Next Track"
+        >
           ⏭
         </button>
       </div>
@@ -178,7 +223,7 @@ function MusicWindow() {
           <span className={`${styles.statusIcon} ${styles[status]}`} />
           {status.toUpperCase()}
         </span>
-        <span>RETRO PLAYER V1.0</span>
+        <span>RETRO PLAYER V1.1</span>
       </div>
     </div>
   )

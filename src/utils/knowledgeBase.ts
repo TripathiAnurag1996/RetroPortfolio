@@ -9,7 +9,7 @@ export const anuragContext = {
     tagline: 'Building and scaling AI-powered products from 0→1',
     location: 'Gurgaon, India',
     email: 'anurag.akt@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/tripathianurag-anurag'
+    linkedin: 'https://www.linkedin.com/in/anuragtripathi-pm/'
   },
 
   /**

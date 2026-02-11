@@ -334,6 +334,28 @@ const icons: Record<string, JSX.Element> = {
       <rect x="12" y="10" width="4" height="4" fill="white" />
     </svg>
   ),
+  pdf: (
+    <svg viewBox="0 0 48 48" fill="none">
+      {/* 3D Bevelled Frame */}
+      <path d="M10 4 H32 L40 12 V44 H10 Z" fill="#808080" />
+      <path d="M8 2 H31 L38 9 V42 H8 Z" fill="#C0C0C0" />
+      <path d="M9 3 H30 L37 10 V41 H9 Z" fill="#FFFFFF" />
+      {/* Dog-ear */}
+      <path d="M30 3 V10 H37 Z" fill="#808080" />
+      <path d="M31 3 V9 H37 Z" fill="#dfdfdf" />
+      {/* Red PDF Label at bottom */}
+      <path d="M12 28 H34 V38 H12 Z" fill="#FF0000" />
+      <path d="M14 30 H16 V36 H14 Z" fill="white" /> {/* P */}
+      <path d="M14 30 H18 V32 H14 Z" fill="white" />
+      <path d="M20 30 H22 V36 H20 Z" fill="white" /> {/* D */}
+      <path d="M20 30 H24 V31 H20 Z" fill="white" />
+      <path d="M20 35 H24 V36 H20 Z" fill="white" />
+      <path d="M24 31 V35 H25 V31 Z" fill="white" />
+      <path d="M28 30 H32 V31 H28 Z" fill="white" /> {/* F */}
+      <path d="M28 30 V36 H30 V30 Z" fill="white" />
+      <path d="M28 32 H31 V33 H28 Z" fill="white" />
+    </svg>
+  ),
 };
 
 function Icon({ name, size = 48, className }: IconProps) {

@@ -314,7 +314,7 @@ function MyComputerWindow() {
               <div className={styles.contactRow}>
                 <span className={styles.contactRowIcon}>🔗</span>
                 <a 
-                  href="https://www.linkedin.com/in/tripathianurag-anurag" 
+                  href="https://www.linkedin.com/in/anuragtripathi-pm/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className={`${styles.contactRowText} ${styles.contactLink}`}
