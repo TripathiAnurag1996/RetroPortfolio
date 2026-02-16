@@ -1,10 +1,10 @@
 import { memo } from 'react'
+import OptimizedImage from '../Common/OptimizedImage'
 import styles from './WelcomeWindow.module.css'
 
 function WelcomeWindow() {
-  const welcomeMessage = `Welcome to my Retro OS Portfolio 👋
-I’m Anurag Tripathi — AI Product Manager & Builder.
-Explore my projects, resume, and product work by clicking the desktop icons.`
+  const welcomeMessage = `I’m Anurag Tripathi — AI Product Manager & Builder. 
+This is my Retro OS Portfolio where you can explore my LLM-powered projects, product strategy, and resume by clicking the icons below. 👋`
 
   return (
     <div className={styles.welcome}>
@@ -15,15 +15,18 @@ Explore my projects, resume, and product work by clicking the desktop icons.`
 
       {/* Top section: A bold text heading */}
       <div className={styles.headingArea}>
-        <h1 className={styles.heading}>WELCOME</h1>
+        <h1 className={styles.heading}>SYSTEM OVERVIEW</h1>
       </div>
 
       {/* Image section (hero block) */}
       <div className={styles.imageSection}>
-        <img 
-          src="/WELCOME_RETRO.jpg" 
+        <OptimizedImage 
+          src="/WELCOME_RETRO.png" 
           alt="Welcome Hero" 
           className={styles.heroImage}
+          width={450}
+          height={300}
+          priority={true}
         />
       </div>
 
@@ -33,7 +36,7 @@ Explore my projects, resume, and product work by clicking the desktop icons.`
           <p className={styles.introText}>{welcomeMessage}</p>
           
           <div className={styles.featureGuide}>
-            <h2 className={styles.guideTitle}>INTEGRATED FEATURES:</h2>
+            <h2 className={styles.guideTitle}>What’s inside:</h2>
             <ul className={styles.featureList}>
               <li>
                 <strong>🤖 AI OS ASSISTANT:</strong> 
@@ -68,13 +71,16 @@ Explore my projects, resume, and product work by clicking the desktop icons.`
         </div>
       </div>
 
-      {/* Footer row */}
+      {/* Footer row (Status Bar style) */}
       <footer className={styles.footer}>
         <div className={styles.charCount}>
-          {welcomeMessage.length}/500,000 CHARACTERS
+          © 2026 Anurag Tripathi
+        </div>
+        <div className={styles.builtWith}>
+          Built with ❤️ ⚡
         </div>
         <div className={styles.viewOnly}>
-          VIEW ONLY
+          Runs on Nostalgia 🕹️
         </div>
       </footer>
     </div>

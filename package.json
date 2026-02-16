@@ -5,14 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npx tsc -b && vite build",
+    "build:sitemap": "node scripts/generate-sitemap.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "submit-indexnow": "node scripts/submit-indexnow.js",
+    "build": "npm run optimize-images && npm run build:sitemap && npx tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.564.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "clsx": "^2.1.0"
+    "react-helmet-async": "^2.0.5",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",

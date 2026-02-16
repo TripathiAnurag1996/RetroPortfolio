@@ -5,11 +5,19 @@ type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 type Position = { x: number; y: number };
 
 const GRID_SIZE = 20; // 20x20 grid
-const CELL_SIZE = 20; // Each cell is 20px
+const CELL_SIZE = 16; // Reduced from 20 to fit smaller window
 const INITIAL_SPEED = 150; // ms per frame
 const SPEED_INCREMENT = 10; // Speed up every 5 points
 
 const SnakeGameWindow: React.FC = () => {
+  // Disable body scroll when game is open
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [snake, setSnake] = useState<Position[]>([
     { x: 10, y: 10 },

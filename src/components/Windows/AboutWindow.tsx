@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import OptimizedImage from '../Common/OptimizedImage'
 import styles from './AboutWindow.module.css'
 
 // Skills categorized
@@ -23,10 +24,13 @@ function AboutWindow() {
       {/* Header with Avatar and Name */}
       <header className={styles.header}>
         <div className={styles.avatar}>
-          <img 
+          <OptimizedImage 
             src="/profile.jpg" 
             alt="Anurag Kumar Tripathi" 
             className={styles.avatarImage}
+            width={120}
+            height={120}
+            loading="eager"
           />
         </div>
         

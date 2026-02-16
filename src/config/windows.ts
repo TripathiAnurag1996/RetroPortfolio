@@ -59,7 +59,7 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
     id: "snakegame",
     title: "SNACK GAME - RETRO ARCADE",
     icon: "game",
-    defaultSize: { width: 520, height: 620 },
+    defaultSize: { width: 400, height: 530 },
   },
   help: {
     id: "help",

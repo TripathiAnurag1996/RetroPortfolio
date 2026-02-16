@@ -61,12 +61,17 @@
 }
 
 @media (max-width: 767px) {
+  .icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .iconImage {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .iconLabel {
-    font-size: 6px;
+    font-size: 8px; /* Slightly larger for readability */
   }
 }

@@ -2,15 +2,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: flex-start; /* Ensure items start from the top but have space */
+  padding: 16px 12px;
   background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
   font-family: var(--font-pixel), monospace;
-  min-width: 480px;
+  width: 100%;
+  min-height: 100%;
+  overflow-y: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (max-height: 600px), (max-width: 500px) {
+  .gameContainer {
+    transform: scale(0.85);
+    transform-origin: center center;
+  }
+}
+
+@media (max-height: 500px), (max-width: 400px) {
+  .gameContainer {
+    transform: scale(0.7);
+    transform-origin: center center;
+  }
 }
 
 .gameHeader {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .scoreBoard {
@@ -112,14 +131,18 @@
 
 .controls {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 5px; /* Extra breathing room at the bottom */
 }
 
 .button {
-  padding: 10px 20px;
+  padding: 8px 16px;
+  min-width: 120px;
   font-family: var(--font-retro), monospace;
-  font-size: 16px;
+  font-size: 14px;
   background: #c0c0c0;
   border: 3px solid;
   border-color: #ffffff #808080 #808080 #ffffff;

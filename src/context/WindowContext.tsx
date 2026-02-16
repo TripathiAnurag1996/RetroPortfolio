@@ -95,8 +95,8 @@ function windowReducer(state: State, action: Action): State {
       // Calculate position
       const viewport = { width: window.innerWidth, height: window.innerHeight }
       const windowSize = config.defaultSize || { width: 450, height: 350 }
-      const isWelcome = id === 'welcome'
-      const position = calculatePosition(windows.length, windowSize, viewport, isWelcome)
+      const shouldCenter = id === 'welcome' || id === 'snakegame'
+      const position = calculatePosition(windows.length, windowSize, viewport, shouldCenter)
       
       const newWindow: WindowState = {
         id,

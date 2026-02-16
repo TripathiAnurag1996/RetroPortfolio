@@ -122,25 +122,47 @@
 
 .featureList li strong {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   color: #000;
   margin-bottom: 2px;
+  letter-spacing: 0.8px;
+  font-family: var(--font-pixel);
+  font-size: 10px; /* Pixel font needs to be smaller to be readable */
+  line-height: 1.2;
 }
 
 .footer {
-  padding: var(--space-sm) var(--space-md);
-  background: var(--border-mid);
-  border-top: 1px solid var(--border-dark);
+  padding: 2px 6px;
+  background: var(--color-window-bg);
+  border-top: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--color-text-muted);
+  font-family: var(--font-retro);
+  font-size: 11px;
+  color: #333;
+  min-height: 22px;
 }
 
-.viewOnly {
-  color: var(--color-text-muted);
+.charCount, .builtWith, .viewOnly {
+  padding: 0 6px;
+  border: 1px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  height: 18px;
+  display: flex;
+  align-items: center;
+  background: var(--color-window-bg);
+  white-space: nowrap;
+}
+
+.charCount {
+  flex: 1;
+  margin-right: 2px;
+}
+
+.builtWith {
+  margin-right: 2px;
 }
 
 @media (max-width: 480px) {
