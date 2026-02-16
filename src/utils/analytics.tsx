@@ -23,7 +23,7 @@ export const initGA = () => {
     win.dataLayer.push(args);
   }
   gtag('js', new Date());
-  gtag('config', GA_MEASUREMENT_ID);
+  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
 };
 
 export const trackEvent = (action: string, category: string, label?: string, value?: number) => {

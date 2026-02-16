@@ -12,11 +12,46 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-KP2NZRYY9N", { anonymize_ip: true });
+      // GA4 config moved to React logic to fire after consent
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Static SEO Fallbacks -->
+    <title>Anurag Tripathi | AI Product Manager</title>
+    <meta name="description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
+    <link rel="canonical" href="https://anuragtripathi.pro/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://anuragtripathi.pro/" />
+    <meta property="og:title" content="Anurag Tripathi | AI Product Manager" />
+    <meta property="og:description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
+    <meta property="og:image" content="https://anuragtripathi.pro/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://anuragtripathi.pro/" />
+    <meta name="twitter:title" content="Anurag Tripathi | AI Product Manager" />
+    <meta name="twitter:description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
+    <meta name="twitter:image" content="https://anuragtripathi.pro/og-image.png" />
+
+    <!-- Structured Data (Static Fallback) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Anurag Tripathi",
+        "jobTitle": "AI Product Manager",
+        "url": "https://anuragtripathi.pro",
+        "image": "https://anuragtripathi.pro/og-image.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/anuragtripathi-pm/",
+          "https://github.com/TripathiAnurag1996"
+        ]
+      }
+    </script>
 
     <!-- Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
