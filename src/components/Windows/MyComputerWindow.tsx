@@ -169,10 +169,6 @@ function MyComputerWindow() {
     setActiveItem(id)
   }, [])
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-  }
-
   const renderContent = () => {
     switch (activeItem) {
       case 'projects':
@@ -186,11 +182,13 @@ function MyComputerWindow() {
                   {project.company} | {project.role} | {project.date}
                 </div>
                 <p className={styles.projectDesc}>{project.description}</p>
+
                 <ul className={styles.impactList}>
                   {project.impact.map((item, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: `✓ ${item}` }} />
                   ))}
                 </ul>
+
                 <div className={styles.expTech}>
                   <span className={styles.techLabel}>🔧 Tech: </span>
                   {project.tech}
@@ -204,6 +202,7 @@ function MyComputerWindow() {
         return (
           <div>
             <h2 className={styles.contentTitle}>💼 Work Experience</h2>
+
             {EXPERIENCE.map((exp, idx) => (
               <div key={idx} className={styles.experienceCard}>
                 <div className={styles.expHeader}>
@@ -211,15 +210,19 @@ function MyComputerWindow() {
                     <span className={styles.expIcon}>{exp.icon}</span>
                     {exp.company}
                   </div>
+
                   <div className={styles.expDate}>{exp.date}</div>
                 </div>
+
                 <div className={styles.expRole}>{exp.role}</div>
                 <div className={styles.expLocation}>{exp.location}</div>
+
                 <ul className={styles.expBullets}>
                   {exp.bullets.map((bullet, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: bullet }} />
                   ))}
                 </ul>
+
                 <div className={styles.expTech}>
                   <span className={styles.techLabel}>🔧 </span>
                   {exp.tech}
@@ -233,6 +236,7 @@ function MyComputerWindow() {
         return (
           <div>
             <h2 className={styles.contentTitle}>🎓 Education</h2>
+
             <div className={styles.eduCard}>
               <div className={styles.eduTitle}>{EDUCATION.degree}</div>
               <div className={styles.eduInstitution}>{EDUCATION.institution}</div>
@@ -247,6 +251,7 @@ function MyComputerWindow() {
         return (
           <div>
             <h2 className={styles.contentTitle}>📜 Certifications</h2>
+
             {CERTIFICATIONS.map((cert, idx) => (
               <div key={idx} className={styles.certItem}>
                 <span className={styles.certIcon}>✓</span>
@@ -261,9 +266,11 @@ function MyComputerWindow() {
         return (
           <div>
             <h2 className={styles.contentTitle}>🏆 Awards</h2>
+
             {AWARDS.map((award, idx) => (
               <div key={idx} className={styles.awardCard}>
                 <span className={styles.awardIcon}>🥇</span>
+
                 <div>
                   <div className={styles.awardName}>{award.name}</div>
                   <div className={styles.awardDesc}>{award.desc}</div>
@@ -291,7 +298,9 @@ function MyComputerWindow() {
 
               <div className={styles.contactRow}>
                 <span className={styles.contactRowIcon}>📱</span>
-                <span className={`${styles.contactValue} digit-clear`}>+91 8979975078</span>
+                <span className={`${styles.contactValue} digit-clear`}>
+                  +91 8979975078
+                </span>
               </div>
 
               <div className={styles.contactRow}>
@@ -301,6 +310,7 @@ function MyComputerWindow() {
 
               <div className={styles.contactRow}>
                 <span className={styles.contactRowIcon}>🔗</span>
+
                 <a
                   href="https://www.linkedin.com/in/anuragtripathi-pm/"
                   target="_blank"
@@ -313,6 +323,7 @@ function MyComputerWindow() {
 
               <div className={styles.contactRow}>
                 <span className={styles.contactRowIcon}>💻</span>
+
                 <a
                   href="https://github.com/TripathiAnurag1996/"
                   target="_blank"
@@ -335,13 +346,19 @@ function MyComputerWindow() {
     <div className={styles.myComputer}>
       <nav className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <img src="/profile.png" alt="Anurag" className={styles.avatarMiniImage} />
+          <img
+            src="/profile.png"
+            alt="Anurag Kumar Tripathi"
+            className={styles.avatarMiniImage}
+          />
+
           <div className={styles.sidebarUserName}>PORTFOLIO</div>
         </div>
 
         {SIDEBAR_ITEMS.map((item) => (
           <button
             key={item.id}
+            aria-label={item.label}
             className={`${styles.sidebarItem} ${
               activeItem === item.id ? styles.active : ''
             }`}
