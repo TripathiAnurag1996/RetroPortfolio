@@ -6,7 +6,7 @@
 
 /* Sidebar */
 .sidebar {
-  width: 180px;
+  width: 220px;
   border-right: 1px solid var(--border-dark);
   background: var(--color-window-frame);
   padding: var(--space-sm);
@@ -345,49 +345,69 @@
 
 /* Contact Content */
 .contactContent {
-  max-width: 500px;
-}
-
-.contactIntro {
-  font-size: 19px;
-  color: var(--color-text-light);
-  margin-bottom: var(--space-lg);
-  line-height: 1.7;
   max-width: 600px;
+  padding: var(--space-lg) 0;
 }
 
 .contactLinks {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   margin-top: var(--space-md);
 }
 
 .contactRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--color-window-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.contactRow:hover {
+  border-color: #4ECDC4;
+  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.1);
+  transform: translateY(-1px);
 }
 
 .contactRowIcon {
-  font-size: 22px;
+  font-size: 20px;
   width: 32px;
-  text-align: center;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(78, 205, 196, 0.1);
+  border-radius: 4px;
 }
 
 .contactRowText {
-  font-size: 21px;
-  flex: 1;
+  font-size: 16px;
+  font-family: var(--font-retro);
   color: var(--color-text);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 .contactLink {
   color: var(--color-text);
+  text-decoration: none;
+  font-family: var(--font-macintosh);
+  font-weight: 400;
+  font-size: 17px;
 }
 
 .contactLink:hover {
-  color: var(--color-accent);
+  color: #2A9D8F;
+}
+
+.contactValue {
+  font-family: var(--font-macintosh);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--color-text);
 }
 
 .copyBtn {

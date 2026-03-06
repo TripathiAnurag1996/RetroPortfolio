@@ -1,211 +1,228 @@
 export const anuragContext = {
-  /**
-   * Core identity and contact
-   * These are factual and stable.
-   */
+
   basics: {
-    name: 'Anurag Kumar Tripathi',
-    title: 'AI Product Manager',
-    tagline: 'Building and scaling AI-powered products from 0→1',
-    location: 'Gurgaon, India',
-    email: 'anurag.akt@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/anuragtripathi-pm/'
+    name: "Anurag Kumar Tripathi",
+    title: "AI Product Manager",
+    tagline: "Shipping AI-powered products and LLM workflows from 0→1",
+    location: "Gurugram, India",
+    email: "anurag.akt@gmail.com",
+    linkedin: "https://www.linkedin.com/in/anuragtripathi-pm/",
+    github: "https://github.com/TripathiAnurag1996/",
+    yearsExperience: 5
   },
 
-  /**
-   * One-paragraph professional summary.
-   * This should be treated as the default mental model.
-   */
   professionalSummary:
-    'AI Product Manager with a background in software engineering, focused on turning ambiguous AI capabilities into user-loved products through strong discovery, clear product decisions, and measurable business impact.',
+    "AI Product Manager with 5+ years of experience across product management and software engineering. Focused on building LLM-powered and AI-driven products from 0→1 in B2B SaaS environments and translating AI capabilities into reliable product systems.",
 
-  /**
-   * Current professional status
-   */
-  currentStatus: {
-    role: 'AI Product Manager',
-    company: 'Snabbity',
-    focus:
-      'Shipping AI-powered features that help teams understand funnel performance and make faster, data-backed product decisions.'
-  },
+  recruiterQuickPitch:
+    "AI Product Manager with a technical background in software engineering who specializes in shipping LLM-powered features, designing evaluation frameworks, and implementing human-in-the-loop AI systems.",
 
-  /**
-   * Current interests and openness
-   * IMPORTANT: Mention only when relevant or asked.
-   */
-  currentInterests: {
-    openTo:
-      'AI / Tech Product Management roles, selective product consulting, and startup co-founder opportunities where product, AI, and 0→1 execution intersect.',
-    collaborationStyle:
-      'Most interested in roles or collaborations involving real ownership, early problem definition, and close work with engineering and design.'
-  },
-
-  /**
-   * High-signal impact highlights
-   * Used for quick answers and summaries.
-   */
-  impactHighlights: [
-    'Shipped LLM-powered product features that reduced support load and improved self-service adoption.',
-    'Built AI-driven design and funnel insights that reduced investigation time by ~30%.',
-    'Led 0→1 discovery and validation as a founder through 200+ user interviews.',
-    'Brings strong technical credibility from years of hands-on engineering experience.'
+  domainFocus: [
+    "AI Product Management",
+    "Generative AI Products",
+    "LLM Workflows",
+    "B2B SaaS AI Tools"
   ],
 
-  /**
-   * Professional experience
-   */
+  primaryExpertise: [
+    "AI Product Strategy",
+    "LLM Feature Development",
+    "Prompt Engineering",
+    "Model Evaluation Frameworks",
+    "Human-in-the-Loop AI Systems"
+  ],
+
+  currentStatus: {
+    role: "AI Product Manager",
+    company: "Next Square Technologies",
+    focus:
+      "Leading development of internal AI productivity tools embedding LLM workflows to automate documentation and improve consulting delivery efficiency."
+  },
+
+  currentInterests: {
+    openTo:
+      "AI Product Manager, Generative AI Product, and AI Platform roles focused on AI systems, experimentation, and product strategy.",
+    collaborationStyle:
+      "Interested in product environments where teams solve ambiguous problems, run experiments, and work closely with engineering."
+  },
+
+  impactHighlights: [
+    "Reduced support ticket volume by 12% using LLM-assisted help systems.",
+    "Increased self-service product usage by 10% through AI-driven support tools.",
+    "Improved system reliability by reducing incidents by 22%.",
+    "Delivered features reaching 20% DAU adoption.",
+    "Improved operational efficiency by 30% using analytics dashboards."
+  ],
+
   experience: [
+
     {
-      company: 'Snabbity',
-      role: 'AI Product Manager (Project-based)',
-      duration: 'Nov 2024 - Present',
-      focus:
-        'AI-powered insights for design performance and funnel optimization.',
-      achievements: [
-        'Launched AI-driven Design Performance Insights to analyze page layouts across funnel steps.',
-        'Identified key drop-off causes such as CTA placement, form friction, and missing delivery information.',
-        'Reduced funnel investigation time by ~30% through standardized tracking and automated analysis.',
-        'Led personalization initiatives including recommendations, trending designs, and cart reminders.',
-        'Defined product vision, OKRs, and success metrics with engineering and design.'
+      company: "Next Square Technologies",
+      role: "AI Product Manager",
+      duration: "Dec 2023 - Present",
+      summary:
+        "Leading development of internal AI productivity tools for consulting and SaaS delivery teams.",
+      highlights: [
+        "Owned end-to-end delivery of an AI productivity tool embedding LLM-powered workflows.",
+        "Conducted discovery interviews to identify high-frequency tasks suitable for AI automation.",
+        "Designed prompt templates and AI output evaluation criteria.",
+        "Implemented human-in-the-loop guardrails for compliance-sensitive content.",
+        "Created post-launch AI failure tracking to improve model performance."
+      ],
+      skills: [
+        "LLM Workflows",
+        "Prompt Engineering",
+        "Model Evaluation",
+        "AI Product Strategy"
       ]
     },
+
     {
-      company: 'Socius (Stealth)',
-      role: 'Founder',
-      duration: 'Sep 2023 - Oct 2024',
-      focus:
-        'Social discovery platform for events (prototype stage).',
-      achievements: [
-        'Conducted 200+ user interviews across six customer segments.',
-        'Used jobs-to-be-done to synthesize insights and define personas.',
-        'Identified “discovery deadlock” as the core user problem.',
-        'Built and validated a clickable prototype through 12 moderated usability tests.'
+      company: "Aithent Technologies",
+      role: "Senior Software Engineer",
+      duration: "Dec 2022 - Sep 2023",
+      summary:
+        "Worked on LLM-assisted support tools and internal AI product capabilities.",
+      highlights: [
+        "Launched intelligent search experience powered by LLMs.",
+        "Reduced support ticket volume by 12%.",
+        "Increased self-service usage by 10%.",
+        "Built model evaluation framework tracking helpfulness and fallback rate.",
+        "Reduced recurring incidents by 22%."
+      ],
+      skills: [
+        "LLM Integration",
+        "Evaluation Frameworks",
+        "Backend Systems"
       ]
     },
+
     {
-      company: 'Aithent Technologies',
-      role: 'Senior Software Engineer',
-      duration: 'Dec 2022 - Sep 2023',
-      focus:
-        'LLM-assisted support and internal tooling.',
-      achievements: [
-        'Launched an LLM-assisted help experience with intelligent search and contextual answers.',
-        'Reduced support ticket volume by 12% and increased self-service usage by 10%.',
-        'Introduced evaluation metrics including CTR, helpfulness, and fallback rate.',
-        'Reduced recurring production incidents by 22% through better monitoring and SLOs.'
+      company: "Xoriant Solutions Pvt. Ltd.",
+      role: "Software Engineer",
+      duration: "Nov 2021 - Dec 2022",
+      summary:
+        "Built backend services and data-driven product features for financial platforms.",
+      highlights: [
+        "Delivered intelligent spending categorization feature reaching 20% DAU adoption.",
+        "Built backend APIs supporting high-scale product functionality.",
+        "Collaborated with product managers on PRDs and feature delivery."
+      ],
+      skills: [
+        "Backend Development",
+        "APIs",
+        "Product Delivery"
       ]
     },
+
     {
-      company: 'Xoriant Solutions Pvt. Ltd.',
-      role: 'Software Engineer',
-      duration: 'Nov 2021 - Dec 2022',
-      focus:
-        'Data-driven product features and backend systems.',
-      achievements: [
-        'Owned intelligent spending categorization and trend analysis features.',
-        'Achieved 20% DAU adoption within three months.',
-        'Built and maintained backend services and REST APIs.',
-        'Worked closely with PMs on PRDs and acceptance criteria.'
+      company: "Hexaware Technologies",
+      role: "Associate Software Engineer",
+      duration: "Jun 2019 - Nov 2021",
+      summary:
+        "Worked on operational analytics and enterprise reporting systems.",
+      highlights: [
+        "Built real-time KPI dashboards using Java and SQL.",
+        "Improved operational efficiency by 30%.",
+        "Used customer insights to guide product improvements."
+      ],
+      skills: [
+        "Java",
+        "SQL",
+        "Analytics Dashboards"
       ]
     },
+
     {
-      company: 'Hexaware Technologies Limited',
-      role: 'Associate Software Engineer',
-      duration: 'Jun 2019 - Nov 2021',
-      focus:
-        'Operational analytics and reporting.',
-      achievements: [
-        'Analyzed customer feedback to inform backlog prioritization.',
-        'Improved CSAT scores by ~20%.',
-        'Built real-time KPI dashboards using Java and SQL.',
-        'Improved operational efficiency by ~30% through reporting.'
-      ]
-    },
-    {
-      company: 'IBM',
-      role: 'Intern',
-      duration: 'Jun 2018 - Aug 2018',
-      focus:
-        'ERP systems for educational asset management.',
-      achievements: [
-        'Implemented backend business logic.',
-        'Improved application performance through debugging and optimization.'
+      company: "IBM",
+      role: "Engineering Intern",
+      duration: "Jun 2018 - Aug 2018",
+      summary:
+        "Worked on ERP systems for educational asset and event management.",
+      highlights: [
+        "Implemented backend business logic.",
+        "Improved performance through debugging and optimization."
+      ],
+      skills: [
+        "ERP Systems",
+        "Backend Development"
       ]
     }
   ],
 
-  /**
-   * Skills grouped for retrieval and paraphrasing
-   */
   skills: {
-    aiProduct: [
-      'LLM Product Strategy',
-      'Generative AI',
-      'RAG Architectures',
-      'Agentic Workflows',
-      'Model Evaluation Frameworks',
-      'Prompt Engineering'
+
+    coreSkills: [
+      "AI Product Management",
+      "Generative AI",
+      "LLM Feature Strategy",
+      "Prompt Engineering",
+      "Model Evaluation Frameworks",
+      "Human-in-the-Loop AI"
     ],
+
     productManagement: [
-      'Product Strategy',
-      'Discovery',
-      'Roadmapping',
-      'PRDs',
-      'GTM Strategy',
-      'Stakeholder Management',
-      'Feature Prioritization',
-      'User Research',
-      'KPIs & OKRs'
+      "Product Discovery",
+      "User Research",
+      "PRDs",
+      "Roadmapping",
+      "MVP Scoping",
+      "Stakeholder Management",
+      "Feature Prioritization",
+      "KPIs & OKRs"
     ],
-    analytics: ['SQL', 'A/B Testing', 'Mixpanel', 'Google Analytics'],
-    technical: ['Python', 'Java', 'Git', 'REST APIs', 'API Design', 'Supabase'],
-    execution: ['Agile', 'Scrum', 'Cross-functional Collaboration']
+
+    analytics: [
+      "SQL",
+      "A/B Testing",
+      "Google Analytics",
+      "Mixpanel",
+      "Funnel Analysis"
+    ],
+
+    technical: [
+      "Python",
+      "Java",
+      "REST APIs",
+      "Git",
+      "Supabase",
+      "Figma",
+      "Jira"
+    ],
+
+    execution: [
+      "Agile",
+      "Scrum",
+      "Sprint Management",
+      "Cross-functional Collaboration"
+    ]
   },
 
   education: {
-    degree: 'B.Tech in Computer Science',
-    institution:
-      'University of Petroleum and Energy Studies (UPES), Dehradun',
-    duration: 'Jul 2015 - Jun 2019'
+    degree: "B.Tech in Computer Science and Engineering",
+    institution: "University of Petroleum and Energy Studies (UPES)",
+    location: "Dehradun, India",
+    duration: "Jul 2015 - Jun 2019"
   },
 
   certifications: [
-    'McKinsey Forward Program',
-    'AI Product Management Certificate – IBM'
+    "AI Product Management Certificate – IBM (Sep 2025)",
+    "McKinsey Forward Program – McKinsey & Company"
   ],
-
-  awards: [
-    'ACE Award for Product Excellence – Reduced downtime by 20%',
-    'SPOT Award for Operational Efficiency',
-    'Product Innovation Award – Reduced customer response time by 35%',
-    'Client Excellence Recognition – Improved user satisfaction by 25%'
-  ],
-
-  /**
-   * Persona-aligned strengths
-   */
-  strengthsByPersona: {
-    recruiter:
-      'Strong fit for AI and GenAI Product Manager roles with a track record of shipping AI features and delivering measurable business impact.',
-    hiring_manager:
-      'Excels at converting ambiguous AI capabilities into clear product decisions grounded in user research, metrics, and feasibility.',
-    founder:
-      'Demonstrated 0→1 ownership through founding Socius, deep discovery, and decision-making under uncertainty.',
-    engineer:
-      'Technically credible product partner with hands-on engineering experience in LLM systems and evaluation.',
-    student:
-      'Provides a practical, honest path into AI Product Management grounded in real experience.'
-  },
 
   careerPhilosophy:
-    'I focus on translating ambiguous AI capabilities into products people actually use by grounding decisions in user research, metrics, and technical constraints.',
+    "I focus on translating ambiguous AI capabilities into practical product systems by grounding decisions in user research, measurable outcomes, and technical feasibility.",
 
   commonQuestions: {
-    'Why AI Product Management?':
-      'My engineering background combined with hands-on experience shipping LLM-powered features lets me bridge AI capabilities with real user and business outcomes.',
-    'Strongest AI work?':
-      'Building LLM-assisted help experiences and AI-driven design insights that reduced support effort and improved decision-making.',
-    'What differentiates you?':
-      'I combine deep discovery, structured product thinking, and technical credibility to ship AI features that create real impact — not demos.'
+
+    whyAIProductManagement:
+      "My engineering background combined with experience shipping LLM-powered features allows me to bridge AI capabilities with real product outcomes.",
+
+    strongestAIWork:
+      "Designing AI evaluation frameworks and human-in-the-loop guardrails for AI workflows to ensure reliable outputs.",
+
+    differentiation:
+      "I combine structured product thinking, deep discovery, and technical credibility to build AI products that deliver measurable business value."
   }
+
 };

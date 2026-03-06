@@ -92,10 +92,19 @@ function windowReducer(state: State, action: Action): State {
       const config = WINDOW_CONFIGS[id]
       if (!config) return state
       
-      // Calculate position
+      // Calculate position and enforce viewport constraints
       const viewport = { width: window.innerWidth, height: window.innerHeight }
-      const windowSize = config.defaultSize || { width: 450, height: 350 }
-      const shouldCenter = id === 'welcome' || id === 'snakegame'
+      const menubarHeight = 28
+      const dockHeight = 60
+      const availableHeight = viewport.height - menubarHeight - dockHeight
+
+      // Cap size at 95% of available space to prevent "cutting"
+      const windowSize = {
+        width: Math.min(config.defaultSize.width, viewport.width * 0.95),
+        height: Math.min(config.defaultSize.height, availableHeight * 0.95)
+      }
+
+      const shouldCenter = id === 'welcome' || id === 'snakegame' || id === 'my-computer' || id === 'about'
       const position = calculatePosition(windows.length, windowSize, viewport, shouldCenter)
       
       const newWindow: WindowState = {

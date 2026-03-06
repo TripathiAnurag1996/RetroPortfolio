@@ -25,7 +25,9 @@ const OptimizedImage = ({
 }: OptimizedImageProps) => {
   // Determine WebP source
   const isPublicAsset = src.startsWith('/') || !src.includes('://')
-  const webpSrc = isPublicAsset ? src.replace(/\.(jpg|jpeg|png)$/i, '.webp') : null
+  // Only suggest webp if specifically for jpg/jpeg where we likely have them, 
+  // or better, don't blindly assume. For now, let's fix the PNG issue.
+  const webpSrc = isPublicAsset && !src.endsWith('.png') ? src.replace(/\.(jpg|jpeg)$/i, '.webp') : null
 
   return (
     <picture className={className}>

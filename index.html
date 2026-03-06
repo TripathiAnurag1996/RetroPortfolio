@@ -1,68 +1,111 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-KP2NZRYY9N"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      // GA4 config moved to React logic to fire after consent
-    </script>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
 
-    <!-- Static SEO Fallbacks -->
-    <title>Anurag Tripathi | AI Product Manager</title>
-    <meta name="description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
-    <link rel="canonical" href="https://anuragtripathi.pro/" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP2NZRYY9N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    /* GA4 configuration will be triggered from React after consent */
+  </script>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://anuragtripathi.pro/" />
-    <meta property="og:title" content="Anurag Tripathi | AI Product Manager" />
-    <meta property="og:description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
-    <meta property="og:image" content="https://anuragtripathi.pro/og-image.png" />
+  <meta charset="UTF-8" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://anuragtripathi.pro/" />
-    <meta name="twitter:title" content="Anurag Tripathi | AI Product Manager" />
-    <meta name="twitter:description" content="AI Product Manager with 5+ years experience building LLM-powered products. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering." />
-    <meta name="twitter:image" content="https://anuragtripathi.pro/og-image.png" />
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Structured Data (Static Fallback) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Anurag Tripathi",
-        "jobTitle": "AI Product Manager",
-        "url": "https://anuragtripathi.pro",
-        "image": "https://anuragtripathi.pro/og-image.png",
-        "sameAs": [
-          "https://www.linkedin.com/in/anuragtripathi-pm/",
-          "https://github.com/TripathiAnurag1996"
-        ]
-      }
-    </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Primary SEO -->
+  <title>Anurag Tripathi | AI Product Manager</title>
+
+  <meta
+    name="description"
+    content="AI Product Manager building LLM-powered products, AI workflows, and GenAI systems. Expertise in product strategy, model evaluation, RAG architectures, and prompt engineering."
+  />
+
+  <meta name="author" content="Anurag Kumar Tripathi" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://anuragtripathi.pro/" />
+
+  <!-- Open Graph (LinkedIn / Facebook / Slack) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anuragtripathi.pro/" />
+
+  <meta
+    property="og:title"
+    content="Anurag Tripathi | AI Product Manager"
+  />
+
+  <meta
+    property="og:description"
+    content="AI Product Manager building LLM-powered products, AI workflows, and GenAI systems."
+  />
+
+  <meta
+    property="og:image"
+    content="https://anuragtripathi.pro/profile.png"
+  />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://anuragtripathi.pro/" />
+
+  <meta
+    name="twitter:title"
+    content="Anurag Tripathi | AI Product Manager"
+  />
+
+  <meta
+    name="twitter:description"
+    content="AI Product Manager building LLM-powered products, AI workflows, and GenAI systems."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://anuragtripathi.pro/profile.png"
+  />
+
+  <!-- Structured Data (Google Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anurag Kumar Tripathi",
+    "jobTitle": "AI Product Manager",
+    "url": "https://anuragtripathi.pro",
+    "image": "https://anuragtripathi.pro/profile.png",
+    "sameAs": [
+      "https://www.linkedin.com/in/anuragtripathi-pm/",
+      "https://github.com/TripathiAnurag1996"
+    ]
+  }
+  </script>
+
+  <!-- Fonts Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DotGothic16&display=swap"
+    rel="stylesheet"
+  />
+
+</head>
+
+<body>
+
+  <!-- React Root -->
+  <div id="root"></div>
+
+  <!-- Vite Entry -->
+  <script type="module" src="/src/main.tsx"></script>
+
+</body>
 </html>

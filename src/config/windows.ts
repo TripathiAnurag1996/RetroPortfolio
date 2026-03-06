@@ -23,7 +23,7 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
     id: "my-computer",
     title: "MY COMPUTER - PORTFOLIO",
     icon: "computer",
-    defaultSize: { width: 650, height: 500 },
+    defaultSize: { width: 1100, height: 800 },
   },
   documents: {
     id: "documents",
@@ -110,7 +110,7 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     id: "resume",
     label: "RESUME.PDF",
     icon: "pdf",
-    externalUrl: "/Anurag Tripatrhi_Tech Product Manager.pdf",
+    externalUrl: "/Anurag Tripathi_AI Product Manager.pdf",
     position: { row: 0, col: 2 },
   },
   {
