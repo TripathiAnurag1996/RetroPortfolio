@@ -336,7 +336,7 @@ function MyComputerWindow() {
       <nav className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <img src="/profile.png" alt="Anurag" className={styles.avatarMiniImage} />
-          <div className={styles.sidebarUserName}>ANURAG.AKT</div>
+          <div className={styles.sidebarUserName}>PORTFOLIO</div>
         </div>
 
         {SIDEBAR_ITEMS.map((item) => (
