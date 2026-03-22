@@ -5,6 +5,7 @@ import QuickActions from './QuickActions';
 import { PersonaType } from '../../utils/personaConfig';
 import { getAIResponse } from '../../utils/aiService';
 import { playClickSound, playMessageSound } from '../../utils/audio';
+import { event } from '../../lib/gtag';
 
 const AIAssistant: React.FC = () => {
   const [persona, setPersona] = useState<PersonaType | null>(() => {
@@ -71,6 +72,14 @@ const AIAssistant: React.FC = () => {
     setError(null);
     setQuery(q);
     playClickSound();
+
+    // Track AI Query Submission (After initial UI state update)
+    event('ai_query_submitted', {
+      category: 'ai',
+      label: persona.toUpperCase(),
+      query_length: q.trim().length,
+      persona: persona
+    });
 
     try {
       const aiResponse = await getAIResponse(q, persona);

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AIAssistant.module.css';
 import { PersonaType } from '../../utils/personaConfig';
+import { event } from '../../lib/gtag';
 
 interface PersonaSelectorProps {
   onSelect: (persona: PersonaType) => void;
@@ -33,7 +34,14 @@ const PersonaSelector: React.FC<PersonaSelectorProps> = ({ onSelect, onCancel })
           <button
             key={p.type}
             className={styles.personaBtn}
-            onClick={() => onSelect(p.type)}
+            onClick={() => {
+              onSelect(p.type);
+              event('persona_selected', {
+                category: 'engagement',
+                label: p.type.toUpperCase(),
+                persona_type: p.type
+              });
+            }}
           >
             {p.label.toUpperCase()}
           </button>

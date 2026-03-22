@@ -1,5 +1,6 @@
 import { memo, useState, useCallback } from 'react'
 import styles from './MyComputerWindow.module.css'
+import { event } from '../../lib/gtag'
 
 type SidebarItem =
   | 'projects'
@@ -167,6 +168,21 @@ function MyComputerWindow() {
 
   const handleItemClick = useCallback((id: SidebarItem) => {
     setActiveItem(id)
+    event('content_tab_switched', {
+      category: 'portfolio',
+      label: id.toUpperCase(),
+      tab_name: id
+    })
+  }, [])
+
+  const handleExternalClick = useCallback((label: string) => {
+    // event call can be before or after here as handleExternalClick is just a wrapper, 
+    // but we'll put it after the logic (which is empty here, but consistent)
+    event('external_link_clicked', {
+      category: 'navigation',
+      label: label.toUpperCase(),
+      source: 'my_computer'
+    })
   }, [])
 
   const renderContent = () => {
@@ -291,6 +307,7 @@ function MyComputerWindow() {
                 <a
                   href="mailto:anurag.akt@gmail.com"
                   className={styles.contactLink}
+                  onClick={() => handleExternalClick('EMAIL')}
                 >
                   anurag.akt@gmail.com
                 </a>
@@ -316,6 +333,7 @@ function MyComputerWindow() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
+                  onClick={() => handleExternalClick('LINKEDIN')}
                 >
                   LinkedIn Profile ↗
                 </a>
@@ -329,6 +347,7 @@ function MyComputerWindow() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
+                  onClick={() => handleExternalClick('GITHUB')}
                 >
                   GitHub Repository ↗
                 </a>

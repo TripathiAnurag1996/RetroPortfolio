@@ -3,6 +3,7 @@ import styles from './AIDemos.module.css';
 import { getProductAnalysis } from '../../utils/aiService';
 import { PersonaType } from '../../utils/personaConfig';
 import { playClickSound, playMessageSound } from '../../utils/audio';
+import { event } from '../../lib/gtag';
 
 const SCENARIOS = [
   {
@@ -39,6 +40,14 @@ const ProductAnalyzer: React.FC = () => {
     setLog(['Initiating analysis...', 'Fetching product signals...']);
     playClickSound();
 
+    // Track Product Analysis Run (After initial UI state update)
+    event('product_analysis_run', {
+      category: 'engagement',
+      label: 'AI_PRODUCT_ANALYSIS',
+      persona: selectedPersona,
+      input_length: query.trim().length
+    });
+
     try {
       addLog('Evaluating user friction...');
       const result = await getProductAnalysis(query, selectedPersona);
@@ -58,12 +67,6 @@ const ProductAnalyzer: React.FC = () => {
     }
   };
 
-  // Re-run analysis when persona changes if we already have a response
-  useEffect(() => {
-    if (response && !isLoading) {
-      handleRun();
-    }
-  }, [selectedPersona]);
 
   return (
     <div className={styles.demoContainer}>
@@ -105,7 +108,15 @@ const ProductAnalyzer: React.FC = () => {
               <div 
                 key={p} 
                 className={`${styles.tab} ${selectedPersona === p ? styles.tabActive : ''}`}
-                onClick={() => setSelectedPersona(p)}
+                onClick={() => {
+                  setSelectedPersona(p);
+                  event('persona_selected', {
+                    category: 'engagement',
+                    label: p.toUpperCase(),
+                    persona_type: p,
+                    source: 'product_analyzer'
+                  });
+                }}
               >
                 {p.toUpperCase()}
               </div>

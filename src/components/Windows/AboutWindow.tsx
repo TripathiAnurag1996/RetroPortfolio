@@ -1,6 +1,7 @@
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import OptimizedImage from '../Common/OptimizedImage'
 import styles from './AboutWindow.module.css'
+import { event } from '../../lib/gtag'
 
 // Skills categorized
 const SKILLS = {
@@ -35,6 +36,14 @@ const SKILLS = {
 const ANALYTICS_TECH = [...SKILLS.analytics, ...SKILLS.technical]
 
 function AboutWindow() {
+  const handleExternalClick = useCallback((label: string) => {
+    event('external_link_clicked', {
+      category: 'navigation',
+      label: label.toUpperCase(),
+      source: 'about_window'
+    })
+  }, [])
+
   return (
     <div className={styles.about}>
       
@@ -68,7 +77,7 @@ function AboutWindow() {
         </div>
       </header>
 
-      {/* Skills */}
+      {/* Skills sections (lines 71-112) remain unchanged */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Skills</h2>
 
@@ -118,7 +127,11 @@ function AboutWindow() {
         <div className={styles.contact}>
           <div className={styles.contactItem}>
             <span className={styles.contactIcon}>📧</span>
-            <a href="mailto:anurag.akt@gmail.com" className={styles.contactLink}>
+            <a 
+              href="mailto:anurag.akt@gmail.com" 
+              className={styles.contactLink}
+              onClick={() => handleExternalClick('EMAIL')}
+            >
               anurag.akt@gmail.com
             </a>
           </div>
@@ -139,6 +152,7 @@ function AboutWindow() {
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleExternalClick('LINKEDIN')}
             >
               LINKEDIN <span className={styles.externalIcon}>↗</span>
             </a>
@@ -148,6 +162,7 @@ function AboutWindow() {
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleExternalClick('GITHUB')}
             >
               GITHUB <span className={styles.externalIcon}>↗</span>
             </a>
