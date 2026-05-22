@@ -28,7 +28,9 @@ const AIAssistant: React.FC = () => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (response || history.length > 0) {
+      scrollToBottom();
+    }
   }, [response, isLoading, history]);
 
   // Handle queries passed from the SearchBar
@@ -59,7 +61,7 @@ const AIAssistant: React.FC = () => {
     if (persona && !isLoading) {
       // Small delay to ensure the window is rendered and transition completes
       const timer = setTimeout(() => {
-        inputRef.current?.focus();
+        inputRef.current?.focus({ preventScroll: true });
       }, 300);
       return () => clearTimeout(timer);
     }

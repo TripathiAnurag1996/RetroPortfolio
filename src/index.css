@@ -114,7 +114,7 @@
 html, body, #root {
   height: 100%;
   overflow: hidden;
-  background-color: var(--color-desktop-bg);
+  background-color: #000;
 }
 
 a, button, [role="button"], .interactive {
@@ -133,7 +133,7 @@ html {
 
 body {
   font-family: var(--font-retro);
-  background: var(--color-desktop-bg);
+  background: #000;
   color: var(--color-text);
   overflow: hidden;
   width: 100vw;
