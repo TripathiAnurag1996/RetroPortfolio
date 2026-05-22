@@ -30,7 +30,7 @@ function ProductsFolderWindow() {
       window.dispatchEvent(new CustomEvent('browser-navigate', { detail: url }));
     }, 100);
     event('external_link_clicked', {
-      category: 'products_folder',
+      category: 'navigation',
       label: id.toUpperCase(),
       source: 'products_folder'
     });

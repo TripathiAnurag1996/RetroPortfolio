@@ -246,7 +246,7 @@ function MyComputerWindow() {
                         e.currentTarget.style.borderRight = '2px solid #808080';
                         e.currentTarget.style.borderBottom = '2px solid #808080';
                       }}
-                      onClick={(e) => {
+                      onClick={() => {
                         // Optional: emit an event for analytics
                         handleExternalClick(product.title);
                       }}

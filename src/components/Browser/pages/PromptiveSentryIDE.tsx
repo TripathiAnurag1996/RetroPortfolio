@@ -101,7 +101,7 @@ function PromptiveSentryIDE() {
         {/* Compatibility */}
         <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '14px', marginBottom: '20px', color: 'var(--color-text)', textTransform: 'uppercase', borderBottom: '2px solid var(--border-dark)', paddingBottom: '8px' }}>Compatibility</h2>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '48px' }}>
-          {product.compatibility.map((editor, i) => (
+          {product.compatibility?.map((editor, i) => (
             <span key={i} style={{ backgroundColor: 'var(--color-window-bg)', color: 'var(--color-text)', padding: '4px 8px', fontSize: '14px', border: '1px solid var(--border-dark)' }}>
               {editor}
             </span>
