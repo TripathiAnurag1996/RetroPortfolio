@@ -356,6 +356,29 @@ const icons: Record<string, JSX.Element> = {
       <path d="M28 32 H31 V33 H28 Z" fill="white" />
     </svg>
   ),
+  vscode: (
+    <svg viewBox="0 0 48 48" fill="none">
+      {/* 3D Bevelled Frame */}
+      <path d="M10 4 H32 L40 12 V44 H10 Z" fill="#404040" />
+      <path d="M8 2 H31 L38 9 V42 H8 Z" fill="#007ACC" />
+      <path d="M9 3 H30 L37 10 V41 H9 Z" fill="#3399FF" />
+      {/* Dog-ear */}
+      <path d="M30 3 V10 H37 Z" fill="#005C99" />
+      <path d="M31 3 V9 H37 Z" fill="#66B2FF" />
+      {/* Code Brackets */}
+      <path d="M20 18 L14 24 L20 30" stroke="#FFFFFF" strokeWidth="3" fill="none" />
+      <path d="M26 18 L32 24 L26 30" stroke="#FFFFFF" strokeWidth="3" fill="none" />
+    </svg>
+  ),
+  chrome: (
+    <svg viewBox="0 0 48 48" fill="none">
+      <path d="M8 24 A 16 16 0 0 1 36 12 L 24 24 Z" fill="#FF0000" />
+      <path d="M36 12 A 16 16 0 0 1 36 36 L 24 24 Z" fill="#FFD93D" />
+      <path d="M36 36 A 16 16 0 0 1 8 24 L 24 24 Z" fill="#00FF00" />
+      <circle cx="24" cy="24" r="6" fill="#3131FF" stroke="#FFFFFF" strokeWidth="2" />
+      <circle cx="24" cy="24" r="16" stroke="#404040" strokeWidth="2" />
+    </svg>
+  ),
 };
 
 function Icon({ name, size = 48, className }: IconProps) {

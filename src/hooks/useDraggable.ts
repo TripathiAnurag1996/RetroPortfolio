@@ -11,6 +11,8 @@ export function useDraggable({ windowId, onDragStart, onDragEnd }: UseDraggableO
   const { updateWindowPosition, focusWindow, windows } = useWindows()
   
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    // Hook handles mouse-only events. Disabled dragging on mobile viewports.
+    if (globalThis.window.innerWidth <= 767) return
     e.preventDefault()
     
     const windowState = windows.find(w => w.id === windowId)

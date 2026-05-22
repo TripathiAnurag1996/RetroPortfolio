@@ -52,6 +52,7 @@
 
 /* Title Bar */
 .titleBar {
+  position: relative;
   height: var(--title-bar-height);
   background: var(--color-title-bar);
   display: flex;
@@ -75,6 +76,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
+  z-index: 2;
 }
 
 .trafficBtn {
@@ -114,7 +116,9 @@
 
 /* Title */
 .title {
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   font-family: var(--font-pixel);
   font-size: 10px;
@@ -122,6 +126,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 /* Content */
@@ -147,16 +152,24 @@
   );
 }
 
+/* ─── Mobile Styles ─── */
 @media (max-width: 767px) {
   .window {
-    position: fixed;
-    top: var(--menubar-height) !important;
+    top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: calc(100vh - var(--menubar-height) - var(--taskbar-height)) !important;
     border-radius: 0;
+    transform: none !important;
   }
   
+  .trafficBtn {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 10px;
+    margin-right: 4px;
+  }
+
   .resizeHandle {
     display: none;
   }

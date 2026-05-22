@@ -35,26 +35,27 @@
   /* Enhanced Attention Pulse */
   animation: attentionPulse 2.4s ease-in-out 0.8s 2;
   transform-origin: right top;
+  transform: scale(1.08);
 }
 
 @keyframes attentionPulse {
   0% { 
-    transform: scale(1);
+    transform: scale(1.08);
     box-shadow: 1px 1px 0px #000;
     filter: brightness(1);
   }
   29% { 
-    transform: scale(1.05);
+    transform: scale(1.13);
     box-shadow: 1px 1px 0px #000, 0 0 25px 6px rgba(255, 255, 255, 0.5);
     filter: brightness(1.2);
   }
   58% { 
-    transform: scale(1);
+    transform: scale(1.08);
     box-shadow: 1px 1px 0px #000;
     filter: brightness(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.08);
     box-shadow: 1px 1px 0px #000;
     filter: brightness(1);
   }

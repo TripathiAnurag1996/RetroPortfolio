@@ -19,10 +19,10 @@ function Desktop() {
 
   // Auto-open Welcome window
   useEffect(() => {
-    // Small delay for better UX and animation
+    // Delay was tied to better UX and animation timing
     const timer = setTimeout(() => {
       openWindow('welcome')
-    }, 800)
+    }, 150)
     return () => clearTimeout(timer)
   }, [openWindow])
   
@@ -47,6 +47,24 @@ function Desktop() {
         {/* Desktop Icons */}
         <div className={styles.iconsArea}>
           <DesktopIcons />
+        </div>
+
+        {/* Decorative Sticky Note */}
+        <div className={styles.stickyNote}>
+          <div className={styles.pushPin}></div>
+          <div className={styles.stickyTitle}>COMING SOON</div>
+          <div className={styles.stickyList}>
+            <div className={styles.stickyItem}>
+              <span className={styles.stickyItemName}>▸ Piqque — Ambient AI Assistant</span>
+              <span className={styles.stickyItemDesc}>Private Beta · Launching as proprietary software soon</span>
+            </div>
+            <div className={styles.stickyDivider}></div>
+            <div className={styles.stickyItem}>
+              <span className={styles.stickyItemName}>▸ Flavin — Agentic Browser</span>
+              <span className={styles.stickyItemDesc}>Currently in planning · Something big is brewing</span>
+            </div>
+          </div>
+          <div className={styles.stickyFooter}>— Xenriq Systems</div>
         </div>
         
         {/* Windows Container */}

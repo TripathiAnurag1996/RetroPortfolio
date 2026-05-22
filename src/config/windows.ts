@@ -67,6 +67,18 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
     icon: "about",
     defaultSize: { width: 550, height: 600 },
   },
+  notepad: {
+    id: "notepad",
+    title: "MEMO.TXT - NOTEPAD",
+    icon: "document",
+    defaultSize: { width: 600, height: 400 },
+  },
+  products: {
+    id: "products",
+    title: "MY PRODUCTS",
+    icon: "folder",
+    defaultSize: { width: 500, height: 350 },
+  },
   assistant: {
     id: "assistant",
     title: "ANURAG OS ASSISTANT",
@@ -143,6 +155,13 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     windowId: "paint",
     position: { row: 1, col: 2 },
   },
+  {
+    id: "products",
+    label: "MY PRODUCTS",
+    icon: "folder",
+    windowId: "products",
+    position: { row: 1, col: 3 },
+  },
 
   // Third Row - Apps
   {
@@ -160,10 +179,10 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     position: { row: 2, col: 1 },
   },
   {
-    id: "demo",
-    label: "AI DEMOS",
-    icon: "computer",
-    windowId: "demo",
+    id: "notepad",
+    label: "MEMO.TXT",
+    icon: "document",
+    windowId: "notepad",
     position: { row: 2, col: 2 },
   },
   {

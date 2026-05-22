@@ -19,23 +19,23 @@
 }
 
 /* Solid color backgrounds and Wallpapers */
-.background[data-bg="warm-neutral"] { background-image: url('/wallpapers/warm-neutral.png'); }
-.background[data-bg="cool-gray"] { background-image: url('/wallpapers/cool-gray.png'); }
-.background[data-bg="lavender"] { background-image: url('/wallpapers/lavender.png'); }
-.background[data-bg="forest"] { background-image: url('/wallpapers/forest.png'); }
+.background[data-bg="warm-neutral"] { background-image: url('/wallpapers/warm-neutral.webp'); }
+.background[data-bg="cool-gray"] { background-image: url('/wallpapers/cool-gray.webp'); }
+.background[data-bg="lavender"] { background-image: url('/wallpapers/lavender.webp'); }
+.background[data-bg="forest"] { background-image: url('/wallpapers/forest.webp'); }
 .background[data-bg="sunset"] { 
   background: linear-gradient(135deg, #FFD4D4 0%, #FFB8C0 100%);
 }
-.background[data-bg="clouds"] { background-image: url('/wallpapers/clouds.png'); }
-.background[data-bg="street"] { background-image: url('/wallpapers/street.png'); }
-.background[data-bg="beach"] { background-image: url('/wallpapers/beach.png'); }
-.background[data-bg="meadow"] { background-image: url('/wallpapers/meadow.png'); }
-.background[data-bg="night"] { background-image: url('/wallpapers/night.png'); }
-.background[data-bg="retro-room"] { background-image: url('/wallpapers/retro-room.png'); }
-.background[data-bg="pixel-sky"] { background-image: url('/wallpapers/pixel-sky.png'); }
-.background[data-bg="vaporwave"] { background-image: url('/wallpapers/vaporwave.png'); }
-.background[data-bg="crt-noise"] { background-image: url('/wallpapers/crt-noise.png'); }
-.background[data-bg="minimal"] { background-image: url('/wallpapers/minimal.png'); }
+.background[data-bg="clouds"] { background-image: url('/wallpapers/clouds.webp'); }
+.background[data-bg="street"] { background-image: url('/wallpapers/street.webp'); }
+.background[data-bg="beach"] { background-image: url('/wallpapers/beach.webp'); }
+.background[data-bg="meadow"] { background-image: url('/wallpapers/meadow.webp'); }
+.background[data-bg="night"] { background-image: url('/wallpapers/night.webp'); }
+.background[data-bg="retro-room"] { background-image: url('/wallpapers/retro-room.webp'); }
+.background[data-bg="pixel-sky"] { background-image: url('/wallpapers/pixel-sky.webp'); }
+.background[data-bg="vaporwave"] { background-image: url('/wallpapers/vaporwave.webp'); }
+.background[data-bg="crt-noise"] { background-image: url('/wallpapers/crt-noise.webp'); }
+.background[data-bg="minimal"] { background-image: url('/wallpapers/minimal.webp'); }
 
 /* Desktop Content Area */
 .desktopContent {
@@ -82,4 +82,91 @@
   .desktopContent {
     padding-bottom: 70px;
   }
+  
+  .stickyNote {
+    display: none;
+  }
+}
+
+/* Decorative Sticky Note */
+.stickyNote {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  width: 220px;
+  height: 180px;
+  background-color: #f5e642;
+  box-shadow: inset -1px -1px 0px rgba(0,0,0,0.1), 3px 3px 0px rgba(0,0,0,0.15);
+  transform: rotate(-2deg);
+  padding: 16px 12px;
+  z-index: 5;
+  cursor: default;
+  transition: transform 0.2s ease, scale 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.stickyNote:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.pushPin {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #cc0000;
+  border-radius: 50%;
+  box-shadow: inset -1px -1px 2px rgba(0,0,0,0.4), 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.stickyTitle {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  margin: 6px 0 12px 0;
+}
+
+.stickyList {
+  display: flex;
+  flex-direction: column;
+}
+
+.stickyItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stickyItemName {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  font-weight: bold;
+  color: #222;
+}
+
+.stickyItemDesc {
+  font-family: var(--font-retro);
+  font-size: 14px;
+  color: #444;
+  line-height: 1.2;
+}
+
+.stickyDivider {
+  height: 1px;
+  border-top: 1px dashed rgba(0,0,0,0.2);
+  margin: 10px 0;
+}
+
+.stickyFooter {
+  margin-top: auto;
+  font-family: var(--font-retro);
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+  text-align: right;
 }

@@ -3,8 +3,8 @@ import OptimizedImage from '../Common/OptimizedImage'
 import styles from './WelcomeWindow.module.css'
 
 function WelcomeWindow() {
-  const welcomeMessage = `I’m Anurag Tripathi — AI Product Manager & Builder. 
-This is my Retro OS Portfolio where you can explore my LLM-powered projects, product strategy, and resume by clicking the icons below. 👋`
+  const welcomeMessage = `SYSTEM BOOT COMPLETE... Welcome, Guest! 
+I’m Anurag Tripathi — an AI Product Manager & Founder building zero-to-one LLM products. You've just logged into my interactive Retro OS. Don't just read my resume; play with the apps, explore live AI demos, and uncover the product strategies hidden in the system below. Look around... who knows what Easter eggs you might find? 🕹️✨`
 
   return (
     <div className={styles.welcome}>
@@ -37,36 +37,50 @@ This is my Retro OS Portfolio where you can explore my LLM-powered projects, pro
           
           <div className={styles.featureGuide}>
             <h2 className={styles.guideTitle}>What’s inside:</h2>
-            <ul className={styles.featureList}>
-              <li>
-                <strong>🤖 AI OS ASSISTANT:</strong> 
-                Quick access chat for help and portfolio navigation.
-              </li>
-              <li>
-                <strong>🧠 AI DEMOS:</strong> 
-                Explore live AI product insights and analyzer tools.
-              </li>
-              <li>
-                <strong>🎮 RETRO GAMES:</strong> 
-                Classic Snack game and more for some nostalgic fun.
-              </li>
-              <li>
-                <strong>🎵 MUSIC PLAYER:</strong> 
-                Retro jams to listen to while you browse.
-              </li>
-              <li>
-                <strong>🖌️ PAINT:</strong> 
-                A fully functional pixel-art drawing application.
-              </li>
-              <li>
-                <strong>🌐 INTERNET:</strong> 
-                Authentic 90s browser experience.
-              </li>
-              <li>
-                <strong>📖 GUESTBOOK:</strong> 
-                Leave a message and connect with me!
-              </li>
-            </ul>
+            <div className={styles.featureGrid}>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🤖</span> AI OS ASSISTANT
+                </div>
+                <div className={styles.featureCardDesc}>Quick access chat for help and portfolio navigation.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🧠</span> AI DEMOS
+                </div>
+                <div className={styles.featureCardDesc}>Explore live AI product insights and analyzer tools.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🎮</span> RETRO GAMES
+                </div>
+                <div className={styles.featureCardDesc}>Classic Snack game and more for some nostalgic fun.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🎵</span> MUSIC PLAYER
+                </div>
+                <div className={styles.featureCardDesc}>Retro jams to listen to while you browse.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🖌️</span> PAINT
+                </div>
+                <div className={styles.featureCardDesc}>A fully functional pixel-art drawing application.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>🌐</span> INTERNET
+                </div>
+                <div className={styles.featureCardDesc}>Authentic 90s browser experience.</div>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureCardHeader}>
+                  <span className={styles.featureCardIcon}>📖</span> GUESTBOOK
+                </div>
+                <div className={styles.featureCardDesc}>Leave a message and connect with me!</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -77,7 +91,7 @@ This is my Retro OS Portfolio where you can explore my LLM-powered projects, pro
           © 2026 Anurag Tripathi
         </div>
         <div className={styles.builtWith}>
-          Built with ❤️ ⚡
+          Built with ❤️
         </div>
         <div className={styles.viewOnly}>
           Runs on Nostalgia 🕹️

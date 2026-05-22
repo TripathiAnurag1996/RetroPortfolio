@@ -23,7 +23,9 @@
 
 .heading {
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
   color: var(--color-text);
   margin: 0;
 }
@@ -32,8 +34,10 @@
   position: relative;
   width: 100%;
   height: 280px;
-  min-height: 280px; /* Enforce height */
-  flex-shrink: 0; /* Prevent collapse in flex-column */
+  min-height: 280px;
+  /* Enforce height */
+  flex-shrink: 0;
+  /* Prevent collapse in flex-column */
   overflow: hidden;
   background: #000;
   border-bottom: 2px solid var(--border-mid);
@@ -95,40 +99,49 @@
   text-transform: uppercase;
 }
 
-.featureList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.featureCard {
+  background: var(--color-window-bg);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 6px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease;
 }
 
-.featureList li {
-  position: relative;
-  padding-left: 14px;
-  font-size: 12px;
-  line-height: 1.4;
+.featureCard:hover {
+  background: #d4d0c8;
 }
 
-.featureList li::before {
-  content: "■";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 8px;
-  color: var(--border-dark);
-}
-
-.featureList li strong {
-  display: block;
-  font-size: 14px;
-  color: #000;
-  margin-bottom: 2px;
-  letter-spacing: 0.8px;
+.featureCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-pixel);
-  font-size: 10px; /* Pixel font needs to be smaller to be readable */
-  line-height: 1.2;
+  font-size: 10px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.featureCardIcon {
+  font-size: 16px;
+}
+
+.featureCardDesc {
+  font-family: var(--font-retro);
+  font-size: 11px;
+  line-height: 1.4;
+  color: #333;
 }
 
 .footer {
@@ -145,7 +158,9 @@
   min-height: 22px;
 }
 
-.charCount, .builtWith, .viewOnly {
+.charCount,
+.builtWith,
+.viewOnly {
   padding: 0 6px;
   border: 1px solid;
   border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);

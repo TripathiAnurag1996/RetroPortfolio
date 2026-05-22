@@ -7,9 +7,9 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Anurag Tripathi | AI Product Manager",
-  description = "AI Product Manager with 5+ years experience building LLM-powered and AI-driven products in B2B SaaS. Expertise in AI product strategy, model evaluation frameworks, human-in-the-loop systems, RAG architectures, and prompt engineering.",
-  keywords = "AI Product Manager, Generative AI, LLM Products, AI Product Strategy, Machine Learning Product Manager, Prompt Engineering, RAG Architecture, AI Systems, Product Strategy, Anurag Tripathi",
+  title = "Anurag Tripathi | AI Product Manager & Founder",
+  description = "AI Product Manager & Founder with 6+ years experience building LLM-powered products, voice AI, and ambient intelligence. Shipped 3 production AI products reaching 1000+ users globally.",
+  keywords = "AI Product Manager, Founder, Generative AI, LLM Products, Voice AI, Prompt Engineering, RAG Architecture, Ambient Intelligence, Anurag Tripathi",
 }: SEOProps) => {
   const siteName = "Anurag Tripathi";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;

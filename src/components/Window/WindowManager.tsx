@@ -13,6 +13,8 @@ const PaintWindow = lazy(() => import('../Windows/PaintWindow'))
 const WelcomeWindow = lazy(() => import('../Windows/WelcomeWindow'))
 const SnakeGameWindow = lazy(() => import('../Windows/SnakeGameWindow'))
 const HelpWindow = lazy(() => import('../Windows/HelpWindow'))
+const NotepadWindow = lazy(() => import('../Windows/NotepadWindow'))
+const ProductsFolderWindow = lazy(() => import('../Windows/ProductsFolderWindow'))
 const AIAssistant = lazy(() => import('../AIAssistant/AIAssistant'))
 const ProductAnalyzer = lazy(() => import('../AIDemos/ProductAnalyzer'))
 const Browser = lazy(() => import('../Browser/Browser'))
@@ -46,6 +48,8 @@ const windowComponents: Record<string, React.LazyExoticComponent<React.Component
   'welcome': WelcomeWindow,
   'snakegame': SnakeGameWindow,
   'help': HelpWindow,
+  'notepad': NotepadWindow,
+  'products': ProductsFolderWindow,
   'assistant': AIAssistant,
   'demo': ProductAnalyzer,
   'browser': Browser

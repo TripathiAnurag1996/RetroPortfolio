@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.menu {
+  display: flex;
+  background: #ECE9D8;
+  border-bottom: 1px solid #ACA899;
+  padding: 2px 4px;
+  font-family: var(--font-primary);
+  font-size: 12px;
+}
+
+.menuItem {
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: #316AC5;
+  color: white;
+}
+
+.textarea {
+  flex: 1;
+  border: none;
+  resize: none;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+  background: transparent;
+  outline: none;
+}

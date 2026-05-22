@@ -11,7 +11,8 @@ const HELP_DATA = {
   ],
   email: 'ANURAG.AKT@GMAIL.COM',
   socials: [
-    { label: 'L', name: 'LINKEDIN.COM/IN/ANURAGTRIPATHI-PM', url: 'https://www.linkedin.com/in/anuragtripathi-pm/' }
+    { label: 'L', name: 'LINKEDIN.COM/IN/ANURAGTRIPATHI-PM', url: 'https://www.linkedin.com/in/anuragtripathi-pm/' },
+    { label: 'X', name: 'X.COM/ANURAGSHIPS', url: 'https://x.com/anuragships' }
   ]
 };
 

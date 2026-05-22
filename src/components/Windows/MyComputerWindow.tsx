@@ -3,7 +3,7 @@ import styles from './MyComputerWindow.module.css'
 import { event } from '../../lib/gtag'
 
 type SidebarItem =
-  | 'projects'
+  | 'products'
   | 'experience'
   | 'education'
   | 'certifications'
@@ -11,7 +11,7 @@ type SidebarItem =
   | 'contact'
 
 const SIDEBAR_ITEMS: { id: SidebarItem; label: string; icon: string }[] = [
-  { id: 'projects', label: 'PROJECTS', icon: '🚀' },
+  { id: 'products', label: 'PRODUCTS', icon: '🚀' },
   { id: 'experience', label: 'EXPERIENCE', icon: '💼' },
   { id: 'education', label: 'EDUCATION', icon: '🎓' },
   { id: 'certifications', label: 'CERTS', icon: '📜' },
@@ -23,19 +23,32 @@ const SIDEBAR_ITEMS: { id: SidebarItem; label: string; icon: string }[] = [
 
 const EXPERIENCE = [
   {
+    company: 'XENRIQ SYSTEMS',
+    icon: '🚀',
+    role: 'Founder & AI Product Manager',
+    location: 'Global / Remote',
+    date: 'Jan 2024 - Present',
+    bullets: [
+      'Shipped 3 AI products (Promptive Sentry, Piqque) reaching <strong class="digit-clear">1000+</strong> users across <strong class="digit-clear">60+</strong> countries',
+      'Designed and implemented a multimodal voice AI pipeline achieving ~1.0–1.5s perceived end-to-end latency',
+      'Architected privacy-first, on-device AI systems including a full HIPAA-compliant mode with zero cloud dependency',
+      'Owned complete product lifecycle: discovery, architecture, implementation, GTM, and post-launch iteration'
+    ],
+    tech: '0-to-1 Product Development, Voice AI, System Architecture'
+  },
+  {
     company: 'NEXT SQUARE TECHNOLOGIES',
     icon: '🤖',
     role: 'AI Product Manager',
     location: 'Gurugram, India',
     date: 'Dec 2023 - Present',
     bullets: [
-      'Owned end-to-end product delivery of an internal AI productivity tool embedding LLM-powered workflows for consulting teams',
-      'Scoped AI opportunities through structured discovery interviews with consultants and delivery managers',
-      'Engineered prompt templates across multiple use cases and established AI output evaluation criteria',
-      'Designed human-in-the-loop guardrails for compliance-sensitive AI outputs',
-      'Maintained post-launch AI failure logs to prioritize product improvements'
+      'Led end-to-end product discovery and delivery for an internal AI productivity platform',
+      'Conducted structured user interviews, synthesizing findings into an opportunity matrix for the product roadmap',
+      'Owned AI output quality standards, engineered prompt templates, and defined pass/fail evaluation criteria',
+      'Designed human-in-the-loop guardrails for compliance-sensitive content generation'
     ],
-    tech: 'LLM Workflows, Prompt Engineering, AI Evaluation'
+    tech: 'AI Product Strategy, LLM Workflows, Prompt Engineering'
   },
   {
     company: 'AITHENT TECHNOLOGIES',
@@ -44,12 +57,11 @@ const EXPERIENCE = [
     location: 'Gurugram, India',
     date: 'Dec 2022 - Sep 2023',
     bullets: [
-      'Launched LLM-assisted help experience with intelligent search reducing support tickets by <strong class="digit-clear">12%</strong>',
-      'Built model evaluation framework using CTR, helpfulness ratings and fallback frequency',
-      'Improved reliability by reducing recurring incidents by <strong class="digit-clear">22%</strong>',
-      'Collaborated with product managers on PRDs and AI feature specifications'
+      'Shipped LLM-assisted intelligent search reducing support tickets by <strong class="digit-clear">12%</strong>',
+      'Built a structured model evaluation framework using click-through rate, helpfulness ratings, and fallback frequency',
+      'Improved platform reliability by <strong class="digit-clear">22%</strong> through SLO definition and monitoring instrumentation'
     ],
-    tech: 'LLM Integration, Evaluation Frameworks, PRDs'
+    tech: 'LLM Integration, Model Evaluation, SLO Design'
   },
   {
     company: 'XORIANT SOLUTIONS',
@@ -58,11 +70,11 @@ const EXPERIENCE = [
     location: 'Gurugram, India',
     date: 'Nov 2021 - Dec 2022',
     bullets: [
-      'Delivered intelligent spending categorization feature reaching <strong class="digit-clear">20%</strong> DAU adoption',
-      'Built backend APIs and services supporting financial product features',
-      'Partnered with PMs on PRDs, user stories, and acceptance criteria'
+      'Delivered intelligent spending categorization feature reaching <strong class="digit-clear">20%</strong> DAU adoption within 3 months',
+      'Partnered with PMs on PRDs, user stories, and acceptance criteria across multiple sprint cycles',
+      'Built and maintained scalable backend services and data processing pipelines'
     ],
-    tech: 'Backend Development, APIs, Product Delivery'
+    tech: 'Backend Development, APIs, Data Pipelines'
   },
   {
     company: 'HEXAWARE TECHNOLOGIES',
@@ -71,10 +83,10 @@ const EXPERIENCE = [
     location: 'Gurugram, India',
     date: 'Jun 2019 - Nov 2021',
     bullets: [
-      'Built real-time KPI dashboards using Java and SQL improving operational efficiency by <strong class="digit-clear">30%</strong>',
-      'Analyzed user feedback and support data to guide backlog prioritization'
+      'Designed and deployed real-time KPI dashboards improving operational efficiency by <strong class="digit-clear">30%</strong>',
+      'Synthesised user interviews and support ticket data into backlog inputs, contributing to <strong class="digit-clear">20%</strong> CSAT improvement'
     ],
-    tech: 'Java, SQL, Analytics'
+    tech: 'Java, SQL, User Research'
   },
   {
     company: 'IBM',
@@ -83,56 +95,59 @@ const EXPERIENCE = [
     location: 'Bangalore, India',
     date: 'Jun 2018 - Aug 2018',
     bullets: [
-      'Contributed to ERP platform managing educational assets and events',
-      'Implemented backend business logic and improved application performance'
+      'Implemented backend business logic for ERP modules managing educational assets and events',
+      'Improved system performance through debugging and query optimisation'
     ],
     tech: 'ERP Systems, Backend Development'
   }
 ]
 
-/* ---------------- PROJECTS ---------------- */
+/* ---------------- PRODUCTS ---------------- */
 
-const PROJECTS = [
+const PRODUCTS = [
   {
-    title: 'AI Productivity Tool for Consulting Workflows',
-    company: 'Next Square Technologies',
-    role: 'AI Product Manager',
-    date: '2023 - Present',
+    title: 'Promptive Sentry',
+    company: 'Xenriq Systems',
+    role: 'Chrome Extension',
+    date: '2024',
+    url: 'https://chromewebstore.google.com/detail/promptive-sentry-%E2%80%93-author/ikbkijdgnelcijmdkcaaoabmobagakim',
     description:
-      'Internal AI tool embedding LLM workflows to automate documentation and improve delivery team productivity.',
+      'A dual-engine Chrome extension solving the AI prompt quality problem at the browser layer.',
     impact: [
-      'Defined AI evaluation framework and prompt standards',
-      'Implemented human-in-the-loop guardrails',
-      'Enabled scalable AI workflow adoption across delivery teams'
+      'Live — <strong class="digit-clear">500+</strong> users, 60+ countries',
+      'Transforms vague prompts into structured, role-defined AI instructions across Claude, ChatGPT, and Gemini',
+      'Sentry Memory saves full conversation context as an AI-readable structured handoff'
     ],
-    tech: 'LLM Workflows, Prompt Engineering, AI Evaluation'
+    tech: 'Chrome Extension APIs, JavaScript, Local Storage'
   },
   {
-    title: 'LLM-Assisted Help Experience',
-    company: 'Aithent Technologies',
-    role: 'Senior Software Engineer',
-    date: '2023',
+    title: 'Promptive Sentry for IDE',
+    company: 'Xenriq Systems',
+    role: 'VS Code Extension',
+    date: '2024',
+    url: 'https://open-vsx.org/extension/xenriq/promptive-sentry-ide/',
     description:
-      'AI-powered help system with contextual suggested answers reducing support effort.',
+      'The AI prompt layer your IDE was missing. Automatically rewrites developer prompts with rich context before the AI model sees them.',
     impact: [
-      '<strong class="digit-clear">12%</strong> reduction in support tickets',
-      '<strong class="digit-clear">10%</strong> increase in self-service usage',
-      'Evaluation framework for response quality'
+      'Live — <strong class="digit-clear">500+</strong> active users',
+      'Silent context collection pipeline capturing 7 IDE environment layers in under <strong class="digit-clear">800ms</strong>',
+      'Zero setup, zero API keys, zero friction'
     ],
-    tech: 'LLM Integration, APIs, Analytics'
+    tech: 'VS Code APIs, TypeScript, AST Parsing'
   },
   {
-    title: 'Intelligent Spending Categorization',
-    company: 'Xoriant Solutions',
-    role: 'Software Engineer',
-    date: '2022',
+    title: 'Piqque',
+    company: 'Xenriq Systems',
+    role: 'Windows Desktop Application',
+    date: 'Beta',
     description:
-      'AI-driven spending categorization and analytics feature for financial products.',
+      'Ambient, screen-aware AI assistant with a hotkey-triggered voice interface. Captures screen in real time and responds by voice instantly.',
     impact: [
-      '<strong class="digit-clear">20%</strong> DAU adoption within 3 months',
-      'Top engagement driver for the platform'
+      'Push-to-talk voice interface with under <strong class="digit-clear">200ms</strong> streaming transcription latency',
+      'Multi-model orchestration: Claude, Gemini, and GPT-4o',
+      'Full on-device HIPAA mode with zero cloud dependency'
     ],
-    tech: 'Java, Backend APIs'
+    tech: 'Electron, WebSockets, AssemblyAI, Kokoro ONNX'
   }
 ]
 
@@ -164,7 +179,7 @@ const AWARDS = [
 /* ---------------- COMPONENT ---------------- */
 
 function MyComputerWindow() {
-  const [activeItem, setActiveItem] = useState<SidebarItem>('projects')
+  const [activeItem, setActiveItem] = useState<SidebarItem>('products')
 
   const handleItemClick = useCallback((id: SidebarItem) => {
     setActiveItem(id)
@@ -187,27 +202,73 @@ function MyComputerWindow() {
 
   const renderContent = () => {
     switch (activeItem) {
-      case 'projects':
+      case 'products':
         return (
           <div>
-            <h2 className={styles.contentTitle}>🚀 Featured Projects</h2>
-            {PROJECTS.map((project, idx) => (
+            <h2 className={styles.contentTitle}>🚀 Featured Products</h2>
+            {PRODUCTS.map((product, idx) => (
               <div key={idx} className={styles.projectCard}>
-                <div className={styles.projectTitle}>{project.title}</div>
-                <div className={styles.projectMeta}>
-                  {project.company} | {project.role} | {project.date}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className={styles.projectTitle}>{product.title}</div>
+                  {product.url && (
+                    <a 
+                      href={product.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        padding: '4px 12px',
+                        background: '#c0c0c0',
+                        borderLeft: '2px solid #ffffff',
+                        borderTop: '2px solid #ffffff',
+                        borderRight: '2px solid #808080',
+                        borderBottom: '2px solid #808080',
+                        fontWeight: 'bold',
+                        cursor: 'pointer',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        fontSize: '12px'
+                      }}
+                      onMouseDown={(e) => {
+                        e.currentTarget.style.borderLeft = '2px solid #808080';
+                        e.currentTarget.style.borderTop = '2px solid #808080';
+                        e.currentTarget.style.borderRight = '2px solid #ffffff';
+                        e.currentTarget.style.borderBottom = '2px solid #ffffff';
+                      }}
+                      onMouseUp={(e) => {
+                        e.currentTarget.style.borderLeft = '2px solid #ffffff';
+                        e.currentTarget.style.borderTop = '2px solid #ffffff';
+                        e.currentTarget.style.borderRight = '2px solid #808080';
+                        e.currentTarget.style.borderBottom = '2px solid #808080';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderLeft = '2px solid #ffffff';
+                        e.currentTarget.style.borderTop = '2px solid #ffffff';
+                        e.currentTarget.style.borderRight = '2px solid #808080';
+                        e.currentTarget.style.borderBottom = '2px solid #808080';
+                      }}
+                      onClick={(e) => {
+                        // Optional: emit an event for analytics
+                        handleExternalClick(product.title);
+                      }}
+                    >
+                      🔗 Open Link
+                    </a>
+                  )}
                 </div>
-                <p className={styles.projectDesc}>{project.description}</p>
+                <div className={styles.projectMeta}>
+                  {product.company} | {product.role} | {product.date}
+                </div>
+                <p className={styles.projectDesc}>{product.description}</p>
 
                 <ul className={styles.impactList}>
-                  {project.impact.map((item, i) => (
+                  {product.impact.map((item, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: `✓ ${item}` }} />
                   ))}
                 </ul>
 
                 <div className={styles.expTech}>
                   <span className={styles.techLabel}>🔧 Tech: </span>
-                  {project.tech}
+                  {product.tech}
                 </div>
               </div>
             ))}
@@ -350,6 +411,20 @@ function MyComputerWindow() {
                   onClick={() => handleExternalClick('GITHUB')}
                 >
                   GitHub Repository ↗
+                </a>
+              </div>
+
+              <div className={styles.contactRow}>
+                <span className={styles.contactRowIcon}>🐦</span>
+
+                <a
+                  href="https://x.com/anuragships"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactLink}
+                  onClick={() => handleExternalClick('TWITTER')}
+                >
+                  X (Twitter) Profile ↗
                 </a>
               </div>
             </div>

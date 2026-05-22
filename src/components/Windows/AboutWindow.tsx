@@ -6,31 +6,30 @@ import { event } from '../../lib/gtag'
 // Skills categorized
 const SKILLS = {
   aiMl: [
-    'LLM FEATURE STRATEGY',
+    'LLMs & GENERATIVE AI',
+    'RAG ARCHITECTURE',
     'MODEL EVALUATION',
-    'GENERATIVE AI',
     'PROMPT ENGINEERING',
-    'RAG-BASED SEARCH',
-    'HUMAN-IN-THE-LOOP DESIGN'
+    'HUMAN-IN-THE-LOOP',
+    'MULTIMODAL AI',
+    'VOICE AI (STT/TTS)',
+    'ON-DEVICE AI'
   ],
   product: [
+    '0-to-1 PRODUCT DEV',
     'PRODUCT STRATEGY',
-    'PRODUCT LIFECYCLE',
-    'DISCOVERY',
     'GTM STRATEGY',
     'ROADMAP PLANNING',
-    'MARKET RESEARCH',
+    'DISCOVERY',
     'KPIS/OKRS',
-    'MVP',
+    'MVP SCOPING',
     'PRDS',
-    'WIREFRAMING',
     'STAKEHOLDER MGMT',
-    'RICE/MOSCOW',
     'USER RESEARCH'
   ],
-  analytics: ['SQL', 'A/B TESTING', 'GOOGLE ANALYTICS', 'MIXPANEL'],
-  technical: ['PYTHON', 'JAVA', 'GIT', 'SUPABASE', 'JIRA', 'FIGMA', 'API DESIGN', 'REST APIS'],
-  execution: ['AGILE', 'SCRUM', 'CROSS-FUNCTIONAL COLLABORATION']
+  analytics: ['SQL', 'A/B TESTING', 'GOOGLE ANALYTICS', 'AMPLITUDE', 'FUNNEL ANALYSIS'],
+  technical: ['TYPESCRIPT', 'ELECTRON', 'PYTHON', 'JAVA', 'WEBSOCKETS', 'CHROME APIS', 'VS CODE APIS', 'CLOUDFLARE'],
+  execution: ['AGILE', 'SCRUM', 'JIRA', 'LINEAR', 'GITHUB']
 }
 
 const ANALYTICS_TECH = [...SKILLS.analytics, ...SKILLS.technical]
@@ -62,17 +61,14 @@ function AboutWindow() {
 
         <div className={styles.info}>
           <h1 className={styles.name}>Anurag Kumar Tripathi</h1>
-          <p className={styles.title}>AI Product Manager</p>
+          <p className={styles.title}>AI Product Manager & Founder</p>
 
           <p className={styles.tagline}>
-            Building AI-powered products from 0→1 | LLM Systems | Product Strategy | 5+ Years Experience
+            I build AI products from 0→1 | LLM Systems | Voice AI | 6+ Years Experience
           </p>
 
           <p className={styles.bio}>
-            AI Product Manager with 5+ years of experience across Product Management and Software Engineering,
-            shipping LLM-powered and AI-driven product features. Delivered measurable outcomes including
-            reducing support load by <strong>12%</strong>, improving operational efficiency by <strong>30%</strong>,
-            and driving <strong>20% DAU</strong> adoption for data-driven product features.
+            AI Product Manager and Founder with 6+ years of experience. Independently conceived, built, and shipped multiple production AI products reaching <strong>1000+</strong> users across <strong>60+</strong> countries. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, RAG, and multimodal voice AI pipelines.
           </p>
         </div>
       </header>
@@ -165,6 +161,16 @@ function AboutWindow() {
               onClick={() => handleExternalClick('GITHUB')}
             >
               GITHUB <span className={styles.externalIcon}>↗</span>
+            </a>
+
+            <a
+              href="https://x.com/anuragships"
+              className={styles.socialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleExternalClick('TWITTER')}
+            >
+              X (TWITTER) <span className={styles.externalIcon}>↗</span>
             </a>
           </div>
         </div>

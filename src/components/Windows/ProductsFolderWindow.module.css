@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+}
+
+.toolbar {
+  display: flex;
+  background: #ECE9D8;
+  border-bottom: 1px solid #ACA899;
+  padding: 4px 8px;
+  gap: 12px;
+}
+
+.menuItem {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.menuItem:hover {
+  background: #316AC5;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  cursor: pointer;
+  padding: 8px;
+  border: 1px dotted transparent;
+}
+
+.iconWrapper:hover {
+  background: rgba(49, 106, 197, 0.1);
+  border: 1px dotted #316AC5;
+}
+
+.iconLabel {
+  margin-top: 8px;
+  font-family: var(--font-primary);
+  font-size: 11px;
+  text-align: center;
+  color: #000;
+  user-select: none;
+}
