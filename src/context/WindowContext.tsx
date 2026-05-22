@@ -37,12 +37,19 @@ function calculatePosition(
   windowIndex: number, 
   windowSize: { width: number; height: number },
   viewport: { width: number; height: number },
-  center: boolean = false
+  center: boolean = false,
+  id: string = ''
 ) {
   const menubarHeight = 28
   const padding = 20
   const bottomSafeSpace = 90 // Guaranteed space for dock
   
+  if (id === 'browser') {
+    const x = Math.max(0, (viewport.width - windowSize.width) / 2)
+    const y = 40
+    return { x, y }
+  }
+
   if (center) {
     const x = Math.max(0, (viewport.width - windowSize.width) / 2)
     // For vertical, we want it perfectly centered in the workspace (between menubar and dock)
@@ -104,8 +111,12 @@ function windowReducer(state: State, action: Action): State {
         height: Math.min(config.defaultSize.height, availableHeight * 0.95)
       }
 
+      if (id === 'browser') {
+        windowSize.width = Math.min(900, viewport.width * 0.7)
+      }
+
       const shouldCenter = id === 'welcome' || id === 'snakegame' || id === 'my-computer' || id === 'about'
-      const position = calculatePosition(windows.length, windowSize, viewport, shouldCenter)
+      const position = calculatePosition(windows.length, windowSize, viewport, shouldCenter, id)
       
       const newWindow: WindowState = {
         id,
