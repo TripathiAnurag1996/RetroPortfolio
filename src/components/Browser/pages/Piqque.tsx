@@ -1,8 +1,10 @@
 import { memo } from 'react';
 import { anuragContext } from '../../../utils/knowledgeBase';
+import { useWindows } from '../../../context/WindowContext';
 
 function Piqque() {
   const product = anuragContext.products[2];
+  const { openWindow } = useWindows();
 
   return (
     <div style={{ 
@@ -42,7 +44,7 @@ function Piqque() {
         {/* Action Button */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '24px' }}>
           <button 
-            onClick={() => window.open('https://www.linkedin.com/in/anuragtripathi-pm/', '_blank')}
+            onClick={() => openWindow('mediaplayer')}
             style={{ 
               backgroundColor: 'var(--color-accent)', 
               color: 'var(--color-window-bg)', 
@@ -69,7 +71,7 @@ function Piqque() {
               e.currentTarget.style.transform = 'translate(0px, 0px)';
             }}
           >
-            Learn More
+            Watch the Product Demo
           </button>
           <span style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>Multi-model: Claude · Gemini · GPT-4o</span>
         </div>

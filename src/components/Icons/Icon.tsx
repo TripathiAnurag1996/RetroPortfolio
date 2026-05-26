@@ -275,6 +275,34 @@ const icons: Record<string, JSX.Element> = {
       />
     </svg>
   ),
+  video: (
+    <svg viewBox="0 0 48 48" fill="none">
+      {/* 3D Bevel for Film Strip */}
+      <rect x="4" y="8" width="40" height="32" fill="#202020" />
+      
+      {/* Top Sprocket Holes */}
+      <rect x="6" y="10" width="4" height="4" fill="#FFFFFF" />
+      <rect x="14" y="10" width="4" height="4" fill="#FFFFFF" />
+      <rect x="22" y="10" width="4" height="4" fill="#FFFFFF" />
+      <rect x="30" y="10" width="4" height="4" fill="#FFFFFF" />
+      <rect x="38" y="10" width="4" height="4" fill="#FFFFFF" />
+      
+      {/* Bottom Sprocket Holes */}
+      <rect x="6" y="34" width="4" height="4" fill="#FFFFFF" />
+      <rect x="14" y="34" width="4" height="4" fill="#FFFFFF" />
+      <rect x="22" y="34" width="4" height="4" fill="#FFFFFF" />
+      <rect x="30" y="34" width="4" height="4" fill="#FFFFFF" />
+      <rect x="38" y="34" width="4" height="4" fill="#FFFFFF" />
+      
+      {/* Video Screen */}
+      <rect x="6" y="16" width="36" height="16" fill="#3131FF" stroke="#808080" strokeWidth="1" />
+      
+      {/* Play Button Drop Shadow */}
+      <path d="M21 19 L29 25 L21 31 Z" fill="#000080" />
+      {/* Play Button */}
+      <path d="M20 18 L28 24 L20 30 Z" fill="#FFD93D" />
+    </svg>
+  ),
   astro: (
     <svg viewBox="0 0 48 48" fill="none">
       <circle

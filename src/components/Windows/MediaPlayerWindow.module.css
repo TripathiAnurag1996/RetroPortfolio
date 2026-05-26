@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  height: 100%;
+  background-color: var(--color-window-bg);
+  font-family: var(--font-pixel);
+  color: var(--color-text);
+}
+
+.playerSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-right: 2px solid var(--border-dark);
+}
+
+.videoWrapper {
+  flex: 1;
+  background-color: #000;
+  border: 2px solid var(--border-dark);
+  border-bottom-color: var(--border-light);
+  border-right-color: var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.videoWrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.nowPlaying {
+  background-color: #000;
+  color: #0f0;
+  padding: 8px 12px;
+  border: 2px solid var(--border-dark);
+  border-bottom-color: var(--border-light);
+  border-right-color: var(--border-light);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  color: #fff;
+}
+
+.playlistSection {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-window-bg);
+}
+
+.playlistHeader {
+  padding: 8px 12px;
+  background-color: var(--color-titlebar-active);
+  color: var(--color-titlebar-text);
+  font-size: 12px;
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.categoryGroup {
+  margin-bottom: 12px;
+}
+
+.categoryTitle {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.playlistItems {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.playlistItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--border-dark);
+  color: var(--color-text);
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.playlistItem:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.playlistItem.active {
+  background-color: var(--color-titlebar-active);
+  color: var(--color-titlebar-text);
+  border-bottom-color: transparent;
+}
+
+.itemNumber {
+  opacity: 0.5;
+}
+
+.active .itemNumber {
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .playerSection {
+    border-right: none;
+    border-bottom: 2px solid var(--border-dark);
+  }
+  
+  .playlistSection {
+    width: 100%;
+    height: 150px;
+  }
+}

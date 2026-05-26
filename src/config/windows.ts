@@ -97,6 +97,12 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
     icon: "internet",
     defaultSize: { width: 800, height: 600 },
   },
+  mediaplayer: {
+    id: "mediaplayer",
+    title: "MEDIA PLAYER - DEMOS",
+    icon: "video",
+    defaultSize: { width: 800, height: 500 },
+  },
 };
 
 import { DesktopIconData } from "../types";
@@ -122,7 +128,7 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     id: "resume",
     label: "RESUME.PDF",
     icon: "pdf",
-    externalUrl: "/Anurag Tripathi_AI Product Manager.pdf",
+    externalUrl: "/Anurag%20Tripathi_AI%20Product%20Manager.pdf",
     position: { row: 0, col: 2 },
   },
   {
@@ -195,6 +201,13 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
 
   // Bottom
   { id: "trash", label: "TRASH", icon: "trash", position: { row: 3, col: 0 } },
+  {
+    id: "mediaplayer",
+    label: "MEDIA PLAYER",
+    icon: "video",
+    windowId: "mediaplayer",
+    position: { row: 3, col: 1 },
+  },
 ];
 
 // Taskbar icons
@@ -205,6 +218,7 @@ export const TASKBAR_ICONS = [
   { id: "guestbook", icon: "guestbook", windowId: "guestbook" },
   { id: "paint", icon: "paint", windowId: "paint" },
   { id: "snakegame", icon: "game", windowId: "snakegame" },
+  { id: "mediaplayer", icon: "video", windowId: "mediaplayer" },
 ];
 
 // Menu items

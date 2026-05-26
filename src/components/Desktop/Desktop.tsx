@@ -56,7 +56,16 @@ function Desktop() {
           <div className={styles.stickyList}>
             <div className={styles.stickyItem}>
               <span className={styles.stickyItemName}>▸ Piqque — Ambient AI Assistant</span>
-              <span className={styles.stickyItemDesc}>Private Beta · Launching as proprietary software soon</span>
+              <span className={styles.stickyItemDesc}>
+                Private Beta · Launching as proprietary software soon
+                <br />
+                <span 
+                  onClick={() => openWindow('mediaplayer')}
+                  style={{ cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' }}
+                >
+                  Watch the demo!!
+                </span>
+              </span>
             </div>
             <div className={styles.stickyDivider}></div>
             <div className={styles.stickyItem}>
