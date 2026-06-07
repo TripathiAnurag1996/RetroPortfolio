@@ -1,209 +1,82 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import styles from './AIAssistant.module.css';
-import PersonaSelector from './PersonaSelector';
-import QuickActions from './QuickActions';
-import { PersonaType } from '../../utils/personaConfig';
-import { getAIResponse } from '../../utils/aiService';
-import { playClickSound, playMessageSound } from '../../utils/audio';
 import { event } from '../../lib/gtag';
+import { useDraggable } from '../../hooks/useDraggable';
+import { useWindows } from '../../context/WindowContext';
 
+
+// TODO: restore AssistantWidget after API key rotation and proxy implementation
 const AIAssistant: React.FC = () => {
-  const [persona, setPersona] = useState<PersonaType | null>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('visitorPersona') as PersonaType | null;
-    }
-    return null;
-  });
-  const [isSelectingPersona, setIsSelectingPersona] = useState(false);
-  const [query, setQuery] = useState('');
-  const [response, setResponse] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [history, setHistory] = useState<{q: string, a: string}[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const responseEndRef = useRef<HTMLDivElement>(null);
+  const { handleMouseDown } = useDraggable({ windowId: 'assistant' });
+  const { closeWindow, minimizeWindow, maximizeWindow } = useWindows();
 
-  const scrollToBottom = () => {
-    responseEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    if (response || history.length > 0) {
-      scrollToBottom();
-    }
-  }, [response, isLoading, history]);
-
-  // Handle queries passed from the SearchBar
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const handleCustomEvent = (e: any) => {
-      const q = e.detail;
-      if (q && persona) {
-        handleQuery(q);
-      }
-    };
-
-    window.addEventListener('ai_assistant_query', handleCustomEvent);
-    
-    // Check for pending query on mount
-    const pendingQuery = sessionStorage.getItem('ai_query');
-    if (pendingQuery && persona) {
-      sessionStorage.removeItem('ai_query');
-      handleQuery(pendingQuery);
-    }
-
-    return () => window.removeEventListener('ai_assistant_query', handleCustomEvent);
-  }, [persona]);
-
-  // Auto-focus input when component becomes visible or persona is selected
-  useEffect(() => {
-    if (persona && !isLoading) {
-      // Small delay to ensure the window is rendered and transition completes
-      const timer = setTimeout(() => {
-        inputRef.current?.focus({ preventScroll: true });
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [persona, isLoading]);
-
-  const handleQuery = async (q: string) => {
-    if (!q.trim() || !persona) return;
-    
-    setIsLoading(true);
-    setError(null);
-    setQuery(q);
-    playClickSound();
-
-    // Track AI Query Submission (After initial UI state update)
-    event('ai_query_submitted', {
-      category: 'ai',
-      label: persona.toUpperCase(),
-      query_length: q.trim().length,
-      persona: persona
-    });
-
-    try {
-      const aiResponse = await getAIResponse(q, persona);
-      setResponse(aiResponse);
-      setHistory(prev => [{q, a: aiResponse}, ...prev].slice(0, 5));
-      playMessageSound();
-    } catch (err: any) {
-      console.error('Gemini API error:', err);
-      // Display the actual error message or a fallback
-      setError(err?.message || 'AI request failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handlePersonaSelect = (p: PersonaType) => {
-    setPersona(p);
-    setIsSelectingPersona(false);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('visitorPersona', p);
-      
-      // Check if there was a pending query
-      const pendingQuery = sessionStorage.getItem('ai_query');
-      if (pendingQuery) {
-        sessionStorage.removeItem('ai_query');
-        handleQuery(pendingQuery);
-      }
-    }
-    playClickSound();
-  };
-
-  if (!persona || isSelectingPersona) {
-    return (
-      <div className={styles.assistantContainer}>
-        <PersonaSelector 
-          onSelect={handlePersonaSelect} 
-          onCancel={persona ? () => setIsSelectingPersona(false) : undefined}
-        />
-      </div>
-    );
-  }
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    weekday: 'short', month: 'short', day: '2-digit', year: 'numeric'
+  }).toUpperCase().replace(/,/g, '');
 
   return (
-    <div className={styles.assistantContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', padding: '2px 4px', borderBottom: '1px solid #808080' }}>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <span className={styles.searchLabel}>PERSONA:</span>
-          <span className={styles.personaBadge} onClick={() => setIsSelectingPersona(true)} title="Change Persona">
-            {persona.toUpperCase().replace('_', ' ')}
-          </span>
+    <div className={styles.maintenanceContainer}>
+      {/* Title Bar */}
+      <div className={styles.maintenanceTitleBar} onMouseDown={handleMouseDown}>
+        <div className={styles.windowControls}>
+          <div className={styles.macDot} style={{ backgroundColor: '#ff5f57', cursor: 'pointer' }} onClick={() => closeWindow('assistant')} />
+          <div className={styles.macDot} style={{ backgroundColor: '#febc2e', cursor: 'pointer' }} onClick={() => minimizeWindow('assistant')} />
+          <div className={styles.macDot} style={{ backgroundColor: '#28c840', cursor: 'pointer' }} onClick={() => maximizeWindow('assistant')} />
         </div>
+        <div className={styles.titleText}>ANURAG OS — SYSTEM TERMINAL</div>
+        <div className={styles.dateText}>{currentDate}</div>
       </div>
 
-      <div className={styles.searchBarWrapper}>
-        <label htmlFor="ai-search" className={styles.searchLabel}>ASK:</label>
-        <form onSubmit={(e) => { e.preventDefault(); handleQuery(query); }} style={{ display: 'flex', gap: '4px' }}>
-          <input
-            id="ai-search"
-            ref={inputRef}
-            type="text"
-            className={styles.searchInput}
-            placeholder="Type your question..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button type="submit" className={styles.chip} style={{ padding: '0 8px', minWidth: '50px' }}>RUN</button>
-        </form>
-      </div>
+      {/* Body */}
+      <div className={styles.maintenanceBody}>
+        <div className={styles.headerBlock}>
+          <div className={styles.warningTitle}>⚠ SYSTEM MAINTENANCE</div>
+          <div className={styles.subtitle}>// MODULE: ANURAG_OS_ASSISTANT | STATUS: OFFLINE</div>
+        </div>
 
-      <div className={styles.responseArea}>
-        {isLoading ? (
-          <div className={styles.loading}>
-            <img src="/icons/hourglass.png" alt="" className={styles.hourglass} style={{ width: '16px', height: '16px' }} />
-            <span>PROCESSING REQUEST...</span>
+        <div className={styles.terminalLines}>
+          <div><span className={styles.label}>{'> PROCESS     :'}</span> <span style={{ color: '#ff5f57' }}>SUSPENDED</span></div>
+          <div><span className={styles.label}>{'> MODULE      :'}</span> <span style={{ color: '#00ff41' }}>anurag_os_assistant.exe</span></div>
+          <div><span className={styles.label}>{'> REASON      :'}</span> <span style={{ color: '#febc2e' }}>scheduled core upgrades in progress</span></div>
+          <div><span className={styles.label}>{'> ETA         :'}</span> <span style={{ color: '#00ff41' }}>SOON™</span></div>
+        </div>
+
+        <div className={styles.divider} />
+
+        <div className={styles.progressSection}>
+          <div className={styles.progressLabel}>restoration progress</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className={styles.progressTrack}>
+              <div className={styles.progressFill} />
+            </div>
+            <div className={styles.progressPercent}>~75%</div>
           </div>
-        ) : error ? (
-          <div style={{ color: '#800000', fontWeight: 'bold' }}>{error}</div>
-        ) : response ? (
+          <div className={styles.progressSubtext}>
+            [ ███████████████░░░░░ ] upgrading neural pathways...
+          </div>
+        </div>
+
+        <div className={styles.divider} />
+
+        <div className={styles.statusLine}>
+          <span>{'> system will resume normal operations shortly'}</span>
+          <span className={styles.blinkingCursor} />
+        </div>
+
+        <div className={styles.contactBlock}>
+          <div>{'> have a query in the meantime?'}</div>
           <div>
-            <div style={{ whiteSpace: 'pre-wrap' }}>{response}</div>
-          </div>
-        ) : (
-          <div style={{ color: '#404040', textAlign: 'center', marginTop: '30px' }}>
-            System ready. Select a topic below or type a query to begin.
-          </div>
-        )}
-        <div ref={responseEndRef} />
-      </div>
-
-      <div style={{ padding: '4px 0' }}>
-        <QuickActions persona={persona} onSelect={handleQuery} />
-      </div>
-
-      <div className={styles.responseFooter} style={{ borderTop: '1px solid #808080', paddingTop: '4px' }}>
-        <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flex: 1 }}>
-          <span className={styles.searchLabel} style={{ fontSize: '9px' }}>HIST:</span>
-          <div style={{ display: 'flex', gap: '4px' }}>
-            {history.map((h, i) => (
-              <div 
-                key={i} 
-                className={styles.historyIcon} 
-                onClick={() => { setQuery(h.q); setResponse(h.a); }}
-                title={h.q}
-                role="button"
-                aria-label={`Previous query: ${h.q}`}
-                style={{ fontSize: '12px', border: '1px solid #808080', width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff' }}
-              >
-                ?
-              </div>
-            ))}
-          </div>
-          {history.length > 0 && (
-            <button 
-              onClick={() => { setHistory([]); setResponse(''); setQuery(''); }}
-              className={styles.chip}
-              style={{ padding: '0 4px', fontSize: '9px', height: '14px' }}
+            {'> write to '}
+            <a 
+              href="mailto:anurag@anuragtripathi.pro" 
+              className={styles.contactLink}
+              onClick={() => event('contact_initiated', { category: 'conversion', label: 'mailto_click', source: 'contact_window' })}
             >
-              CLR
-            </button>
-          )}
+              anurag@anuragtripathi.pro
+            </a>
+            {' — he reads every mail.'}
+          </div>
         </div>
-        <div style={{ fontSize: '10px', opacity: 0.6 }}>{new Date().toLocaleTimeString()}</div>
       </div>
     </div>
   );

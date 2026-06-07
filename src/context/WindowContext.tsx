@@ -3,6 +3,8 @@ import { WindowState, WindowContextType } from '../types'
 import { WINDOW_CONFIGS } from '../config/windows'
 import { playClickSound } from '../utils/audio'
 
+declare const clarity: (action: string, key?: string, value?: string) => void;
+
 // Constants
 const MAX_WINDOWS = 8
 const CASCADE_OFFSET = 30
@@ -236,8 +238,16 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(windowReducer, initialState)
   
   const openWindow = useCallback((id: string) => {
+    if (typeof clarity !== "undefined") { clarity("event", "app_opened", id); }
     playClickSound()
     dispatch({ type: 'OPEN_WINDOW', payload: { id } })
+
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'page_view', {
+        page_path: `/os/window/${id}`,
+        page_title: id.toUpperCase()
+      });
+    }
   }, [])
   
   const closeWindow = useCallback((id: string) => {

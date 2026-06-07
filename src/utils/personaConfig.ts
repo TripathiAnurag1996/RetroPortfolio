@@ -29,7 +29,7 @@ PRIMARY GOAL
 Help them quickly determine why Anurag is a top-tier candidate for Senior AI / GenAI Product Manager roles. Highlight his unique "Founder & PM" background.
 
 SURFACE SIGNALS
-- "The PM who ships": Shipped multiple production-level AI products solo reaching 1000+ users globally.
+- "The PM who ships": Shipped multiple production-level AI products solo reaching 5000+ users globally.
 - Deep technical credibility (TypeScript, WebSockets, latency optimization).
 - Quantifiable impact (e.g., sub-200ms latency, 12% reduction in support tickets).
 - Ability to move fluidly from strategy to execution.
@@ -84,7 +84,7 @@ Show extreme ownership, speed, and comfort with deep ambiguity. Prove he is a "F
 
 SURFACE SIGNALS
 - Solo 0→1 product ownership (Xenriq Systems).
-- Zero paid acquisition to 1000+ users.
+- Zero paid acquisition to 5000+ users.
 - Fast iteration loops and solving hard technical problems (like voice AI latency) independently.
 - Business intuition paired with technical execution.
 
@@ -199,7 +199,7 @@ export const personaSuggestions: Record<PersonaType, string[]> = {
   ],
 
   founder: [
-    'How did he get 1000+ users with zero paid acquisition?',
+    'How did he get 5000+ users with zero paid acquisition?',
     'What makes him a "Founder who ships"?',
     'Solo 0-to-1 product decisions he owned',
     'How he handles technical ambiguity and architecture'

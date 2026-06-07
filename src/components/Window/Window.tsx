@@ -130,44 +130,46 @@ function Window({ window: windowState, children, isActive }: WindowProps) {
       aria-modal="false"
     >
       {/* Title Bar */}
-      <div 
-        className={styles.titleBar}
-        onMouseDown={handleMouseDown}
-      >
-        <div className={styles.trafficLights}>
-          <button
-            className={`${styles.trafficBtn} ${styles.close}`}
-            onClick={handleClose}
-            aria-label="Close window"
-            title="Close"
-          >
-            ×
-          </button>
-          <button
-            className={`${styles.trafficBtn} ${styles.minimize}`}
-            onClick={handleMinimize}
-            aria-label="Minimize window"
-            title="Minimize"
-          >
-            −
-          </button>
-          <button
-            className={`${styles.trafficBtn} ${styles.maximize}`}
-            onClick={handleMaximize}
-            aria-label="Maximize window"
-            title="Maximize"
-          >
-            +
-          </button>
-        </div>
-        
-        <span 
-          className={styles.title}
-          id={`window-title-${windowState.id}`}
+      {windowState.id !== 'assistant' && (
+        <div 
+          className={styles.titleBar}
+          onMouseDown={handleMouseDown}
         >
-          {windowState.title}
-        </span>
-      </div>
+          <div className={styles.trafficLights}>
+            <button
+              className={`${styles.trafficBtn} ${styles.close}`}
+              onClick={handleClose}
+              aria-label="Close window"
+              title="Close"
+            >
+              ×
+            </button>
+            <button
+              className={`${styles.trafficBtn} ${styles.minimize}`}
+              onClick={handleMinimize}
+              aria-label="Minimize window"
+              title="Minimize"
+            >
+              −
+            </button>
+            <button
+              className={`${styles.trafficBtn} ${styles.maximize}`}
+              onClick={handleMaximize}
+              aria-label="Maximize window"
+              title="Maximize"
+            >
+              +
+            </button>
+          </div>
+          
+          <span 
+            className={styles.title}
+            id={`window-title-${windowState.id}`}
+          >
+            {windowState.title}
+          </span>
+        </div>
+      )}
       
       {/* Content */}
       <div className={styles.content}>

@@ -1,4 +1,5 @@
 import { memo, useState } from 'react'
+import { event } from '../../lib/gtag'
 
 const styles = {
   container: {
@@ -92,6 +93,11 @@ function GuestbookWindow() {
       ])
       setName('')
       setMessage('')
+      event('contact_initiated', {
+        category: 'conversion',
+        label: 'guestbook_form',
+        source: 'guestbook_window'
+      });
     }
   }
   
@@ -111,6 +117,7 @@ function GuestbookWindow() {
       
       <form style={styles.form} onSubmit={handleSubmit}>
         <input
+          data-clarity-mask="true"
           style={styles.input}
           type="text"
           placeholder="Your name..."
@@ -118,6 +125,7 @@ function GuestbookWindow() {
           onChange={(e) => setName(e.target.value)}
         />
         <textarea
+          data-clarity-mask="true"
           style={styles.textarea}
           placeholder="Leave a message..."
           value={message}

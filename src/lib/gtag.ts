@@ -86,7 +86,7 @@ export const pageview = (url: string) => {
 export const event = (
   action: string,
   { category, label, value, source, ...rest }: {
-    category: 'navigation' | 'engagement' | 'ai' | 'portfolio' | 'system';
+    category: 'navigation' | 'engagement' | 'ai' | 'portfolio' | 'system' | 'conversion';
     label: string;
     value?: number;
     source?: string;

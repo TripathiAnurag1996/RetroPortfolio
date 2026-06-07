@@ -22,7 +22,7 @@ function Piqque() {
           <span style={{ backgroundColor: 'var(--color-btn-minimize)', color: 'var(--color-text)', padding: '4px 8px', fontFamily: 'var(--font-pixel)', fontSize: '10px', textTransform: 'uppercase', borderRadius: '2px' }}>Private Beta</span>
         </div>
 
-        <h1 style={{ fontFamily: 'var(--font-pixel)', fontSize: '28px', fontWeight: 'normal', marginBottom: '16px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>{product.name}</h1>
+        <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '28px', fontWeight: 'normal', marginBottom: '16px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>{product.name}</h2>
         
         {/* Hero Quote */}
         <div style={{ textAlign: 'center', margin: '0 0 16px 0', padding: '16px 20px', backgroundColor: 'var(--color-window-bg)', borderTop: '1px solid var(--border-dark)' }}>

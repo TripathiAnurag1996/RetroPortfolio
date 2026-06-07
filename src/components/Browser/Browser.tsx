@@ -3,6 +3,8 @@ import styles from './Browser.module.css';
 import BrowserHome from './pages/BrowserHome';
 import PromptiveSentry from './pages/PromptiveSentry';
 import PromptiveSentryIDE from './pages/PromptiveSentryIDE';
+
+declare const clarity: (action: string, key?: string, value?: string) => void;
 import Piqque from './pages/Piqque';
 
 interface Tab {
@@ -221,7 +223,10 @@ const Browser: React.FC = () => {
           <button 
             className={styles.navButton} 
             style={{ width: 'auto', padding: '0 8px', marginLeft: '4px' }}
-            onClick={() => window.open(getExternalUrl(activeTab.currentUrl)!, '_blank')}
+            onClick={() => {
+              if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+              window.open(getExternalUrl(activeTab.currentUrl)!, '_blank');
+            }}
             title="Open in Native Browser"
           >
             Open External
@@ -258,7 +263,10 @@ const Browser: React.FC = () => {
                   This extension is hosted securely on the {storeName}. Click below to view the details and install it!
                 </div>
                 <button 
-                  onClick={() => window.open(tab.currentUrl, '_blank')}
+                  onClick={() => {
+                    if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+                    window.open(tab.currentUrl, '_blank');
+                  }}
                   style={{
                     marginTop: '24px',
                     padding: '10px 20px',

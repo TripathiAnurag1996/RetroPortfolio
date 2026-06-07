@@ -8,7 +8,7 @@ interface SEOProps {
 
 const SEO = ({
   title = "Anurag Tripathi | AI Product Manager & Founder",
-  description = "AI Product Manager & Founder with 6+ years experience building LLM-powered products, voice AI, and ambient intelligence. Shipped 3 production AI products reaching 1000+ users globally.",
+  description = "AI Product Manager & Founder with 6+ years experience building LLM-powered products, voice AI, and ambient intelligence. Shipped 3 production AI products reaching 5000+ users globally.",
   keywords = "AI Product Manager, Founder, Generative AI, LLM Products, Voice AI, Prompt Engineering, RAG Architecture, Ambient Intelligence, Anurag Tripathi",
 }: SEOProps) => {
   const siteName = "Anurag Tripathi";

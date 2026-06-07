@@ -36,11 +36,21 @@ const ANALYTICS_TECH = [...SKILLS.analytics, ...SKILLS.technical]
 
 function AboutWindow() {
   const handleExternalClick = useCallback((label: string) => {
-    event('external_link_clicked', {
-      category: 'navigation',
-      label: label.toUpperCase(),
-      source: 'about_window'
-    })
+    if (label === 'EMAIL') {
+      event('contact_initiated', { category: 'conversion', label: 'mailto_click', source: 'about_window' })
+    } else if (label === 'LINKEDIN') {
+      event('social_profile_clicked', { category: 'engagement', label: 'linkedin', source: 'about_window' })
+    } else if (label === 'GITHUB') {
+      event('social_profile_clicked', { category: 'engagement', label: 'github', source: 'about_window' })
+    } else if (label === 'TWITTER') {
+      event('social_profile_clicked', { category: 'engagement', label: 'twitter', source: 'about_window' })
+    } else {
+      event('external_link_clicked', {
+        category: 'navigation',
+        label: label.toUpperCase(),
+        source: 'about_window'
+      })
+    }
   }, [])
 
   return (
@@ -60,7 +70,7 @@ function AboutWindow() {
         </div>
 
         <div className={styles.info}>
-          <h1 className={styles.name}>Anurag Kumar Tripathi</h1>
+          <h2 className={styles.name}>Anurag Kumar Tripathi</h2>
           <p className={styles.title}>AI Product Manager & Founder</p>
 
           <p className={styles.tagline}>
@@ -68,7 +78,7 @@ function AboutWindow() {
           </p>
 
           <p className={styles.bio}>
-            AI Product Manager and Founder with 6+ years of experience. Independently conceived, built, and shipped multiple production AI products reaching <strong>1000+</strong> users across <strong>60+</strong> countries. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, RAG, and multimodal voice AI pipelines.
+            AI Product Manager and Founder with 6+ years of experience. Independently conceived, built, and SOLO shipped multiple production AI products reaching <strong>5000+</strong> users across <strong>60+</strong> countries within a month. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, RAG, and multimodal voice AI pipelines.
           </p>
         </div>
       </header>
@@ -124,11 +134,11 @@ function AboutWindow() {
           <div className={styles.contactItem}>
             <span className={styles.contactIcon}>📧</span>
             <a 
-              href="mailto:anurag.akt@gmail.com" 
+              href="mailto:anurag@anuragtripathi.pro" 
               className={styles.contactLink}
               onClick={() => handleExternalClick('EMAIL')}
             >
-              anurag.akt@gmail.com
+              anurag@anuragtripathi.pro
             </a>
           </div>
 
@@ -147,7 +157,7 @@ function AboutWindow() {
               href="https://www.linkedin.com/in/anuragtripathi-pm/"
               className={styles.socialLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => handleExternalClick('LINKEDIN')}
             >
               LINKEDIN <span className={styles.externalIcon}>↗</span>
@@ -157,7 +167,7 @@ function AboutWindow() {
               href="https://github.com/TripathiAnurag1996/"
               className={styles.socialLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => handleExternalClick('GITHUB')}
             >
               GITHUB <span className={styles.externalIcon}>↗</span>
@@ -167,7 +177,7 @@ function AboutWindow() {
               href="https://x.com/anuragships"
               className={styles.socialLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => handleExternalClick('TWITTER')}
             >
               X (TWITTER) <span className={styles.externalIcon}>↗</span>

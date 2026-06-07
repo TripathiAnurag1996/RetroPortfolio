@@ -19,11 +19,11 @@ function BrowserHome() {
       padding: '20px', 
       textAlign: 'center' 
     }}>
-      <h1 style={{ fontFamily: 'var(--font-pixel)', fontSize: '20px', marginBottom: '12px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>
-        ANURAG OS — Where do you want to go today?
-      </h1>
+      <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '20px', marginBottom: '12px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>
+        Product Directory
+      </h2>
       <p style={{ fontFamily: 'var(--font-pixel)', fontSize: '12px', color: 'var(--color-text-light)', marginBottom: '48px', textTransform: 'uppercase' }}>
-        3 products · 1000+ users · 60+ countries
+        3 products · 5000+ users · 60+ countries
       </p>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', width: '100%', maxWidth: '800px' }}>

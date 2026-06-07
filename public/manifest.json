@@ -1,0 +1,16 @@
+{
+  "name": "Anurag Tripathi — AI PM & Founder",
+  "short_name": "Anurag OS",
+  "description": "Interactive retro OS portfolio of Anurag Tripathi, AI Product Manager and Founder of Xenriq Systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#febc2e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

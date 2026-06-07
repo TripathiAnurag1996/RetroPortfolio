@@ -178,28 +178,28 @@ function MusicWindow() {
           onClick={handlePrev}
           title="Previous Track"
         >
-          ⏮
+          ◄◄
         </button>
         <button 
           className={`${styles.controlBtn} ${styles.playBtn} ${isPlaying ? styles.playing : ''}`}
           onClick={handlePlay}
           title={isPlaying ? 'Pause' : 'Play'}
         >
-          {isPlaying ? '⏸' : '▶'}
+          {isPlaying ? '❚❚' : '►'}
         </button>
         <button 
           className={styles.controlBtn}
           onClick={handleStop}
           title="Stop"
         >
-          ⏹
+          ■
         </button>
         <button 
           className={styles.controlBtn} 
           onClick={handleNext}
           title="Next Track"
         >
-          ⏭
+          ►►
         </button>
       </div>
 

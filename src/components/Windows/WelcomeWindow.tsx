@@ -3,19 +3,14 @@ import OptimizedImage from '../Common/OptimizedImage'
 import styles from './WelcomeWindow.module.css'
 
 function WelcomeWindow() {
-  const welcomeMessage = `SYSTEM BOOT COMPLETE... Welcome, Guest! 
-I’m Anurag Tripathi — an AI Product Manager & Founder building zero-to-one LLM products. You've just logged into my interactive Retro OS. Don't just read my resume; play with the apps, explore live AI demos, and uncover the product strategies hidden in the system below. Look around... who knows what Easter eggs you might find? 🕹️✨`
+
 
   return (
     <div className={styles.welcome}>
-      {/* Small icon bar at the very top of content like reference */}
-      <div className={styles.iconBar}>
-        <span className={styles.folderIcon}>📁</span>
-      </div>
-
-      {/* Top section: A bold text heading */}
+      {/* Top section: Folder icon and bold text heading */}
       <div className={styles.headingArea}>
-        <h1 className={styles.heading}>SYSTEM OVERVIEW</h1>
+        <span className={styles.folderIcon}>📁</span>
+        <h2 className={styles.heading}>SYSTEM OVERVIEW</h2>
       </div>
 
       {/* Image section (hero block) */}
@@ -33,7 +28,20 @@ I’m Anurag Tripathi — an AI Product Manager & Founder building zero-to-one L
       {/* Bottom text area section */}
       <div className={styles.messageSection}>
         <div className={styles.textAreaBox}>
-          <p className={styles.introText}>{welcomeMessage}</p>
+          <div className={styles.introText}>
+            <p className={styles.paragraph}>
+              <strong>SYSTEM BOOT COMPLETE... Welcome, Guest!</strong>
+            </p>
+            <p className={styles.paragraph}>
+              I’m Anurag Tripathi — an <strong>AI Product Manager & Founder</strong> building zero-to-one LLM products.
+            </p>
+            <p className={styles.paragraph}>
+              You've just logged into my interactive Retro OS. Don't just read my resume; play with the apps, explore live AI demos, and uncover the product strategies hidden in the system below.
+            </p>
+            <p className={styles.paragraph}>
+              Look around... who knows what Easter eggs you might find? 🕹️✨
+            </p>
+          </div>
           
           <div className={styles.featureGuide}>
             <h2 className={styles.guideTitle}>What’s inside:</h2>

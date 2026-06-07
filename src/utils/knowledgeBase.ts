@@ -5,7 +5,7 @@ export const anuragContext = {
     title: "AI Product Manager & Founder",
     tagline: "I build AI products from 0→1 — shipping LLM systems, voice AI, and ambient intelligence that real users depend on.",
     location: "Gurugram, India",
-    email: "anurag.akt@gmail.com",
+    email: "anurag@anuragtripathi.pro",
     linkedin: "https://www.linkedin.com/in/anuragtripathi-pm/",
     github: "https://github.com/TripathiAnurag1996/",
     twitter: "https://x.com/anuragships",
@@ -14,10 +14,10 @@ export const anuragContext = {
   },
 
   professionalSummary:
-    "AI Product Manager and Founder with 6+ years of experience spanning software engineering, embedded product ownership, and end-to-end AI product development. Independently conceived, built, and shipped multiple production AI products — a Chrome extension, a VS Code extension, and a Windows ambient AI assistant — reaching 1000+ users across 60+ countries within weeks of launch, with zero paid acquisition. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, retrieval-augmented generation, model evaluation, human-in-the-loop systems, multimodal AI, and voice AI pipelines. Combines a strong computer science foundation with OKR-driven roadmapping, data-driven prioritisation, and a consistent track record of shipping measurable outcomes. Equally comfortable defining product strategy with senior stakeholders and reviewing system architecture with engineering teams.",
+    "AI Product Manager and Founder with 6+ years of experience spanning software engineering, embedded product ownership, and end-to-end AI product development. Independently conceived, built, and SOLO shipped multiple production AI products — a Chrome extension, a VS Code extension, and a Windows ambient AI assistant — reaching 5000+ users across 60+ countries within a month of launch, with zero paid acquisition. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, retrieval-augmented generation, model evaluation, human-in-the-loop systems, multimodal AI, and voice AI pipelines. Combines a strong computer science foundation with OKR-driven roadmapping, data-driven prioritisation, and a consistent track record of shipping measurable outcomes. Equally comfortable defining product strategy with senior stakeholders and reviewing system architecture with engineering teams.",
 
   recruiterQuickPitch:
-    "AI Product Manager with a software engineering foundation who ships — not just plans. I've independently launched multiple AI-native products used by 1000+ users globally, designed LLM evaluation frameworks in production, and built voice AI and ambient intelligence systems from scratch. I bring rare technical depth to product roles: I've written the TypeScript, wired the IPC pipelines, and optimised latency to under 200ms — while also owning the roadmap, the GTM, and the metrics. If you're hiring an AI PM who can hold their own with any engineering team and still drive product strategy, that's the intersection I operate in.",
+    "AI Product Manager with a software engineering foundation who ships — not just plans. I've independently launched multiple AI-native products used by 5000+ users globally, designed LLM evaluation frameworks in production, and built voice AI and ambient intelligence systems from scratch. I bring rare technical depth to product roles: I've written the TypeScript, wired the IPC pipelines, and optimised latency to under 200ms — while also owning the roadmap, the GTM, and the metrics. If you're hiring an AI PM who can hold their own with any engineering team and still drive product strategy, that's the intersection I operate in.",
 
   domainFocus: [
     "AI Product Management",
@@ -61,7 +61,7 @@ export const anuragContext = {
   },
 
   impactHighlights: [
-    "Shipped 3 production AI products independently — 1000+ users across 60+ countries within weeks, zero paid acquisition.",
+    "Shipped 3 production AI products independently — 5000+ users across 60+ countries within weeks, zero paid acquisition.",
     "Achieved sub-200ms streaming transcription latency and ~1.0–1.5s perceived end-to-end response on a voice AI pipeline.",
     "Reduced LLM-assisted support ticket volume by 12% and increased self-service resolution by 10% within 90 days of launch.",
     "Delivered intelligent spending categorisation feature reaching 20% DAU adoption, top-3 engagement driver on the platform.",
@@ -75,7 +75,7 @@ export const anuragContext = {
       name: "Promptive Sentry",
       type: "Chrome Extension",
       company: "Xenriq Systems",
-      status: "Live — 1000+ users, 60+ countries, 3 weeks post-launch",
+      status: "Live — 5000+ users, 60+ countries, 3 weeks post-launch",
       url: "https://chromewebstore.google.com/detail/promptive-sentry/ikbkijdgnelcijmdkcaaoabmobagakim",
       tagline: "Most AI extensions add buttons. Promptive Sentry adds intelligence.",
       summary:
@@ -92,7 +92,7 @@ export const anuragContext = {
       name: "Promptive Sentry for IDE",
       type: "VS Code Marketplace Extension",
       company: "Xenriq Systems",
-      status: "Live — 1000+ active users, 1 week post-launch",
+      status: "Live — 5000+ active users, 1 week post-launch",
       url: "https://open-vsx.org/extension/xenriq/promptive-sentry-ide/",
       tagline: "The AI prompt layer your IDE was missing.",
       summary:
@@ -158,7 +158,7 @@ export const anuragContext = {
       summary:
         "Independently conceived, designed, built, and shipped 3 production AI-native products from zero to global traction. Operated across the full stack: product strategy, system architecture, LLM integration, GTM, and distribution — all solo.",
       highlights: [
-        "Shipped 3 AI products — Chrome extension, VS Code extension, Windows desktop app — reaching 1000+ users across 60+ countries with zero paid acquisition.",
+        "Shipped 3 AI products — Chrome extension, VS Code extension, Windows desktop app — reaching 5000+ users across 60+ countries with zero paid acquisition.",
         "Designed and implemented a multimodal voice AI pipeline achieving ~1.0–1.5s perceived end-to-end latency (down from 12–17s baseline) through 7-phase optimisation.",
         "Built a 7-layer IDE context collection pipeline in under 800ms using VS Code Extension APIs and AST parsing.",
         "Architected privacy-first, on-device AI systems including a full HIPAA-compliant mode with zero cloud dependency.",
@@ -301,7 +301,7 @@ export const anuragContext = {
     "I believe the best AI PMs build conviction through code, not just frameworks. I ship production systems, review architecture with engineering teams, and hold myself to the same standard I'd hold any engineer — because I've been one. My edge is the ability to move fluidly between defining product strategy and debugging a WebSocket audio pipeline at 2am. That's not a background detail. That's the job.",
 
   differentiators: [
-    "Founder who ships: 3 AI products in production, 1000+ users globally, zero paid acquisition.",
+    "Founder who ships: 3 AI products in production, 5000+ users globally, zero paid acquisition.",
     "Technical depth that goes beyond credentials: built voice AI, ambient intelligence, and LLM orchestration systems from scratch in TypeScript and Python.",
     "Full-stack AI PM: discovery → architecture → evaluation → GTM → post-launch iteration — owned end-to-end across every product.",
     "Proven in enterprise and solo-founder contexts: trusted by senior stakeholders at corporate scale and by users who pay nothing but keep coming back.",
@@ -323,7 +323,7 @@ export const anuragContext = {
   },
 
   socialProof: {
-    totalUsers: "1000+",
+    totalUsers: "5000+",
     countriesReached: "60+",
     timeToTraction: "Within weeks of launch per product",
     paidAcquisition: "Zero",

@@ -1,6 +1,8 @@
 import { memo } from 'react';
 import { anuragContext } from '../../../utils/knowledgeBase';
 
+declare const clarity: (action: string, key?: string, value?: string) => void;
+
 function PromptiveSentryIDE() {
   const product = anuragContext.products[1];
 
@@ -20,7 +22,7 @@ function PromptiveSentryIDE() {
           <span style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-window-bg)', padding: '4px 8px', fontFamily: 'var(--font-pixel)', fontSize: '10px', textTransform: 'uppercase', borderRadius: '2px' }}>✓ Verified Publisher</span>
         </div>
 
-        <h1 style={{ fontFamily: 'var(--font-pixel)', fontSize: '24px', fontWeight: 'normal', marginBottom: '8px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>{product.name}</h1>
+        <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '24px', fontWeight: 'normal', marginBottom: '8px', color: 'var(--color-text)', textTransform: 'uppercase', lineHeight: '1.4' }}>{product.name}</h2>
         <p style={{ fontSize: '22px', color: 'var(--color-text-muted)', marginBottom: '16px', fontStyle: 'normal', fontWeight: 400 }}>{product.tagline}</p>
 
         {/* Stats Row */}
@@ -39,7 +41,10 @@ function PromptiveSentryIDE() {
 
         {/* Action Button */}
         <button 
-          onClick={() => window.open(product.url, '_blank')}
+          onClick={() => {
+            if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+            window.open(product.url, '_blank');
+          }}
           style={{ 
             backgroundColor: 'var(--color-accent)', 
             color: 'var(--color-window-bg)', 

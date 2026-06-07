@@ -29,7 +29,7 @@ const EXPERIENCE = [
     location: 'Global / Remote',
     date: 'Jan 2024 - Present',
     bullets: [
-      'Shipped 3 AI products (Promptive Sentry, Piqque) reaching <strong class="digit-clear">1000+</strong> users across <strong class="digit-clear">60+</strong> countries',
+      'Shipped 3 AI products (Promptive Sentry, Piqque) reaching <strong class="digit-clear">5000+</strong> users across <strong class="digit-clear">60+</strong> countries',
       'Designed and implemented a multimodal voice AI pipeline achieving ~1.0–1.5s perceived end-to-end latency',
       'Architected privacy-first, on-device AI systems including a full HIPAA-compliant mode with zero cloud dependency',
       'Owned complete product lifecycle: discovery, architecture, implementation, GTM, and post-launch iteration'
@@ -114,7 +114,7 @@ const PRODUCTS = [
     description:
       'A dual-engine Chrome extension solving the AI prompt quality problem at the browser layer.',
     impact: [
-      'Live — <strong class="digit-clear">500+</strong> users, 60+ countries',
+      'Live — <strong class="digit-clear">2000+</strong> users, 60+ countries',
       'Transforms vague prompts into structured, role-defined AI instructions across Claude, ChatGPT, and Gemini',
       'Sentry Memory saves full conversation context as an AI-readable structured handoff'
     ],
@@ -129,7 +129,7 @@ const PRODUCTS = [
     description:
       'The AI prompt layer your IDE was missing. Automatically rewrites developer prompts with rich context before the AI model sees them.',
     impact: [
-      'Live — <strong class="digit-clear">500+</strong> active users',
+      'Live — <strong class="digit-clear">2000+</strong> active users',
       'Silent context collection pipeline capturing 7 IDE environment layers in under <strong class="digit-clear">800ms</strong>',
       'Zero setup, zero API keys, zero friction'
     ],
@@ -191,13 +191,21 @@ function MyComputerWindow() {
   }, [])
 
   const handleExternalClick = useCallback((label: string) => {
-    // event call can be before or after here as handleExternalClick is just a wrapper, 
-    // but we'll put it after the logic (which is empty here, but consistent)
-    event('external_link_clicked', {
-      category: 'navigation',
-      label: label.toUpperCase(),
-      source: 'my_computer'
-    })
+    if (label === 'EMAIL') {
+      event('contact_initiated', { category: 'conversion', label: 'mailto_click', source: 'my_computer' })
+    } else if (label === 'LINKEDIN') {
+      event('social_profile_clicked', { category: 'engagement', label: 'linkedin', source: 'my_computer' })
+    } else if (label === 'GITHUB') {
+      event('social_profile_clicked', { category: 'engagement', label: 'github', source: 'my_computer' })
+    } else if (label === 'TWITTER') {
+      event('social_profile_clicked', { category: 'engagement', label: 'twitter', source: 'my_computer' })
+    } else {
+      event('external_link_clicked', {
+        category: 'navigation',
+        label: label.toUpperCase(),
+        source: 'my_computer'
+      })
+    }
   }, [])
 
   const renderContent = () => {
@@ -366,11 +374,11 @@ function MyComputerWindow() {
               <div className={styles.contactRow}>
                 <span className={styles.contactRowIcon}>📧</span>
                 <a
-                  href="mailto:anurag.akt@gmail.com"
+                  href="mailto:anurag@anuragtripathi.pro"
                   className={styles.contactLink}
                   onClick={() => handleExternalClick('EMAIL')}
                 >
-                  anurag.akt@gmail.com
+                  anurag@anuragtripathi.pro
                 </a>
               </div>
 
@@ -392,7 +400,7 @@ function MyComputerWindow() {
                 <a
                   href="https://www.linkedin.com/in/anuragtripathi-pm/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className={styles.contactLink}
                   onClick={() => handleExternalClick('LINKEDIN')}
                 >
@@ -406,7 +414,7 @@ function MyComputerWindow() {
                 <a
                   href="https://github.com/TripathiAnurag1996/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className={styles.contactLink}
                   onClick={() => handleExternalClick('GITHUB')}
                 >
@@ -420,7 +428,7 @@ function MyComputerWindow() {
                 <a
                   href="https://x.com/anuragships"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className={styles.contactLink}
                   onClick={() => handleExternalClick('TWITTER')}
                 >

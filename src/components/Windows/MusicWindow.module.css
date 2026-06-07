@@ -1,59 +1,59 @@
 .player {
-  padding: 20px;
+  padding: 16px;
   font-family: var(--font-retro);
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #c0c0c0 0%, #a0a0a0 100%);
+  background: var(--color-window-bg); /* #c0c0c0 */
+  box-sizing: border-box;
 }
 
 .cassetteHeader {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
 }
 
 /* LCD Display */
 .lcdDisplay {
-  background: #1a2a1a;
-  border: 3px inset #666;
+  background: #000000;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
   padding: 12px;
   margin-bottom: 16px;
-  box-shadow: inset 2px 2px 8px rgba(0,0,0,0.5);
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,0.5);
+  font-family: 'VT323', monospace;
 }
 
 .nowPlaying {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: #4ECDC4;
+  font-size: 16px;
+  color: #00ff41;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
-  text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+  margin-bottom: 4px;
 }
 
 .trackTitle {
-  font-family: var(--font-pixel);
-  font-size: 12px;
-  color: #4ECDC4;
+  font-size: 20px;
+  color: #00ff41;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
 }
 
 .timeDisplay {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Courier New', monospace;
-  font-size: 20px;
-  font-weight: bold;
-  color: #4ECDC4;
-  text-shadow: 0 0 10px rgba(78, 205, 196, 0.6);
+  font-size: 24px;
+  color: #00ff41;
 }
 
 .timeCurrent,
@@ -62,40 +62,45 @@
 }
 
 .timeSeparator {
-  color: #4ECDC4;
+  color: #00ff41;
   opacity: 0.6;
 }
 
 /* Progress Bar */
 .progressContainer {
   margin-bottom: 16px;
+  padding: 4px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
 }
 
 .progressBar {
   width: 100%;
-  height: 20px;
-  background: #333;
-  border: 3px inset #666;
+  height: 18px;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
   cursor: pointer;
   position: relative;
-  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #4ECDC4 0%, #44A08D 100%);
+  background: #000080; /* Classic Win95 Navy Blue */
   transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
 }
 
 .progressHandle {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 12px;
-  height: 24px;
-  background: linear-gradient(180deg, #ddd 0%, #999 100%);
-  border: 2px outset #ccc;
+  width: 10px;
+  height: 22px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
   cursor: grab;
 }
 
@@ -109,34 +114,36 @@
 
 .controlBtn {
   width: 50px;
-  height: 40px;
-  background: linear-gradient(180deg, #ddd 0%, #bbb 100%);
-  border: 2px outset #ccc;
+  height: 36px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  transition: all 0.1s ease;
-}
-
-.controlBtn:hover:not(:disabled) {
-  background: linear-gradient(180deg, #eee 0%, #ccc 100%);
+  font-size: 14px;
+  color: #000000;
+  font-family: Arial, sans-serif; /* Fallback to clean sans for geometry chars */
 }
 
 .controlBtn:active:not(:disabled) {
-  border-style: inset;
-  background: linear-gradient(180deg, #bbb 0%, #999 100%);
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: inset 1px 1px 0 #000000;
+  padding-top: 2px; /* Inner shift text down */
+  padding-left: 2px; /* Inner shift text right */
+  background: #c0c0c0;
 }
 
 .controlBtn:disabled {
-  opacity: 0.5;
+  color: #808080;
+  text-shadow: 1px 1px 0 #ffffff;
   cursor: not-allowed;
 }
 
 .controlBtn.playing {
-  background: linear-gradient(180deg, #4ECDC4 0%, #44A08D 100%);
-  color: white;
+  /* No special color in win95, just standard button */
 }
 
 .playBtn {
@@ -148,112 +155,140 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
-  background: #d0d0d0;
-  border: 2px inset #999;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
 }
 
 .volumeLabel {
   font-family: var(--font-pixel);
-  font-size: 9px;
-  text-transform: uppercase;
-  color: #333;
+  font-size: 10px;
+  color: #000;
   min-width: 50px;
 }
 
 .volumeSlider {
   flex: 1;
   height: 20px;
-  background: #333;
-  border: 2px inset #666;
+  background: transparent;
   cursor: pointer;
-  position: relative;
   -webkit-appearance: none;
   appearance: none;
+  margin: 0;
 }
 
+/* Track styling for Win95 */
+.volumeSlider::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin-top: 7px;
+}
+
+.volumeSlider::-moz-range-track {
+  height: 6px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin-top: 7px;
+}
+
+/* Thumb styling for Win95 */
 .volumeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 24px;
-  background: linear-gradient(180deg, #ddd 0%, #999 100%);
-  border: 2px outset #ccc;
+  width: 11px;
+  height: 21px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
   cursor: grab;
+  margin-top: -9px; /* Align with track */
 }
 
 .volumeSlider::-moz-range-thumb {
-  width: 14px;
-  height: 24px;
-  background: linear-gradient(180deg, #ddd 0%, #999 100%);
-  border: 2px outset #ccc;
+  width: 11px;
+  height: 21px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
   cursor: grab;
-}
-
-.volumeSlider::-webkit-slider-runnable-track {
-  height: 100%;
-  background: linear-gradient(90deg, #4ECDC4 0%, #44A08D 100%);
+  border-radius: 0;
 }
 
 .volumeValue {
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: bold;
-  color: #333;
-  min-width: 40px;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: #000;
+  min-width: 32px;
   text-align: right;
+  background: #ffffff;
+  padding: 2px 4px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
 }
 
 /* Status Bar */
 .statusBar {
   margin-top: auto;
-  padding: 8px 12px;
-  background: #d0d0d0;
-  border: 2px inset #999;
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  text-transform: uppercase;
-  color: #666;
+  padding: 4px;
   display: flex;
   justify-content: space-between;
+  gap: 4px;
+}
+
+.statusBar > span {
+  padding: 4px 8px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.statusBar > span:first-child {
+  flex: 1;
 }
 
 .statusIcon {
   display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 6px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+  margin-right: 8px;
+  box-shadow: inset 1px 1px 0 #808080;
 }
 
 .statusIcon.playing {
-  background: #4ECDC4;
-  animation: pulse 1s infinite;
+  background: #00ff00;
 }
 
 .statusIcon.paused {
-  background: #ffcc00;
+  background: #ffff00;
 }
 
 .statusIcon.stopped {
-  background: #999;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  background: #808080;
 }
 
 /* Responsive */
 @media (max-width: 400px) {
   .player {
-    padding: 12px;
+    padding: 8px;
   }
   
   .controlBtn {
     width: 40px;
-    height: 35px;
-    font-size: 14px;
+    height: 32px;
+    font-size: 12px;
   }
   
   .playBtn {
@@ -261,6 +296,6 @@
   }
   
   .timeDisplay {
-    font-size: 16px;
+    font-size: 20px;
   }
 }

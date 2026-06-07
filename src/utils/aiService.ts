@@ -1,23 +1,26 @@
-import { anuragContext } from "./knowledgeBase";
-import { personaPrompts, PersonaType } from "./personaConfig";
+// import { anuragContext } from "./knowledgeBase";
+import { PersonaType } from "./personaConfig";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+// const _API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-const API_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent";
+// const _API_URL =
+//   "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent";
 
 /**
  * Intent Types
  */
+/*
 type Intent =
   | "professional"
   | "playful_redirect"
   | "easter_eggs"
   | "off_limits";
+*/
 
 /**
  * Intent keyword map
  */
+/*
 const intentWeights: Record<Intent, string[]> = {
   professional: [
     "experience",
@@ -54,11 +57,13 @@ const intentWeights: Record<Intent, string[]> = {
     "controversial"
   ]
 };
+*/
 
 /**
  * Improved intent classifier
  */
-const classifyIntent = (query: string): Intent => {
+/*
+const _classifyIntent = (query: string): Intent => {
   const q = query.toLowerCase();
 
   const scores: Record<Intent, number> = {
@@ -81,10 +86,12 @@ const classifyIntent = (query: string): Intent => {
 
   return best[1] > 0 ? (best[0] as Intent) : "professional";
 };
+*/
 
 /**
  * Intent behavior rules
  */
+/*
 const intentConstraints: Record<Intent, string> = {
   professional: `
 - Be direct and structured.
@@ -111,10 +118,12 @@ const intentConstraints: Record<Intent, string> = {
 - Redirect to professional topics.
 `
 };
+*/
 
 /**
  * Identity prompt
  */
+/*
 const baseIdentity = `
 You are Anurag Kumar Tripathi speaking in first person.
 
@@ -125,11 +134,13 @@ Tone:
 - Senior Product Manager mindset
 - No buzzwords or resume dumping
 `;
+*/
 
 /**
  * Build system instructions
  */
-const buildSystemInstructions = (
+/*
+const _buildSystemInstructions = (
   persona: PersonaType,
   intent: Intent
 ) => {
@@ -159,11 +170,13 @@ ${intentContext}
 5. If missing data, admit it and redirect.
 `;
 };
+*/
 
 /**
  * Fetch with timeout
  */
-const fetchWithTimeout = async (
+/*
+const _fetchWithTimeout = async (
   url: string,
   options: RequestInit,
   timeout = 20000
@@ -181,14 +194,18 @@ const fetchWithTimeout = async (
 
   return response;
 };
+*/
 
 /**
  * Main conversational AI
  */
 export const getAIResponse = async (
-  userQuery: string,
-  persona: PersonaType
+  _userQuery: string,
+  _persona: PersonaType
 ) => {
+  // MAINTENANCE MODE: Disable API calls
+  throw new Error("SYSTEM MAINTENANCE: AI Assistant is currently offline.");
+  /*
   if (!API_KEY) {
     throw new Error("Gemini API key missing.");
   }
@@ -249,15 +266,19 @@ export const getAIResponse = async (
     console.error("Gemini error:", error);
     throw new Error(error?.message || "AI request failed");
   }
+  */
 };
 
 /**
  * Product analysis mode
  */
 export const getProductAnalysis = async (
-  query: string,
-  persona: PersonaType = "browsing"
+  _query: string,
+  _persona: PersonaType = "browsing"
 ) => {
+  // MAINTENANCE MODE: Disable API calls
+  throw new Error("SYSTEM MAINTENANCE: Product Analysis is currently offline.");
+  /*
   if (!API_KEY) {
     throw new Error("Gemini API key missing.");
   }
@@ -320,4 +341,5 @@ Persona context: ${persona}
     console.error("Gemini analysis error:", error);
     throw new Error(error?.message || "AI analysis failed");
   }
+  */
 };

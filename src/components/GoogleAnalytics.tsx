@@ -7,10 +7,13 @@ const GoogleAnalytics = () => {
   const lastPathname = useRef<string | null>(null);
   const scriptInjected = useRef(false);
 
-  useEffect(() => {
+  const initGA4 = () => {
     const GA_ID = gtag.GA_TRACKING_ID;
 
     if (!GA_ID) return;
+
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent !== 'accepted') return;
 
     // 1. Inject Script (Only Once)
     const existingScript = document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_ID}"]`);
@@ -38,6 +41,12 @@ const GoogleAnalytics = () => {
         console.log('[GA4] Analytics initialized');
       }
     }
+  };
+
+  useEffect(() => {
+    initGA4();
+    window.addEventListener('cookieConsentGranted', initGA4);
+    return () => window.removeEventListener('cookieConsentGranted', initGA4);
   }, []);
 
   useEffect(() => {

@@ -33,7 +33,7 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
   },
   music: {
     id: "music",
-    title: "MUSIC PLAYER - RETRO JAMS",
+    title: "Media Player",
     icon: "music",
     defaultSize: { width: 380, height: 420 },
   },
@@ -128,7 +128,7 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     id: "resume",
     label: "RESUME.PDF",
     icon: "pdf",
-    externalUrl: "/Anurag%20Tripathi_AI%20Product%20Manager.pdf",
+    externalUrl: "/Anurag%20Tripathi_AI%20PM.pdf",
     position: { row: 0, col: 2 },
   },
   {

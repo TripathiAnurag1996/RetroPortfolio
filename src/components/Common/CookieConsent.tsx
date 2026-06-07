@@ -16,6 +16,7 @@ const CookieConsent = () => {
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
+    window.dispatchEvent(new Event('cookieConsentGranted'));
     setShow(false)
     initGA()
   }

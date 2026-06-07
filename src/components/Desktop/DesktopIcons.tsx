@@ -6,6 +6,8 @@ import { event } from '../../lib/gtag'
 import Icon from '../Icons/Icon'
 import styles from './DesktopIcons.module.css'
 
+declare const clarity: (action: string, key?: string, value?: string) => void;
+
 function DesktopIcons() {
   const { openWindow } = useWindows()
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -18,13 +20,30 @@ function DesktopIcons() {
   const handleDoubleClick = useCallback((id: string, windowId: string | undefined, externalUrl: string | undefined) => {
     // Handle external URLs (like resume PDF) - open in new tab
     if (externalUrl) {
+      if (id === 'resume' && typeof clarity !== "undefined") { clarity("event", "resume_viewed"); }
       playClickSound()
       window.open(externalUrl, '_blank', 'noopener,noreferrer')
-      event('external_link_clicked', {
-        category: 'navigation',
-        label: id.toUpperCase(),
-        source: 'desktop'
-      })
+      
+      if (id === 'resume') {
+        event('resume_downloaded', {
+          category: 'conversion',
+          label: 'resume_cta',
+          source: 'desktop_icon'
+        })
+        // TODO: Mark resume_downloaded as Key Event in GA4 dashboard
+      } else if (id === 'linkedin' || id === 'github' || id === 'twitter' || id === 'x') {
+        event('social_profile_clicked', {
+          category: 'engagement',
+          label: id,
+          source: 'desktop'
+        })
+      } else {
+        event('external_link_clicked', {
+          category: 'navigation',
+          label: id.toUpperCase(),
+          source: 'desktop'
+        })
+      }
       return
     }
     // Handle window opening
@@ -43,12 +62,29 @@ function DesktopIcons() {
       e.preventDefault()
       // Handle external URLs (like resume PDF)
       if (externalUrl) {
+        if (id === 'resume' && typeof clarity !== "undefined") { clarity("event", "resume_viewed"); }
         window.open(externalUrl, '_blank', 'noopener,noreferrer')
-        event('external_link_clicked', {
-          category: 'navigation',
-          label: id.toUpperCase(),
-          source: 'desktop'
-        })
+        
+        if (id === 'resume') {
+          event('resume_downloaded', {
+            category: 'conversion',
+            label: 'resume_cta',
+            source: 'desktop_icon'
+          })
+          // TODO: Mark resume_downloaded as Key Event in GA4 dashboard
+        } else if (id === 'linkedin' || id === 'github' || id === 'twitter' || id === 'x') {
+          event('social_profile_clicked', {
+            category: 'engagement',
+            label: id,
+            source: 'desktop'
+          })
+        } else {
+          event('external_link_clicked', {
+            category: 'navigation',
+            label: id.toUpperCase(),
+            source: 'desktop'
+          })
+        }
         return
       }
       if (windowId) {

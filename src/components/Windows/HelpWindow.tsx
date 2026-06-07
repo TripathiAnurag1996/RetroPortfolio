@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HelpWindow.module.css';
+import { event } from '../../lib/gtag';
 
 const HELP_DATA = {
   services: [
@@ -9,7 +10,7 @@ const HELP_DATA = {
     'MENTORSHIP',
     'FOR HIRING'
   ],
-  email: 'ANURAG.AKT@GMAIL.COM',
+  email: 'ANURAG@ANURAGTRIPATHI.PRO',
   socials: [
     { label: 'L', name: 'LINKEDIN.COM/IN/ANURAGTRIPATHI-PM', url: 'https://www.linkedin.com/in/anuragtripathi-pm/' },
     { label: 'X', name: 'X.COM/ANURAGSHIPS', url: 'https://x.com/anuragships' }
@@ -36,6 +37,7 @@ const HelpWindow: React.FC = () => {
           <a 
             href={`mailto:${HELP_DATA.email}`} 
             className={styles.emailLink}
+            onClick={() => event('contact_initiated', { category: 'conversion', label: 'mailto_click', source: 'contact_window' })}
           >
             {HELP_DATA.email}
           </a>
@@ -51,8 +53,9 @@ const HelpWindow: React.FC = () => {
               <a 
                 href={social.url} 
                 target="_blank" 
-                rel="noopener noreferrer" 
+                rel="me noopener noreferrer" 
                 className={styles.socialLink}
+                onClick={() => event('social_profile_clicked', { category: 'engagement', label: social.label === 'X' ? 'twitter' : 'linkedin', source: 'contact_window' })}
               >
                 {social.name}
               </a>
