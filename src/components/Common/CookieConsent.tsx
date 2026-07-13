@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { initGA } from '../../utils/analytics'
+
 import styles from './CookieConsent.module.css'
 
 const CookieConsent = () => {
@@ -10,7 +10,7 @@ const CookieConsent = () => {
     if (!consent) {
       setShow(true)
     } else if (consent === 'accepted') {
-      initGA()
+      // GA is handled by GoogleAnalytics component listening to cookieConsentGranted
     }
   }, [])
 
@@ -18,7 +18,6 @@ const CookieConsent = () => {
     localStorage.setItem('cookie-consent', 'accepted')
     window.dispatchEvent(new Event('cookieConsentGranted'));
     setShow(false)
-    initGA()
   }
 
   const handleDecline = () => {

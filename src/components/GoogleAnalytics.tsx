@@ -9,6 +9,7 @@ const GoogleAnalytics = () => {
 
   const initGA4 = () => {
     const GA_ID = gtag.GA_TRACKING_ID;
+    console.log('[GA4 Debug] Resolved VITE_GA_ID is:', GA_ID);
 
     if (!GA_ID) return;
 
