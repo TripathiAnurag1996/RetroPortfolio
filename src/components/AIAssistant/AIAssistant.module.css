@@ -133,6 +133,39 @@
   border: 1px inset #ffffff;
 }
 
+.retroCloseBtn {
+  background: #c0c0c0;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  color: #000;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  user-select: none;
+}
+
+.retroCloseBtn:hover {
+  background: #d0d0d0;
+}
+
+.retroCloseBtn:active {
+  border-left: 2px solid #808080;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 1px 0 0 1px;
+}
+
 /* Persona Selector */
 .personaDialog {
   position: absolute;

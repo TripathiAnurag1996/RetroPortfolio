@@ -6,10 +6,12 @@ import { PersonaType } from '../../utils/personaConfig';
 import { getAIResponse } from '../../utils/aiService';
 import { playClickSound, playMessageSound } from '../../utils/audio';
 import { event } from '../../lib/gtag';
+import { useWindows } from '../../context/WindowContext';
 
 declare const clarity: (action: string, key?: string, value?: string) => void;
 
 const AIAssistant: React.FC = () => {
+  const { closeWindow } = useWindows();
   const [persona, setPersona] = useState<PersonaType | null>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('visitorPersona') as PersonaType | null;
@@ -130,13 +132,24 @@ const AIAssistant: React.FC = () => {
 
   return (
     <div className={styles.assistantContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', padding: '2px 4px', borderBottom: '1px solid #808080' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', padding: '2px 4px', borderBottom: '1px solid #808080' }}>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <span className={styles.searchLabel}>PERSONA:</span>
           <span className={styles.personaBadge} onClick={() => setIsSelectingPersona(true)} title="Change Persona">
             {persona.toUpperCase().replace('_', ' ')}
           </span>
         </div>
+        <button 
+          className={styles.retroCloseBtn} 
+          onClick={() => {
+            playClickSound();
+            closeWindow('assistant');
+          }}
+          aria-label="Close Assistant window"
+          title="Close"
+        >
+          ×
+        </button>
       </div>
 
       <div className={styles.searchBarWrapper}>
