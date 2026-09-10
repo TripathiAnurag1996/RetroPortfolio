@@ -22,6 +22,7 @@ const CookieConsent = () => {
 
   const handleDecline = () => {
     localStorage.setItem('cookie-consent', 'declined')
+    window.dispatchEvent(new Event('cookieConsentDeclined'));
     setShow(false)
   }
 

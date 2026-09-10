@@ -1,7 +1,7 @@
 import { anuragContext, personaPrompts, PersonaType } from "./lib/context";
 
-const API_KEY = process.env.NVIDIA_API_KEY;
-const API_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
+const API_KEY = process.env.OPENROUTER_API_KEY;
+const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 type Intent = "professional" | "playful_redirect" | "easter_eggs" | "off_limits";
 
@@ -139,7 +139,7 @@ export const handler = async (event: any) => {
   }
 
   if (!API_KEY) {
-    return { statusCode: 500, body: JSON.stringify({ error: "NVIDIA_API_KEY missing from environment variables." }) };
+    return { statusCode: 500, body: JSON.stringify({ error: "OPENROUTER_API_KEY missing from environment variables." }) };
   }
 
   let body: any;
@@ -179,10 +179,12 @@ export const handler = async (event: any) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${API_KEY}`
+          "Authorization": `Bearer ${API_KEY}`,
+          "HTTP-Referer": "https://anuragtripathi.pro",
+          "X-Title": "Retro Portfolio OS"
         },
         body: JSON.stringify({
-          model: "meta/llama-3.1-8b-instruct",
+          model: "google/gemini-2.5-flash-lite",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userQuery }
@@ -197,10 +199,9 @@ export const handler = async (event: any) => {
 
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
-      // Using proper backticks for the template literal
       return { 
         statusCode: response.status, 
-        body: JSON.stringify({ error: err?.error?.message || `NVIDIA API failed with status ${response.status}` }) 
+        body: JSON.stringify({ error: err?.error?.message || `OpenRouter API failed with status ${response.status}` }) 
       };
     }
 
@@ -218,7 +219,7 @@ export const handler = async (event: any) => {
     };
 
   } catch (error: any) {
-    console.error("NVIDIA API error:", error);
+    console.error("OpenRouter API error:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error?.message || "AI request failed" })

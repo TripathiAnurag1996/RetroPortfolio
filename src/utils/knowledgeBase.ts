@@ -75,7 +75,7 @@ export const anuragContext = {
       name: "Promptive Sentry",
       type: "Chrome Extension",
       company: "Xenriq Systems",
-      status: "Live — 5000+ users, 60+ countries, 3 weeks post-launch",
+      status: "Live — 20000+ global users, 74+ countries, 3 weeks post-launch",
       url: "https://chromewebstore.google.com/detail/promptive-sentry/ikbkijdgnelcijmdkcaaoabmobagakim",
       tagline: "Most AI extensions add buttons. Promptive Sentry adds intelligence.",
       summary:

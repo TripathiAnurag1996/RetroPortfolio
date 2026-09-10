@@ -28,15 +28,21 @@ function PromptiveSentry() {
         {/* Stats Row */}
         <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
           {[
-            product.status.split('—')[1].split(',')[0].trim().replace(/\b\w/g, l => l.toUpperCase()),
-            product.status.split(',')[1].trim().replace(/\b\w/g, l => l.toUpperCase()),
-            'Privacy First', 
-            'No Account Required'
+            '20,000+ Active Users',
+            '60+ Countries',
+            'Zero Data Stored', 
+            'No Sign-Up'
           ].map((stat, i) => (
             <div key={i} style={{ padding: '4px 10px', fontSize: '16px', border: '2px solid var(--border-dark)', color: 'var(--color-text)', backgroundColor: 'var(--color-window-bg)' }}>
               {stat}
             </div>
           ))}
+        </div>
+
+        {/* Trust bar */}
+        <div style={{ marginBottom: '24px', fontSize: '18px', lineHeight: '1.5' }}>
+          <div style={{ color: 'var(--color-text-muted)' }}>Trusted by developers at startups, agencies, and Fortune 500 teams</div>
+          <div style={{ color: 'var(--color-text)' }}>Works seamlessly with Claude · ChatGPT · Gemini</div>
         </div>
 
         {/* Action Button */}
@@ -74,6 +80,15 @@ function PromptiveSentry() {
           Install Free
         </button>
 
+        {/* Social Proof Strip */}
+        <div style={{ display: 'flex', gap: '12px', fontSize: '16px', color: 'var(--color-text)', marginBottom: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <span>⭐ Featured on Chrome Web Store</span>
+          <span style={{ color: 'var(--border-dark)' }}>|</span>
+          <span>🔒 Privacy-first, zero backend dependency</span>
+          <span style={{ color: 'var(--border-dark)' }}>|</span>
+          <span>🌍 Used across 60+ countries</span>
+        </div>
+
         {/* Features */}
         <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '14px', marginBottom: '12px', color: 'var(--color-text)', textTransform: 'uppercase', borderBottom: '2px solid var(--border-dark)', paddingBottom: '8px' }}>Features</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '16px', marginBottom: '48px' }}>
@@ -84,6 +99,12 @@ function PromptiveSentry() {
           ))}
         </div>
 
+        {/* Why Developers Switch */}
+        <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '14px', marginBottom: '12px', color: 'var(--color-text)', textTransform: 'uppercase', borderBottom: '2px solid var(--border-dark)', paddingBottom: '8px' }}>Why Developers Switch To Promptive Sentry</h2>
+        <div style={{ backgroundColor: 'var(--color-window-bg)', padding: '16px', border: '2px solid var(--border-dark)', color: 'var(--color-text)', fontSize: '18px', lineHeight: '1.6', marginBottom: '48px' }}>
+          Most tools just enhance a prompt once. Promptive Sentry remembers your full session, tracks your usage in real time, and works the same way across every major AI platform — without sending your data anywhere.
+        </div>
+
         {/* Tech Stack */}
         <h2 style={{ fontFamily: 'var(--font-pixel)', fontSize: '14px', marginBottom: '12px', color: 'var(--color-text)', textTransform: 'uppercase', borderBottom: '2px solid var(--border-dark)', paddingBottom: '8px' }}>Tech Stack</h2>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', paddingBottom: '32px' }}>
@@ -92,6 +113,10 @@ function PromptiveSentry() {
               {tech}
             </span>
           ))}
+        </div>
+        {/* Footer */}
+        <div style={{ textAlign: 'center', marginTop: '48px', paddingTop: '24px', borderTop: '2px solid var(--border-dark)', color: 'var(--color-text-muted)', fontSize: '14px' }}>
+          Built by developers, for developers. No account. No tracking. No nonsense.
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useCallback, ReactNode } from 'r
 import { WindowState, WindowContextType } from '../types'
 import { WINDOW_CONFIGS } from '../config/windows'
 import { playClickSound } from '../utils/audio'
+import * as gtag from '../lib/gtag'
 
 declare const clarity: (action: string, key?: string, value?: string) => void;
 
@@ -242,12 +243,12 @@ export function WindowProvider({ children }: { children: ReactNode }) {
     playClickSound()
     dispatch({ type: 'OPEN_WINDOW', payload: { id } })
 
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'page_view', {
-        page_path: `/os/window/${id}`,
-        page_title: id.toUpperCase()
-      });
-    }
+    gtag.event('page_view', {
+      category: 'navigation',
+      label: id.toUpperCase(),
+      page_path: `/os/window/${id}`,
+      page_title: id.toUpperCase()
+    });
   }, [])
   
   const closeWindow = useCallback((id: string) => {

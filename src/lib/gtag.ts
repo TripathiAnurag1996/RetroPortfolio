@@ -49,6 +49,20 @@ export const setUserContext = (context: Partial<UserContext>) => {
   }
 };
 
+/**
+ * Update GA4 consent state
+ */
+export const updateConsent = (granted: boolean) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('consent', 'update', {
+      analytics_storage: granted ? 'granted' : 'denied'
+    });
+    if (IS_DEBUG) {
+      console.log(`[GA4] Consent updated: analytics_storage = ${granted ? 'granted' : 'denied'}`);
+    }
+  }
+};
+
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
   if (!GA_TRACKING_ID) return;

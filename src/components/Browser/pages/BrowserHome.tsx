@@ -23,7 +23,7 @@ function BrowserHome() {
         Product Directory
       </h2>
       <p style={{ fontFamily: 'var(--font-pixel)', fontSize: '12px', color: 'var(--color-text-light)', marginBottom: '48px', textTransform: 'uppercase' }}>
-        3 products · 5000+ users · 60+ countries
+        Multiple Products · 30000+ users · 74+ countries
       </p>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', width: '100%', maxWidth: '800px' }}>
