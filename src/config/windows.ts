@@ -6,6 +6,8 @@ export interface WindowConfig {
   defaultSize: { width: number; height: number };
 }
 
+import { SHOUTOUTS_FEATURE_NAME, SHOUTOUTS_WINDOW_TITLE } from './shoutouts';
+
 export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
   about: {
     id: "about",
@@ -103,18 +105,30 @@ export const WINDOW_CONFIGS: Record<string, WindowConfig> = {
     icon: "video",
     defaultSize: { width: 800, height: 500 },
   },
+  shoutouts: {
+    id: "shoutouts",
+    title: SHOUTOUTS_WINDOW_TITLE,
+    icon: "shoutouts",
+    defaultSize: { width: 920, height: 600 },
+  },
+  "wall-of-fame": {
+    id: "shoutouts",
+    title: SHOUTOUTS_WINDOW_TITLE,
+    icon: "shoutouts",
+    defaultSize: { width: 920, height: 600 },
+  },
 };
 
 import { DesktopIconData } from "../types";
 
 // Desktop icons configuration - reorganized for portfolio
 export const DESKTOP_ICONS: DesktopIconData[] = [
-  // Top Row - Main Navigation
+  // Top Row (Row 1 visually)
   {
-    id: "my-computer",
-    label: "MY COMPUTER",
-    icon: "computer",
-    windowId: "my-computer",
+    id: "shoutouts",
+    label: SHOUTOUTS_FEATURE_NAME,
+    icon: "shoutouts",
+    windowId: "shoutouts",
     position: { row: 0, col: 0 },
   },
   {
@@ -128,90 +142,100 @@ export const DESKTOP_ICONS: DesktopIconData[] = [
     id: "resume",
     label: "RESUME.PDF",
     icon: "pdf",
-    externalUrl: "/Anurag%20Tripathi_AI%20PM.pdf",
+    externalUrl: "/Anurag%20Tripathi_Senior%20AI%20Product%20Manager.pdf",
     position: { row: 0, col: 2 },
+  },
+
+  // Second Row (Row 2 visually)
+  {
+    id: "my-computer",
+    label: "MY COMPUTER",
+    icon: "computer",
+    windowId: "my-computer",
+    position: { row: 1, col: 0 },
   },
   {
     id: "linkedin",
     label: "LINKEDIN",
     icon: "linkedin",
     externalUrl: "https://www.linkedin.com/in/anuragtripathi-pm/",
-    position: { row: 0, col: 3 },
+    position: { row: 1, col: 1 },
   },
-
-  // Second Row - Tools & Featured
   {
     id: "settings",
     label: "SETTINGS",
     icon: "settings",
     windowId: "settings",
-    position: { row: 1, col: 0 },
+    position: { row: 1, col: 2 },
   },
+
+  // Third Row (Row 3 visually)
   {
     id: "guestbook",
     label: "GUESTBOOK",
     icon: "guestbook",
     windowId: "guestbook",
-    position: { row: 1, col: 1 },
+    position: { row: 2, col: 0 },
   },
   {
     id: "paint",
     label: "PAINT",
     icon: "paint",
     windowId: "paint",
-    position: { row: 1, col: 2 },
+    position: { row: 2, col: 1 },
   },
   {
     id: "products",
     label: "MY PRODUCTS",
     icon: "folder",
     windowId: "products",
-    position: { row: 1, col: 3 },
+    position: { row: 2, col: 2 },
   },
 
-  // Third Row - Apps
+  // Fourth Row (Row 4 visually)
   {
     id: "music",
     label: "MUSIC",
     icon: "music",
     windowId: "music",
-    position: { row: 2, col: 0 },
+    position: { row: 3, col: 0 },
   },
   {
     id: "kickflip",
     label: "SNACK GAME",
     icon: "game",
     windowId: "snakegame",
-    position: { row: 2, col: 1 },
+    position: { row: 3, col: 1 },
   },
   {
     id: "notepad",
     label: "MEMO.TXT",
     icon: "document",
     windowId: "notepad",
-    position: { row: 2, col: 2 },
+    position: { row: 3, col: 2 },
+  },
+
+  // Fifth Row (Row 5 visually)
+  { id: "trash", label: "TRASH", icon: "trash", position: { row: 4, col: 0 } },
+  {
+    id: "mediaplayer",
+    label: "MEDIA PLAYER",
+    icon: "video",
+    windowId: "mediaplayer",
+    position: { row: 4, col: 1 },
   },
   {
     id: "browser",
     label: "INTERNET",
     icon: "internet",
     windowId: "browser",
-    position: { row: 2, col: 3 },
-  },
-
-  // Bottom
-  { id: "trash", label: "TRASH", icon: "trash", position: { row: 3, col: 0 } },
-  {
-    id: "mediaplayer",
-    label: "MEDIA PLAYER",
-    icon: "video",
-    windowId: "mediaplayer",
-    position: { row: 3, col: 1 },
+    position: { row: 4, col: 2 },
   },
 ];
 
-// Taskbar icons
+// Taskbar icons - SHOUTOUTS placed first
 export const TASKBAR_ICONS = [
+  { id: "shoutouts", icon: "shoutouts", windowId: "shoutouts" },
   { id: "about", icon: "about", windowId: "about" },
   { id: "my-computer", icon: "computer", windowId: "my-computer" },
   { id: "settings", icon: "settings", windowId: "settings" },

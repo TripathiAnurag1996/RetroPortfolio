@@ -151,10 +151,79 @@
   font-size: 8px;
   text-transform: uppercase;
   color: var(--color-menubar-text);
+  white-space: nowrap;
+}
+
+/* Wall of Fame Scrolling Ticker */
+.fameTicker {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #000080;
+  color: #ffff00;
+  border: 1px solid #ffffff;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.06em;
+  max-width: 220px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.4), inset -1px -1px 0 rgba(0,0,0,0.4);
+}
+
+.fameTicker:hover {
+  background: #1010a0;
+  color: #ffffff;
+}
+
+.tickerStar {
+  color: #ffd700;
+  font-size: 8px;
+  flex-shrink: 0;
+  animation: starPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.tickerTrack {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 190px;
+}
+
+.tickerContent {
+  display: inline-block;
+  animation: tickerScroll 16s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerContent {
+    animation: none;
+    padding-left: 0;
+  }
+  .tickerStar {
+    animation: none;
+  }
 }
 
 @media (max-width: 767px) {
   .menuItems {
+    display: none;
+  }
+  
+  .fameTicker {
     display: none;
   }
   

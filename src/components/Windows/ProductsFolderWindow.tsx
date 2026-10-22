@@ -4,6 +4,7 @@ import styles from './ProductsFolderWindow.module.css';
 import Icon from '../Icons/Icon';
 import { playClickSound } from '../../utils/audio';
 import { event } from '../../lib/gtag';
+import { trackClarityEvent } from '../../lib/clarity';
 
 const PRODUCTS = [
   {
@@ -24,6 +25,7 @@ function ProductsFolderWindow() {
   const { openWindow } = useWindows();
 
   const handleOpenProduct = (id: string, url: string) => {
+    trackClarityEvent("product_opened", id);
     playClickSound();
     openWindow('browser');
     setTimeout(() => {
@@ -56,6 +58,23 @@ function ProductsFolderWindow() {
             <span className={styles.iconLabel}>{product.label}</span>
           </div>
         ))}
+
+        {/* Shoutouts shortcut */}
+        <div 
+          className={styles.iconWrapper}
+          onDoubleClick={() => {
+            trackClarityEvent("shoutouts_opened_from_products");
+            playClickSound();
+            openWindow('shoutouts');
+          }}
+          onClick={() => playClickSound()}
+          title="56 creator mentions across 5 platforms"
+        >
+          <Icon name="shoutouts" size={48} />
+          <span className={styles.iconLabel} style={{ color: '#000080', fontWeight: 'bold' }}>
+            SHOUTOUTS (56)
+          </span>
+        </div>
       </div>
     </div>
   );

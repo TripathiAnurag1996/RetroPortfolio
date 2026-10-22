@@ -4,7 +4,7 @@
 
 ## Identity
 - Full Name: Anurag Kumar Tripathi
-- Role: AI Product Manager at Next Square Technologies
+- Role: AI Product Manager & Founder
 - Founder: Xenriq Systems (AI Product Studio, Gurugram, India)
 - Handle: @anuragships
 - Website: https://anuragtripathi.pro
@@ -14,20 +14,19 @@
 - B.Tech Computer Science, UPES
 - IBM Certified: AI Product Management
 - McKinsey Forward Program alumni
-- Engineering experience: Hexaware, Xoriant, Aithent, 
-  Next Square Technologies
+- Engineering experience: Hexaware, Xoriant, Aithent
 
 ## Products Built (under Xenriq Systems)
 1. Promptive Sentry (Chrome Extension)
    - AI prompt enhancement and usage monitoring
    - Platforms: Claude, ChatGPT, Gemini
    - Store: Chrome Web Store
-   - Status: Live (v1.1.11)
+   - Status: Live (v1.1.11) — 50K+ active users across 74 countries, 4.7 rating, zero paid acquisition
 
-2. Promptive Sentry for IDE (VS Code / Open VSX)
-   - AI prompt enhancement inside code editors
-   - Compatible: Cursor, Windsurf, VS Code
-   - Status: Live
+2. Promptive Sentry for IDEs and Firefox (VS Code / Open VSX / Firefox)
+   - AI prompt enhancement inside code editors and Firefox
+   - Compatible: Cursor, Windsurf, VS Code, Antigravity, Firefox
+   - Status: Live — Reached 5K+ active developers across all major IDEs like VS Code, Cursor, Windsurf, and Antigravity through organic growth alone.
 
 3. Piqque (Windows Ambient AI Assistant)
    - Always-on desktop AI companion

@@ -75,3 +75,26 @@
     font-size: 8px; /* Slightly larger for readability */
   }
 }
+
+.iconImage {
+  position: relative;
+}
+
+/* Small retro red NEW tag */
+.iconBadge {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background: #cc0000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 1px 1px 0 #ffffff;
+  padding: 1px 3px;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}

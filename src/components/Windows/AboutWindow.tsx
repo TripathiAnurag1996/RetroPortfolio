@@ -1,5 +1,7 @@
 import { memo, useCallback } from 'react'
 import OptimizedImage from '../Common/OptimizedImage'
+import { useWindows } from '../../context/WindowContext'
+import { playClickSound } from '../../utils/audio'
 import styles from './AboutWindow.module.css'
 import { event } from '../../lib/gtag'
 
@@ -35,6 +37,8 @@ const SKILLS = {
 const ANALYTICS_TECH = [...SKILLS.analytics, ...SKILLS.technical]
 
 function AboutWindow() {
+  const { openWindow } = useWindows()
+
   const handleExternalClick = useCallback((label: string) => {
     if (label === 'EMAIL') {
       event('contact_initiated', { category: 'conversion', label: 'mailto_click', source: 'about_window' })
@@ -80,6 +84,32 @@ function AboutWindow() {
           <p className={styles.bio}>
             AI Product Manager and Founder with 6+ years of experience. Independently conceived, built, and SOLO shipped multiple production AI products reaching <strong>5000+</strong> users across <strong>60+</strong> countries within a month. Deep hands-on expertise in generative AI, LLM product design, prompt engineering, RAG, and multimodal voice AI pipelines.
           </p>
+
+          <div style={{ marginTop: '12px' }}>
+            <button
+              onClick={() => {
+                playClickSound()
+                openWindow('shoutouts')
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '5px 10px',
+                background: '#ece9d8',
+                border: '2px solid',
+                borderColor: '#ffffff #808080 #808080 #ffffff',
+                fontFamily: 'var(--font-pixel)',
+                fontSize: '8px',
+                cursor: 'pointer',
+                color: '#000080',
+                letterSpacing: '0.04em'
+              }}
+            >
+              <span>★</span>
+              <span>CREATOR SHOUTOUTS (56 MENTIONS) &rarr;</span>
+            </button>
+          </div>
         </div>
       </header>
 

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { anuragContext } from '../../../utils/knowledgeBase';
 
-declare const clarity: (action: string, key?: string, value?: string) => void;
+import { trackClarityEvent } from '../../../lib/clarity';
 
 function PromptiveSentryIDE() {
   const product = anuragContext.products[1];
@@ -28,9 +28,10 @@ function PromptiveSentryIDE() {
         {/* Stats Row */}
         <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
           {[
-            product.status.split('—')[1].split(',')[0].trim().replace(/\b\w/g, l => l.toUpperCase()), 
-            '1 Week Post-Launch', 
-            'Zero Setup', 
+            '5K+ Active Developers',
+            'Major IDEs & Firefox',
+            'Organic Growth Alone',
+            'Zero Setup',
             'Zero API Keys'
           ].map((stat, i) => (
             <div key={i} style={{ padding: '4px 10px', fontSize: '16px', border: '2px solid var(--border-dark)', color: 'var(--color-text)', backgroundColor: 'var(--color-window-bg)' }}>
@@ -42,7 +43,7 @@ function PromptiveSentryIDE() {
         {/* Action Button */}
         <button 
           onClick={() => {
-            if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+            trackClarityEvent("product_link_clicked");
             window.open(product.url, '_blank');
           }}
           style={{ 

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { anuragContext } from '../../../utils/knowledgeBase';
 
-declare const clarity: (action: string, key?: string, value?: string) => void;
+import { trackClarityEvent } from '../../../lib/clarity';
 
 function PromptiveSentry() {
   const product = anuragContext.products[0];
@@ -28,10 +28,11 @@ function PromptiveSentry() {
         {/* Stats Row */}
         <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
           {[
-            '20,000+ Active Users',
-            '60+ Countries',
-            'Zero Data Stored', 
-            'No Sign-Up'
+            '50K+ Active Users',
+            '74 Countries',
+            '★ 4.7 Rating',
+            'Zero Paid Acquisition',
+            'Zero Data Stored'
           ].map((stat, i) => (
             <div key={i} style={{ padding: '4px 10px', fontSize: '16px', border: '2px solid var(--border-dark)', color: 'var(--color-text)', backgroundColor: 'var(--color-window-bg)' }}>
               {stat}
@@ -48,7 +49,7 @@ function PromptiveSentry() {
         {/* Action Button */}
         <button 
           onClick={() => {
-            if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+            trackClarityEvent("product_link_clicked");
             window.open(product.url, '_blank');
           }}
           style={{ 
@@ -82,11 +83,13 @@ function PromptiveSentry() {
 
         {/* Social Proof Strip */}
         <div style={{ display: 'flex', gap: '12px', fontSize: '16px', color: 'var(--color-text)', marginBottom: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span>⭐ Featured on Chrome Web Store</span>
+          <span>⭐ 4.7 Rating on Chrome Web Store</span>
           <span style={{ color: 'var(--border-dark)' }}>|</span>
           <span>🔒 Privacy-first, zero backend dependency</span>
           <span style={{ color: 'var(--border-dark)' }}>|</span>
-          <span>🌍 Used across 60+ countries</span>
+          <span>🌍 50K+ active users across 74 countries</span>
+          <span style={{ color: 'var(--border-dark)' }}>|</span>
+          <span>🚀 Zero paid acquisition</span>
         </div>
 
         {/* Features */}

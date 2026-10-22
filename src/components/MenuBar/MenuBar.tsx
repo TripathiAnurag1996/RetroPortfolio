@@ -147,6 +147,23 @@ function MenuBar() {
       </div>
       
       <div className={styles.rightSection}>
+        <button
+          className={styles.fameTicker}
+          onClick={() => {
+            playClickSound()
+            openWindow('shoutouts')
+          }}
+          title="Shoutouts: 56 creator mentions across 5 platforms"
+          aria-label="Open Shoutouts"
+        >
+          <span className={styles.tickerStar}>★</span>
+          <span className={styles.tickerTrack}>
+            <span className={styles.tickerContent}>
+              56 CREATOR MENTIONS · 12M+ REACH · SHOUTOUTS ✦
+            </span>
+          </span>
+        </button>
+
         <time className={styles.clock} dateTime={time.toISOString()}>
           {formatTime(time)}
         </time>

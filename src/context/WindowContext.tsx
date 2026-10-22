@@ -3,8 +3,7 @@ import { WindowState, WindowContextType } from '../types'
 import { WINDOW_CONFIGS } from '../config/windows'
 import { playClickSound } from '../utils/audio'
 import * as gtag from '../lib/gtag'
-
-declare const clarity: (action: string, key?: string, value?: string) => void;
+import { trackClarityEvent, setClarityTag } from '../lib/clarity'
 
 // Constants
 const MAX_WINDOWS = 8
@@ -118,7 +117,7 @@ function windowReducer(state: State, action: Action): State {
         windowSize.width = Math.min(900, viewport.width * 0.7)
       }
 
-      const shouldCenter = id === 'welcome' || id === 'snakegame' || id === 'my-computer' || id === 'about'
+      const shouldCenter = id === 'welcome' || id === 'snakegame' || id === 'my-computer' || id === 'about' || id === 'wall-of-fame' || id === 'shoutouts'
       const position = calculatePosition(windows.length, windowSize, viewport, shouldCenter, id)
       
       const newWindow: WindowState = {
@@ -239,7 +238,8 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(windowReducer, initialState)
   
   const openWindow = useCallback((id: string) => {
-    if (typeof clarity !== "undefined") { clarity("event", "app_opened", id); }
+    trackClarityEvent("app_opened", id);
+    setClarityTag("window", id);
     playClickSound()
     dispatch({ type: 'OPEN_WINDOW', payload: { id } })
 

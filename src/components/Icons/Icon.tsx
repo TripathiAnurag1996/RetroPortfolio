@@ -407,6 +407,88 @@ const icons: Record<string, JSX.Element> = {
       <circle cx="24" cy="24" r="16" stroke="#404040" strokeWidth="2" />
     </svg>
   ),
+  trophy: (
+    <svg viewBox="0 0 48 48" fill="none">
+      {/* 1px Dark Outline & Antenna */}
+      <path d="M14 6 L22 14 M34 6 L26 14" stroke="#000000" strokeWidth="2" strokeLinecap="square" />
+      <rect x="22" y="12" width="4" height="2" fill="#404040" />
+
+      {/* Main TV Cabinet (Bevel & Grey Body) */}
+      <rect x="6" y="14" width="36" height="26" fill="#000000" />
+      <rect x="7" y="15" width="34" height="24" fill="#C0C0C0" />
+      {/* Light edge highlight (top and left) */}
+      <path d="M7 15 H40 V16 H8 V38 H7 Z" fill="#FFFFFF" />
+      {/* Dark shadow edge (bottom and right) */}
+      <path d="M8 38 H41 V39 H8 Z M40 16 H41 V39 H40 Z" fill="#808080" />
+
+      {/* Screen Bezel (Recessed) */}
+      <rect x="9" y="17" width="23" height="20" fill="#404040" />
+      <rect x="10" y="18" width="22" height="19" fill="#808080" />
+      {/* Navy CRT Screen */}
+      <rect x="11" y="19" width="20" height="17" fill="#000080" />
+      {/* Screen Glint (Top-left pixel line) */}
+      <path d="M12 20 H18 V21 H12 Z M12 21 H13 V24 H12 Z" fill="#3131FF" />
+
+      {/* Yellow Play Triangle on Screen */}
+      <path d="M19 23 L25 27.5 L19 32 Z" fill="#FFFF00" stroke="#000000" strokeWidth="1" />
+
+      {/* TV Controls Side Panel */}
+      <rect x="33" y="17" width="7" height="20" fill="#dfdfdf" />
+      <rect x="34" y="18" width="5" height="18" fill="#C0C0C0" />
+      {/* Dials / Knobs */}
+      <rect x="35" y="20" width="3" height="3" fill="#000000" />
+      <rect x="35" y="25" width="3" height="3" fill="#000000" />
+      {/* Speaker Grill Slots */}
+      <rect x="34" y="31" width="5" height="1" fill="#404040" />
+      <rect x="34" y="33" width="5" height="1" fill="#404040" />
+      <rect x="34" y="35" width="5" height="1" fill="#404040" />
+
+      {/* TV Legs */}
+      <rect x="10" y="40" width="5" height="3" fill="#404040" />
+      <rect x="33" y="40" width="5" height="3" fill="#404040" />
+    </svg>
+  ),
+  shoutouts: (
+    <svg viewBox="0 0 48 48" fill="none">
+      {/* 1px Dark Outline & Antenna */}
+      <path d="M14 6 L22 14 M34 6 L26 14" stroke="#000000" strokeWidth="2" strokeLinecap="square" />
+      <rect x="22" y="12" width="4" height="2" fill="#404040" />
+
+      {/* Main TV Cabinet (Bevel & Grey Body) */}
+      <rect x="6" y="14" width="36" height="26" fill="#000000" />
+      <rect x="7" y="15" width="34" height="24" fill="#C0C0C0" />
+      {/* Light edge highlight (top and left) */}
+      <path d="M7 15 H40 V16 H8 V38 H7 Z" fill="#FFFFFF" />
+      {/* Dark shadow edge (bottom and right) */}
+      <path d="M8 38 H41 V39 H8 Z M40 16 H41 V39 H40 Z" fill="#808080" />
+
+      {/* Screen Bezel (Recessed) */}
+      <rect x="9" y="17" width="23" height="20" fill="#404040" />
+      <rect x="10" y="18" width="22" height="19" fill="#808080" />
+      {/* Navy CRT Screen */}
+      <rect x="11" y="19" width="20" height="17" fill="#000080" />
+      {/* Screen Glint (Top-left pixel line) */}
+      <path d="M12 20 H18 V21 H12 Z M12 21 H13 V24 H12 Z" fill="#3131FF" />
+
+      {/* Yellow Play Triangle on Screen */}
+      <path d="M19 23 L25 27.5 L19 32 Z" fill="#FFFF00" stroke="#000000" strokeWidth="1" />
+
+      {/* TV Controls Side Panel */}
+      <rect x="33" y="17" width="7" height="20" fill="#dfdfdf" />
+      <rect x="34" y="18" width="5" height="18" fill="#C0C0C0" />
+      {/* Dials / Knobs */}
+      <rect x="35" y="20" width="3" height="3" fill="#000000" />
+      <rect x="35" y="25" width="3" height="3" fill="#000000" />
+      {/* Speaker Grill Slots */}
+      <rect x="34" y="31" width="5" height="1" fill="#404040" />
+      <rect x="34" y="33" width="5" height="1" fill="#404040" />
+      <rect x="34" y="35" width="5" height="1" fill="#404040" />
+
+      {/* TV Legs */}
+      <rect x="10" y="40" width="5" height="3" fill="#404040" />
+      <rect x="33" y="40" width="5" height="3" fill="#404040" />
+    </svg>
+  ),
 };
 
 function Icon({ name, size = 48, className }: IconProps) {

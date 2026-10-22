@@ -187,10 +187,9 @@ export const anuragContext = {
     "On-Device AI & Privacy-First Architecture", "AI Behaviour Definition & Safety Guardrails", "Go-to-Market for AI Products", "Data-Driven Prioritisation"
   ],
   currentStatus: {
-    role: "AI Product Manager",
-    company: "Next Square Technologies",
-    parallel: "Founder, Xenriq Systems",
-    focus: "Leading development of internal AI productivity tools embedding LLM workflows for consulting and delivery teams, while concurrently building and shipping AI-native products under Xenriq Systems."
+    role: "Founder & AI Product Manager",
+    company: "Xenriq Systems",
+    focus: "Building and shipping production AI-native products under Xenriq Systems, including Promptive Sentry, Promptive Sentry for IDEs and Firefox, and Piqque."
   },
   currentInterests: {
     openTo: "Senior AI Product Manager, Generative AI Product Lead, and AI Platform Product roles at companies building AI-first products, LLM-powered platforms, or developer/productivity tooling at scale.",
@@ -210,7 +209,7 @@ export const anuragContext = {
       name: "Promptive Sentry",
       type: "Chrome Extension",
       company: "Xenriq Systems",
-      status: "Live — 5000+ users, 60+ countries, 3 weeks post-launch",
+      status: "Live — 50K+ active users across 74 countries, 4.7 rating, zero paid acquisition",
       url: "https://chromewebstore.google.com/detail/promptive-sentry/ikbkijdgnelcijmdkcaaoabmobagakim",
       tagline: "Most AI extensions add buttons. Promptive Sentry adds intelligence.",
       summary: "Identified a high-friction gap in AI power-user workflows: professionals using Claude, ChatGPT, and Gemini lose context on every tab switch and start from zero at every session restart. Designed and shipped a dual-engine Chrome extension addressing this at the browser layer.",
@@ -223,21 +222,22 @@ export const anuragContext = {
       techStack: ["Chrome Extension APIs", "JavaScript", "Content Scripts", "Local Storage"]
     },
     {
-      name: "Promptive Sentry for IDE",
-      type: "VS Code Marketplace Extension",
+      name: "Promptive Sentry for IDEs and Firefox",
+      type: "IDE & Browser Extension",
       company: "Xenriq Systems",
-      status: "Live — 5000+ active users, 1 week post-launch",
+      status: "Live — Reached 5K+ active developers across all major IDEs like VS Code, Cursor, Windsurf, and Antigravity through organic growth alone.",
       url: "https://open-vsx.org/extension/xenriq/promptive-sentry-ide/",
       tagline: "The AI prompt layer your IDE was missing.",
       summary: "Solved the developer AI prompt quality problem at the IDE layer: prompts sent to AI coding tools are context-poor, producing generic responses that require multiple iteration rounds per session — compounding productivity cost at scale.",
       features: [
+        "Reached 5K+ active developers across all major IDEs like VS Code, Cursor, Windsurf, and Antigravity through organic growth alone.",
         "Silent context collection pipeline capturing 7 IDE environment layers in under 800ms.",
         "Layers captured: active file and inferred role, imports, open tabs, terminal errors, git branch, commit history, diffs, and full tech stack.",
         "Automatically rewrites developer prompts with rich context before the AI model sees them.",
         "Zero setup, zero API keys, zero friction."
       ],
-      compatibility: ["VS Code", "Cursor", "Windsurf", "Kiro", "Warp", "Antigravity", "All VS Code-compatible editors"],
-      techStack: ["VS Code Extension APIs", "TypeScript", "AST Parsing", "Git APIs"]
+      compatibility: ["VS Code", "Cursor", "Windsurf", "Kiro", "Warp", "Antigravity", "Firefox", "All VS Code-compatible editors"],
+      techStack: ["VS Code Extension APIs", "Firefox Add-ons APIs", "TypeScript", "AST Parsing", "Git APIs"]
     },
     {
       name: "Piqque",
@@ -262,31 +262,17 @@ export const anuragContext = {
   ],
   experience: [
     {
-      company: "Next Square Technologies",
-      role: "AI Product Manager",
-      duration: "Dec 2023 – Present",
-      summary: "Leading end-to-end product discovery, design, and delivery for an internal AI productivity platform targeting consulting and delivery teams.",
-      highlights: [
-        "Led discovery for an internal AI productivity platform: conducted 6 structured user interviews, mapped high-frequency workflows against AI suitability, synthesised findings into an opportunity matrix that became the approved product roadmap.",
-        "Owned AI output quality standards for 3 core use cases — automated status reporting, SOP generation, client documentation: engineered prompt templates, defined pass/fail evaluation criteria, reviewed 12 pre-launch samples per use case.",
-        "Designed human-in-the-loop guardrails for compliance-sensitive content generation as explicit product policy, reducing compliance exposure and building measurable stakeholder trust pre-launch.",
-        "Led cross-functional adoption rollout across 3 delivery teams; maintained a structured AI output failure log that directly informed the v2 backlog and secured senior leadership approval for the next product cycle.",
-        "Translated business requirements into development-ready PRDs with standardised acceptance criteria, reducing product-engineering ambiguity across sprint cycles."
-      ],
-      skills: ["AI Product Strategy", "LLM Workflows", "Prompt Engineering", "Model Evaluation", "Human-in-the-Loop Design", "PRDs", "Stakeholder Management", "Agile / Scrum"]
-    },
-    {
       company: "Xenriq Systems",
       role: "Founder & AI Product Manager",
       duration: "Jan 2024 – Present",
       type: "Entrepreneurial — concurrent with full-time role",
       summary: "Independently conceived, designed, built, and shipped 3 production AI-native products from zero to global traction. Operated across the full stack: product strategy, system architecture, LLM integration, GTM, and distribution — all solo.",
       highlights: [
-        "Shipped 3 AI products — Chrome extension, VS Code extension, Windows desktop app — reaching 5000+ users across 60+ countries with zero paid acquisition.",
-        "Designed and implemented a multimodal voice AI pipeline achieving ~1.0–1.5s perceived end-to-end latency (down from 12–17s baseline) through 7-phase optimisation.",
+        "Shipped 3 AI products, including Promptive Sentry, an AI coding productivity extension, and Piqque, a privacy-first Windows ambient AI assistant, reaching 50,000+ users across 60+ countries.",
+        "Designed and implemented a multimodal voice AI pipeline achieving 1.0–1.5 seconds of perceived end-to-end latency.",
+        "Architected privacy-first, on-device AI systems, including a HIPAA-compliant mode with zero cloud dependency.",
+        "Owned the complete product lifecycle, from discovery and architecture to implementation, go-to-market, and post-launch iteration.",
         "Built a 7-layer IDE context collection pipeline in under 800ms using VS Code Extension APIs and AST parsing.",
-        "Architected privacy-first, on-device AI systems including a full HIPAA-compliant mode with zero cloud dependency.",
-        "Owned complete product lifecycle: discovery, architecture, implementation, evaluation, GTM, and post-launch iteration.",
         "Managed multi-model LLM orchestration across Claude, Gemini, and GPT-4o with resilient fallback provider design."
       ],
       skills: ["0-to-1 Product Development", "LLM Integration", "Voice AI", "Multimodal AI", "On-Device AI", "Prompt Engineering", "System Architecture", "Electron/TypeScript", "Chrome Extension APIs", "VS Code Extension APIs", "Go-to-Market", "Product Marketing"]
@@ -379,7 +365,7 @@ export const anuragContext = {
   ],
   commonQuestions: {
     whyAIProductManagement: "My engineering background gives me credibility with the teams building the systems, while my product experience keeps me focused on outcomes that matter to users. I got into AI PM because I could see that most 'AI features' were being built without understanding either the failure modes or the human workflow they were interrupting. I wanted to fix that — and the fastest way was to ship products myself.",
-    strongestAIWork: "The voice AI pipeline optimisation on Piqque — reducing perceived end-to-end latency from 12–17 seconds to under 1.5 seconds through a seven-phase overhaul covering audio streaming, STT provider resilience, LLM response streaming with sentence-boundary buffering, and barge-in interruption. And the model evaluation and HITL guardrail design work at Next Square, where I turned vague 'AI quality' concerns into a repeatable, measurable QA process before go-live.",
+    strongestAIWork: "The voice AI pipeline optimisation on Piqque — reducing perceived end-to-end latency from 12–17 seconds to under 1.5 seconds through a seven-phase overhaul covering audio streaming, STT provider resilience, LLM response streaming with sentence-boundary buffering, and barge-in interruption. And the model evaluation and HITL guardrail design work across production AI deployments, turning vague 'AI quality' concerns into a repeatable, measurable QA process before go-live.",
     differentiation: "I combine structured product thinking with genuine technical execution. I don't just write the PRD — I've shipped the product. That changes how I think about feasibility, trade-offs, and what 'done' actually means. Most AI PMs can describe a RAG pipeline. I've debugged one at midnight.",
     openToOpportunities: "Yes — actively open to Senior AI PM, Generative AI Product Lead, and AI Platform Product roles at companies building AI-first products or developer tooling at scale. Particularly interested in roles where product and engineering work closely together and where the team's ambition matches the problem size."
   },

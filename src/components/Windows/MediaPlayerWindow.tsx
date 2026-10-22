@@ -1,4 +1,5 @@
 import { memo, useState } from 'react'
+import { trackClarityEvent } from '../../lib/clarity'
 import styles from './MediaPlayerWindow.module.css'
 
 const LIBRARY = [
@@ -57,7 +58,10 @@ function MediaPlayerWindow() {
                 <button 
                   key={video.id}
                   className={`${styles.playlistItem} ${video.id === currentVideoId ? styles.active : ''}`}
-                  onClick={() => setCurrentVideoId(video.id)}
+                  onClick={() => {
+                    trackClarityEvent("media_player_video_changed", video.id);
+                    setCurrentVideoId(video.id);
+                  }}
                 >
                   <span className={styles.itemNumber}>{(videoIdx + 1).toString().padStart(2, '0')}</span>
                   <span className={styles.itemTitle}>{video.title.toUpperCase()}</span>

@@ -19,6 +19,7 @@ const AIAssistant = lazy(() => import('../AIAssistant/AIAssistant'))
 const ProductAnalyzer = lazy(() => import('../AIDemos/ProductAnalyzer'))
 const Browser = lazy(() => import('../Browser/Browser'))
 const MediaPlayerWindow = lazy(() => import('../Windows/MediaPlayerWindow'))
+const ShoutoutsWindow = lazy(() => import('../Windows/ShoutoutsWindow'))
 
 // Loading spinner
 function WindowLoadingSpinner() {
@@ -54,7 +55,9 @@ const windowComponents: Record<string, React.LazyExoticComponent<React.Component
   'assistant': AIAssistant,
   'demo': ProductAnalyzer,
   'browser': Browser,
-  'mediaplayer': MediaPlayerWindow
+  'mediaplayer': MediaPlayerWindow,
+  'wall-of-fame': ShoutoutsWindow,
+  'shoutouts': ShoutoutsWindow
 }
 
 function WindowManager() {

@@ -119,7 +119,7 @@ ${intentContext}
 2. Provide exact number of points if requested.
 3. Never stop mid-sentence.
 4. Vary sentence structure and phrasing throughout the response. Do not repeat similar sentence templates back-to-back (e.g. reusing 'It was a [adjective] experience' for multiple items in a list). Each point should be worded distinctly.
-5. Promptive Sentry, Promptive Sentry for IDE, and Piqque are PRODUCTS I built — NOT separate companies. Xenriq Systems is the company/studio under which these products were built. Never refer to the products themselves as companies.
+5. Promptive Sentry, Promptive Sentry for IDEs and Firefox, and Piqque are PRODUCTS I built — NOT separate companies. Xenriq Systems is the company/studio under which these products were built. Never refer to the products themselves as companies.
 6. Stay grounded in DATA_SOURCE_FACTS.
 7. If missing data, admit it and redirect.
 `;

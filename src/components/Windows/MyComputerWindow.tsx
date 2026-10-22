@@ -29,26 +29,12 @@ const EXPERIENCE = [
     location: 'Global / Remote',
     date: 'Jan 2024 - Present',
     bullets: [
-      'Shipped 3 AI products (Promptive Sentry, Piqque) reaching <strong class="digit-clear">5000+</strong> users across <strong class="digit-clear">60+</strong> countries',
-      'Designed and implemented a multimodal voice AI pipeline achieving ~1.0–1.5s perceived end-to-end latency',
-      'Architected privacy-first, on-device AI systems including a full HIPAA-compliant mode with zero cloud dependency',
-      'Owned complete product lifecycle: discovery, architecture, implementation, GTM, and post-launch iteration'
+      'Shipped 3 AI products, including <strong class="digit-clear">Promptive Sentry</strong>, an AI coding productivity extension, and <strong class="digit-clear">Piqque</strong>, a privacy-first Windows ambient AI assistant, reaching <strong class="digit-clear">50,000+</strong> users across <strong class="digit-clear">60+</strong> countries.',
+      'Designed and implemented a multimodal voice AI pipeline achieving <strong class="digit-clear">1.0–1.5 seconds</strong> of perceived end-to-end latency.',
+      'Architected privacy-first, on-device AI systems, including a <strong class="digit-clear">HIPAA-compliant mode</strong> with zero cloud dependency.',
+      'Owned the complete product lifecycle, from discovery and architecture to implementation, go-to-market, and post-launch iteration.'
     ],
     tech: '0-to-1 Product Development, Voice AI, System Architecture'
-  },
-  {
-    company: 'NEXT SQUARE TECHNOLOGIES',
-    icon: '🤖',
-    role: 'AI Product Manager',
-    location: 'Gurugram, India',
-    date: 'Dec 2023 - Present',
-    bullets: [
-      'Led end-to-end product discovery and delivery for an internal AI productivity platform',
-      'Conducted structured user interviews, synthesizing findings into an opportunity matrix for the product roadmap',
-      'Owned AI output quality standards, engineered prompt templates, and defined pass/fail evaluation criteria',
-      'Designed human-in-the-loop guardrails for compliance-sensitive content generation'
-    ],
-    tech: 'AI Product Strategy, LLM Workflows, Prompt Engineering'
   },
   {
     company: 'AITHENT TECHNOLOGIES',
@@ -114,26 +100,26 @@ const PRODUCTS = [
     description:
       'A dual-engine Chrome extension solving the AI prompt quality problem at the browser layer.',
     impact: [
-      'Live — <strong class="digit-clear">2000+</strong> users, 60+ countries',
+      'Live — <strong class="digit-clear">50K+</strong> active users across <strong class="digit-clear">74</strong> countries with a <strong class="digit-clear">4.7</strong> rating and zero paid acquisition',
       'Transforms vague prompts into structured, role-defined AI instructions across Claude, ChatGPT, and Gemini',
       'Sentry Memory saves full conversation context as an AI-readable structured handoff'
     ],
     tech: 'Chrome Extension APIs, JavaScript, Local Storage'
   },
   {
-    title: 'Promptive Sentry for IDE',
+    title: 'Promptive Sentry for IDEs and Firefox',
     company: 'Xenriq Systems',
-    role: 'VS Code Extension',
+    role: 'VS Code & Firefox Extension',
     date: '2024',
     url: 'https://open-vsx.org/extension/xenriq/promptive-sentry-ide/',
     description:
       'The AI prompt layer your IDE was missing. Automatically rewrites developer prompts with rich context before the AI model sees them.',
     impact: [
-      'Live — <strong class="digit-clear">2000+</strong> active users',
+      'Reached <strong class="digit-clear">5K+</strong> active developers across all major IDEs like VS Code, Cursor, Windsurf, and Antigravity through organic growth alone.',
       'Silent context collection pipeline capturing 7 IDE environment layers in under <strong class="digit-clear">800ms</strong>',
       'Zero setup, zero API keys, zero friction'
     ],
-    tech: 'VS Code APIs, TypeScript, AST Parsing'
+    tech: 'VS Code APIs, Firefox APIs, TypeScript, AST Parsing'
   },
   {
     title: 'Piqque',

@@ -23,13 +23,13 @@ function BrowserHome() {
         Product Directory
       </h2>
       <p style={{ fontFamily: 'var(--font-pixel)', fontSize: '12px', color: 'var(--color-text-light)', marginBottom: '48px', textTransform: 'uppercase' }}>
-        Multiple Products · 30000+ users · 74+ countries
+        Multiple Products · 50K+ active users across 74 countries
       </p>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', width: '100%', maxWidth: '800px' }}>
         {[
           { id: 'promptive-sentry', label: 'Promptive Sentry (Chrome)', icon: '🌐' },
-          { id: 'promptive-sentry-ide', label: 'Promptive Sentry for IDE', icon: '💻' },
+          { id: 'promptive-sentry-ide', label: 'Promptive Sentry for IDEs and Firefox', icon: '💻' },
           { id: 'piqque', label: 'Piqque (Desktop App)', icon: '🖥️' }
         ].map(item => (
           <div 

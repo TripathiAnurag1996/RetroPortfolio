@@ -6,9 +6,8 @@ import { PersonaType } from '../../utils/personaConfig';
 import { getAIResponse } from '../../utils/aiService';
 import { playClickSound, playMessageSound } from '../../utils/audio';
 import { event } from '../../lib/gtag';
+import { trackClarityEvent } from '../../lib/clarity';
 import { useWindows } from '../../context/WindowContext';
-
-declare const clarity: (action: string, key?: string, value?: string) => void;
 
 const AIAssistant: React.FC = () => {
   const { closeWindow } = useWindows();
@@ -86,7 +85,7 @@ const AIAssistant: React.FC = () => {
       query_length: q.trim().length,
       persona: persona
     });
-    if (typeof clarity !== "undefined") { clarity("event", "ai_query_submitted"); }
+    trackClarityEvent("ai_query_submitted");
 
     try {
       const aiResponse = await getAIResponse(q, persona);
@@ -103,7 +102,7 @@ const AIAssistant: React.FC = () => {
   };
 
   const handlePersonaSelect = (p: PersonaType) => {
-    if (typeof clarity !== "undefined") { clarity("event", "persona_changed"); }
+    trackClarityEvent("persona_changed", p);
     setPersona(p);
     setIsSelectingPersona(false);
     if (typeof window !== 'undefined') {

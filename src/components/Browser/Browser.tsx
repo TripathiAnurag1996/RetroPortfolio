@@ -4,7 +4,7 @@ import BrowserHome from './pages/BrowserHome';
 import PromptiveSentry from './pages/PromptiveSentry';
 import PromptiveSentryIDE from './pages/PromptiveSentryIDE';
 
-declare const clarity: (action: string, key?: string, value?: string) => void;
+import { trackClarityEvent } from '../../lib/clarity';
 import Piqque from './pages/Piqque';
 
 interface Tab {
@@ -35,7 +35,7 @@ const DEFAULT_TABS: Tab[] = [
   },
   {
     id: 'tab-3',
-    title: 'Promptive Sentry IDE',
+    title: 'Promptive Sentry for IDEs and Firefox',
     url: 'anurag-os://promptive-sentry-ide',
     currentUrl: 'anurag-os://promptive-sentry-ide',
     isLoading: false,
@@ -224,7 +224,7 @@ const Browser: React.FC = () => {
             className={styles.navButton} 
             style={{ width: 'auto', padding: '0 8px', marginLeft: '4px' }}
             onClick={() => {
-              if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+              trackClarityEvent("product_link_clicked");
               window.open(getExternalUrl(activeTab.currentUrl)!, '_blank');
             }}
             title="Open in Native Browser"
@@ -264,7 +264,7 @@ const Browser: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => {
-                    if (typeof clarity !== "undefined") { clarity("event", "product_link_clicked"); }
+                    trackClarityEvent("product_link_clicked");
                     window.open(tab.currentUrl, '_blank');
                   }}
                   style={{
